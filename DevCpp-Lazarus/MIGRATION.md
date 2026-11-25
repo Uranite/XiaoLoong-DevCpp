@@ -1,13 +1,33 @@
 # DevCpp SynEdit → ATSynEdit 迁移记录
 
 ## 迁移目标
-- Delphi → Lazarus 4.4
+- Delphi → Lazarus 4.6
 - SynEdit 2.1.1 → ATSynEdit
 
+## 2026-11-25 状态审计
+
+> 下文保留了 2026-05 的迁移过程记录,其中部分“剩余 TODO”已在后续版本完成。当前待办以 `!todo(orwell).txt` 和 `docs/ARCHITECTURE.md` 第 9.2 节为准。
+
+已实现但旧清单仍列为待办:
+
+- [x] HTML / RTF / TeX 导出 — `TEditor.ExportToHTML`、`TEditor.ExportToRTF`、`TEditor.ExportToTEX`
+- [x] 注释 / 取消注释 / 切换注释(整行与行内)— `main.pas` 中 `actCommentExecute`、`actUncommentExecute`、`actToggleCommentExecute`、`actToggleCommentInlineExecute`
+- [x] 选中词全部高亮 — `TEditor.UpdateSelectionHighlight`
+- [x] 工程单元重命名 — `TMainForm.actUnitRenameExecute`
+- [x] 断点 gutter 与行背景 — ATSynEdit `GutterDecor` + `Bookmarks2` + `OnCalcBookmarkColor`
+- [x] 书签、折叠、括号匹配 — 使用 ATSynEdit 原生能力
+
+仍需处理:
+
+- [ ] EControl 颜色/属性映射（`EditorOptFrm.pas` 中 3 处 `TODO: EControl adapter` 及折叠颜色）
+- [ ] 补全逻辑中的 EControl 高亮属性过滤(当前无属性时回退为普通搜索)
+- [ ] 删除或整合已无运行时用途的 `TDebugGutter` / `DebugAfterPaint`
+- [ ] 其余功能项见 `!todo(orwell).txt`
+
 ## 关键文件
-- `Editor.pas` - 核心编辑器封装（约 2200 行）
-- `main.pas` - 主窗体
-- `devcfg.pas` - 配置管理
+- `Editor.pas` - 核心编辑器封装（约 3650 行）
+- `main.pas` - 主窗体（约 9100 行）
+- `devcfg.pas` - 配置管理（约 3600 行）
 - `CodeToolTip.pas` - 函数提示
 - `CodeCompletion.pas` - 代码补全
 
@@ -135,14 +155,15 @@
 - [x] Result := hprNone 默认返回值修复
 - **总计：40 个 TODO 已修复（65→25）**
 
-### ⏳ Editor.pas 剩余 TODO（25个，主要涉及 EControl 高亮器适配）
-- [ ] EControl 高亮器属性检查（dmMain.Cpp / TATSynHighlighterAttributes）
-- [ ] 代码补全过滤逻辑（CompletionKeyPress 中的高亮器检查）
-- [ ] HandleCodeCompletion 中基于高亮器的触发逻辑
-- [ ] HandleSymbolCompletion 中 LineText 获取（用于括号缩进）
-- [ ] ShowCompletion 中 CaretPosToClientPos 定位
-- [ ] EditorReplaceText 中 CaretPosToClientPos 定位
-- [ ] 导出功能（HTML/RTF/TEX — 需要 ATSynEdit Exporter 支持）
+### ✅ Editor.pas 旧 TODO 复核（2026-11-25）
+
+早期清单中的导出与定位项已完成，剩余项已改为降级实现或仍需 EControl 适配：
+- [x] 导出功能（HTML/RTF/TEX）— 已用 ATSynEdit 行片段 API 实现
+- [x] ShowCompletion / EditorReplaceText 定位 — 已改用 `CaretPosToClientPos`
+- [x] HandleSymbolCompletion 行文本获取 — 已改用 `Strings.Lines`
+- [ ] EControl 高亮器属性检查（dmMain.Cpp → AdapterForHilite）
+- [ ] 代码补全过滤逻辑（CompletionKeyPress）— 当前无高亮属性时回退为普通搜索
+- [ ] HandleCodeCompletion 基于高亮器的触发逻辑 — 当前使用简化回退
 
 ### ✅ 已完成 — main.pas ATSynEdit API 修复（2026-05-15）
 - [x] SelAvail 检查 → CaretsSel.IsEmpty（4 处：actCut/actCopy/actToggleCommentInline/AddWatch）
@@ -161,14 +182,15 @@
 - [x] OldCaretXY → Carets[0].PosX/Y 读写（格式化恢复）
 - [x] **总计：30 个 TODO 已修复（46→16）**
 
-### ⏳ main.pas 剩余 TODO（16个）
-- [ ] Comment/Uncomment/ToggleComment — ATSynEdit 无内置命令，需手动实现
-- [ ] CommentInline — 同上
-- [ ] dmMain.Cpp 引用 — 需 EControl 适配器实现后修复
-- [ ] SelLength / Lines.Capacity — 已移除的 Delphi 属性
-- [ ] ShortenLogOutput — 不影响功能的小优化
-- [ ] Gutter.Font — ATSynEdit 使用不同 Gutter 模型
-- [ ] PrinterSetup — 已通过对话框提示用户
+### ✅ main.pas 旧 TODO 复核（2026-11-25）
+
+- [x] Comment/Uncomment/ToggleComment — 已在 `actCommentExecute` / `actUncommentExecute` / `actToggleCommentExecute` 中手动实现
+- [x] CommentInline — 已在 `actToggleCommentInlineExecute` 中实现
+- [x] PrinterSetup — 已实现打印与打印设置
+- [ ] dmMain.Cpp 引用 — `LoadColor` 等仍有占位，需 EControl 适配器提供颜色
+- [ ] SelLength / Lines.Capacity — Delphi 专有属性，ATSynEdit 无等价物，保持移除
+- [ ] ShortenLogOutput — 当前为 no-op
+- [ ] Gutter.Font — 已由 ATSynEdit 的独立 gutter 字体设置替代，旧调用需清理
 
 ### 关键 API 对照表（ATSynEdit vs SynEdit）
 
@@ -238,4 +260,3 @@
 | 2026-05-12 | Editor.pas | Export 方法禁用（SynExporter 不可用）|
 | 2026-05-12 | Editor.pas | ScanForFoldRanges / EditorPaintTransient 存根化 |
 | 2026-05-12 | Editor.pas | 所有 SynEdit 专有 API 清理完毕 ✅ |
-

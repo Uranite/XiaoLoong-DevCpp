@@ -1,7 +1,7 @@
 # DevCpp (XiaoLoong Dev-C++) 项目架构分析
 
-> 版本: v7.0 测试版 | 开发框架: Lazarus 4.6 | 编码语言: Object Pascal (Delphi Mode)
-> 更新日期: 2026-07-07
+> 版本: v7.0.5 | 开发框架: Lazarus 4.6 | 编码语言: Object Pascal (Delphi Mode)
+> 更新日期: 2026-11-25
 
 ---
 
@@ -11,14 +11,14 @@
 
 DevCpp 是经典的 C/C++ 集成开发环境，最初由 Bloodshed Software 开发，后由 Orwell 接手维护，**当前版本由 XiaoLoong 团队迁移至 Lazarus/Free Pascal 平台**。
 
-项目当前正在进行 **SynEdit → ATSynEdit 重大重构**，同时完成了 Delphi → Lazarus 的平台迁移。
+项目已完成 **SynEdit → ATSynEdit 重构**和 **Delphi → Lazarus 平台迁移**，目前处于功能补齐、EControl 适配和稳定化阶段。
 
 ### 1.2 基础信息
 
 | 属性 | 值 |
 |------|-----|
 | 项目名称 | XiaoLoong Dev-C++ (XL7) |
-| 版本 | 7.0 测试版 |
+| 版本 | 7.0.5 |
 | 源码目录 | `C:\Users\Administrator\WorkBuddy\2026-DevCpp-Lazarus\DevCpp-Lazarus\` |
 | 入口文件 | `DevCpp.lpr` |
 | 项目文件 | `DevCpp.lpi` (Lazarus Project) |
@@ -32,16 +32,16 @@ DevCpp 是经典的 C/C++ 集成开发环境，最初由 Bloodshed Software 开�
 ## 2. 项目规模统计
 
 ```
-总计 Pascal 源文件:     ~85 个 (.pas / .lfm)
-核心逻辑文件:           ~75 个
-总代码规模:             ~3,000+ KB
-主窗体 (main.pas):      ~305 KB (最大单文件)
-编辑器 (Editor.pas):    ~122 KB
-配置管理 (devcfg.pas):  ~124 KB
-词法/解析器 (CppParser): ~101 KB
-编译器 (Compiler.pas):  ~54 KB
-项目类 (Project.pas):   ~69 KB
-编辑器选项 (EditorOptFrm): ~91 KB
+总计 Pascal 源文件:     73 个 .pas + 39 个 .lfm
+核心逻辑文件:           ~70 个
+总代码规模:             ~2,100 KB (.pas)
+主窗体 (main.pas):      ~349 KB (最大单文件)
+编辑器 (Editor.pas):    ~144 KB
+配置管理 (devcfg.pas):  ~155 KB
+词法/解析器 (CppParser): ~102 KB
+编译器 (Compiler.pas):  ~56 KB
+项目类 (Project.pas):   ~70 KB
+编辑器选项 (EditorOptFrm): ~79 KB
 ```
 
 ---
@@ -59,6 +59,10 @@ DevCpp 是经典的 C/C++ 集成开发环境，最初由 Bloodshed Software 开�
 | **ATSynEdit_Cmp** | ATSynEdit 组件集合 |
 | **EControl** | 语法高亮和代码编辑组件库（配合 ATSynEdit 使用） |
 | **EncConv** | 字符编码转换库（UTF-8 ↔ ANSI ↔ Unicode 等） |
+| **ATFlatControls** | ATSynEdit/EControl 依赖的扁平化控件集合 |
+| **BGRABitmap** | 2D 图形库，主题和图标绘制依赖 |
+| **MetaDarkStyle** | Windows 深色主题支持 |
+| **LCLExtensions** | Lazarus 控件扩展 |
 
 ### 3.2 内置/辅助工具
 
@@ -97,20 +101,20 @@ DevCpp 本身是 IDE，它调用外部 MinGW GCC 工具链：
                            ▼
 ┌──────────────────────────────────────────────────────────────┐
 │                main.pas (TMainForm) — 核心                 │
-│  最大模块 (~305KB)，协调所有子模块的中央调度器                 │
+│  最大模块 (~349KB)，协调所有子模块的中央调度器                 │
 └────┬────────────┬──────────┬──────────┬──────────┬─────────┘
      │            │          │          │          │
      ▼            ▼          ▼          ▼          ▼
 ┌─────────┐  ┌─────────┐ ┌─────────┐ ┌────────┐ ┌──────────┐
 │ Editor  │  │Compiler │ │Debugger │ │Project │ │ ClassBrw │
 │EditorList│  │  .pas   │ │  .pas   │ │  .pas  │ │  owser  │
-│  ~122KB │  │ ~54KB   │ │ ~13KB   │ │ ~69KB  │ │  ~30KB  │
+│  ~144KB │  │ ~56KB   │ │ ~13KB   │ │ ~70KB  │ │  ~30KB  │
 └────┬────┘  └────┬────┘ └────┬────┘ └───┬────┘ └────┬─────┘
      │            │           │          │            │
      ▼            ▼           ▼          │            ▼
 ┌──────────┐  ┌────────┐ ┌────────┐   │     ┌──────────────┐
 │ATSynEdit │  │TCompiler│ │TDebugger│   │     │ TCppParser   │
-│(编辑器)   │  │(编译)   │ │(调试)   │   │     │ (~101KB)     │
+│(编辑器)   │  │(编译)   │ │(调试)   │   │     │ (~102KB)     │
 └────┬─────┘  └────────┘ └────────┘   │     │  ┌──────────┐│
      │                                │     │  │Tokenizer ││
      ▼                                │     │  │ Preproc  ││
@@ -127,7 +131,7 @@ DevCpp 本身是 IDE，它调用外部 MinGW GCC 工具链：
 │                    核心支撑模块                            │
 ├───────────────┬────────────────┬─────────────────────────┤
 │  devcfg.pas   │  Project.pas   │  EditorList.pas        │
-│  配置管理 (~124KB)│  项目文件管理  │  多文档编辑器列表管理   │
+│  配置管理 (~155KB)│  项目文件管理  │  多文档编辑器列表管理   │
 │  · TdevData   │  · TProject    │  · TEditorList          │
 │  · TdevCompilerSet │ · TProjUnit │ · TLayoutShowType      │
 ├───────────────┼────────────────┼─────────────────────────┤
@@ -142,7 +146,7 @@ DevCpp 本身是 IDE，它调用外部 MinGW GCC 工具链：
 │                    解析/代码分析模块                        │
 │  ┌─────────────┐  ┌──────────────┐  ┌─────────────────┐  │
 │  │ CppParser   │  │ CppPreproc   │  │ CppTokenizer    │  │
-│  │ (~101KB)    │  │ (~34KB)      │  │ (~22KB)         │  │
+│  │ (~102KB)    │  │ (~34KB)      │  │ (~22KB)         │  │
 │  │ C++词法解析  │  │ 预处理指令解析│  │ 词法分词器       │  │
 │  └─────────────┘  └──────────────┘  └─────────────────┘  │
 └─────────────────────────────────────────────────────────┘
@@ -171,7 +175,7 @@ DevCpp 本身是 IDE，它调用外部 MinGW GCC 工具链：
 ┌────────────────────────────────────────────────────────────┐
 │                    配置/资源/多语言                         │
 ├────────────────────────────────────────────────────────────┤
-│ devcfg.pas    — devCFG 单元 (全局配置，~124KB)               │
+│ devcfg.pas    — devCFG 单元 (全局配置，~155KB)               │
 │ CFGData.pas   — 配置数据结构定义                             │
 │ LangIDs.inc   — 语言字符串表常量 (66KB，多语言支持)          │
 │ MultiLangSupport.pas — 多语言切换支持                        │
@@ -210,7 +214,7 @@ uses
 4. `CreateOptions` — 初始化选项
 5. `Application.CreateForm(TMainForm, MainForm)` — 创建主窗体
 
-### 5.2 主窗体 — `main.pas` (TMainForm, ~305KB)
+### 5.2 主窗体 — `main.pas` (TMainForm, ~349KB)
 
 DevCpp 的中央调度器，**是整个项目最大的模块**。包含：
 
@@ -221,25 +225,26 @@ DevCpp 的中央调度器，**是整个项目最大的模块**。包含：
 - **编译器集成**：编译、运行、调试的一键执行
 - **文件监控**：热重载和外部文件变更检测
 
-### 5.3 编辑器模块 — `Editor.pas` (TEditor, ~122KB)
+### 5.3 编辑器模块 — `Editor.pas` (TEditor, ~144KB)
 
 封装 ATSynEdit 编辑器核心：
 
 ```
 TEditor
   ├── fInProject: boolean
-  ├── fSynEdit: TATSynEdit              ← 核心编辑器组件
-  ├── fAdapter: TATSynEdit_Adapter_EControl  ← 语法高亮适配器
-  ├── fCompletionPopup: TCodeCompletionForm
-  ├── fToolTip: TCodeToolTip
-  ├── 断点管理 (Breakpoints)
-  ├── 书签管理 (Bookmarks)
-  ├── 代码折叠 (Folding)
-  ├── 多光标支持 (Multiple Carets)
-  └── 事件处理 (OnChange, OnKeyDown, OnPaintLine...)
+  ├── fText: TATSynEdit                    ← 核心编辑器组件
+  ├── fText.AdapterForHilite: TATAdapterEControl ← EControl 语法高亮适配器
+  ├── fCompletionBox: TCodeCompletion
+  ├── fFunctionTip: TCodeToolTip
+  ├── fCompletionTimer / fFunctionTipTimer
+  ├── 断点管理 (Debugger.BreakPointList + GutterDecor + Bookmarks2)
+  ├── 书签管理 (Bookmarks2)
+  ├── 代码折叠 (OptFoldEnabled)
+  ├── 多光标支持 (ATSynEdit Carets)
+  └── 事件处理 (OnChange, OnKeyDown, OnCalcBookmarkColor...)
 ```
 
-### 5.4 编译器模块 — `Compiler.pas` (TCompiler, ~54KB)
+### 5.4 编译器模块 — `Compiler.pas` (TCompiler, ~56KB)
 
 ```
 TCompiler
@@ -263,7 +268,7 @@ TDebugger
   └── 堆栈追踪
 ```
 
-### 5.6 C++ 代码解析器 — `CppParser.pas` (~101KB)
+### 5.6 C++ 代码解析器 — `CppParser.pas` (~102KB)
 
 ```
 TCppParser
@@ -306,7 +311,7 @@ Macros (宏定义)
 ...
 ```
 
-### 5.10 配置管理 — `devcfg.pas` (~124KB)
+### 5.10 配置管理 — `devcfg.pas` (~155KB)
 
 ```
 devCFG 单元（核心配置中心）
@@ -323,7 +328,7 @@ devCFG 单元（核心配置中心）
        └── fOptions: TList<TCompilerOption>
 ```
 
-### 5.11 项目管理 — `Project.pas` (~69KB)
+### 5.11 项目管理 — `Project.pas` (~70KB)
 
 ```
 TProject
@@ -444,26 +449,35 @@ TEvalReadyEvent = procedure(const evalvalue: AnsiString) of object;
 
 ## 9. 当前开发状态与待办
 
-### 9.1 已完成 (2026-07-07)
+### 9.1 已完成 (2026-11-25)
 
 - ✅ Delphi → Lazarus 4.6 迁移
 - ✅ SynEdit → ATSynEdit 编辑器替换
 - ✅ EControl 语法高亮集成
 - ✅ EncConv 编码转换支持
 - ✅ 多语言界面框架
+- ✅ HTML / RTF / TeX 导出
+- ✅ 注释 / 取消注释 / 切换注释(整行与行内)
+- ✅ 选中词全部高亮
+- ✅ 工程单元重命名
+- ✅ 断点 gutter、活动断点与错误行配色
+- ✅ 打印与打印设置
+- ✅ Linux 移植 Phase 1/2(条件编译、XDG 配置与文件关联)
 
 ### 9.2 进行中 / 待办
 
-- 🔄 完善 HTML/RTF/TeX 导出功能（当前已禁用）
-- 🔄 类浏览器 (ClassBrowser) 稳定化
-- 🔄 VCL Styles 主题支持（Delphi 特定，待迁移）
-- 📋 TODO: 编译器切换时自动重新解析代码
-- 📋 TODO: 查找结果列表绘制优化
-- 📋 TODO: 相同词高亮（选中词高亮）
-- 📋 TODO: 文件重命名功能 (MoveFile)
-- 📋 TODO: 自定义关键词高亮器
-- 📋 TODO: CPU 调试窗口跳转帧
-- 📋 TODO: 条件断点
+- 🔄 EControl 颜色/属性映射收尾(EditorOptFrm.pas 中 3 处 EControl TODO 及折叠颜色)
+- 🔄 类浏览器参数/类型渲染重新实现(旧 custom-draw 已停用)
+- 🔄 查找/替换:regex 搜索与条件搜索(ticket #143)
+- 📋 TODO: 条件断点(条件编辑器 + `break file:line if expr`)
+- 📋 TODO: CPU 调试窗口跳转栈帧(ticket #151)
+- 📋 TODO: 编译器切换后重新解析打开的文件
+- 📋 TODO: 绑定并验证 FindOutput 自定义绘制
+- 📋 TODO: 自定义关键词高亮器(ticket #145)
+- 📋 TODO: 验证并修复资源管理器拖放(GitHub issue #5)
+- 📋 TODO: Web 更新代理支持
+- 📋 TODO: Linux 移植 Phase 3(GDB 路径、编译器输出路径、主题图标、帮助路径)
+- 📋 TODO: 将 UpdateCheck.pas 中的 API 凭据移出源码并轮换
 
 ---
 
@@ -471,19 +485,22 @@ TEvalReadyEvent = procedure(const evalvalue: AnsiString) of object;
 
 ```powershell
 # 1. 安装依赖包 (Lazarus IDE → Packages → Online Package Manager)
-#    ATSynEdit, EControl, EncConv
+#    ATSynEdit, ATSynEdit_Cmp, ATSynEdit_Ex, EControl, EncConv,
+#    ATFlatControls, BGRABitmap, MetaDarkStyle, LCLExtensions
 
 # 2. 添加项目依赖 (Project → Project Inspector → Add Requirement)
-#    atsynedit_cmp, atsynedit_ex, atsynedit, econtrol, encconv
+#    atsynedit_cmp, atsynedit_ex, atsynedit, econtrol, encconv, metadarkstyle
 
 # 3. 下载词法文件 (EControl 需要)
 #    https://sourceforge.net/projects/cudatext/files/addons/lexers/
-#    → C++.lcf, C++.lcf 放入 lexers/ 目录
+#    → C++.lcf 放入 lexers/ 目录
 
-# 4. 用 Lazarus 打开 DevCpp.lpi，编译运行
+# 4. 用 Lazarus 打开 DevCpp.lpi 编译运行;或命令行构建:
+lazbuild DevCpp.lpi
 ```
 
 ---
 
 *文档生成时间: 2026-07-07*
+*最近更新: 2026-11-25*
 *分析工具: 人工代码审查 + 目录结构扫描*

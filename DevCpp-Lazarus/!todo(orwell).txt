@@ -1,20 +1,32 @@
-TODO (orwelldevcpp)
+TODO (orwelldevcpp) - updated 2026-11-25
 ---------------------------------------------------------------
+
+Remaining work
 - Add required headers and libraries for D3D11 development
 - Increase the amount of automated and manual tests
-- When the current compiler changes, code should be reparsed because built-in defines of a compiler affect parsing
-- Fix messy painting of find results list
-- Add proxy support to webupdate
+- Reparse open files when the compiler set changes; built-in defines affect parsing
+- Bind and verify the FindOutput custom-draw handlers (painting code exists but is not wired)
+- Add proxy support to web update
 - Unify look and feel of all windows
-- Rename file functionality (MoveFile)
-- Fix TClassBrowser.AdvancedCustomDrawItem crash
-- Same word highlight when selected
-
-- Implement conditional search
-https://sourceforge.net/p/orwelldevcpp/tickets/143/
-
+- Implement regex search in Find/Replace (ATSynEdit Finder already supports OptRegex)
+- Implement conditional search (regex + AND/OR/NOT)
+  https://sourceforge.net/p/orwelldevcpp/tickets/143/
 - Customisable highlighter reserved words
-https://sourceforge.net/p/orwelldevcpp/tickets/145/
+  https://sourceforge.net/p/orwelldevcpp/tickets/145/
+- Goto frame in CPU window (send "frame N" when a stack frame is activated)
+  https://sourceforge.net/p/orwelldevcpp/tickets/151/
+- Add conditional breakpoints (condition editor + "break file:line if expr")
+- Re-enable ClassBrowser argument/type rendering without the old custom-draw crash
+- Verify and fix Explorer drag-and-drop onto the IDE (GitHub issue #5)
+- Finish EControl color mapping in Editor Options (3 TODO: EControl adapter markers + fold colors)
+- Linux port Phase 3: GDB paths, compiler output paths, theme icons, help paths
+- Move update-check API credentials out of UpdateCheck.pas into configuration and rotate exposed tokens
 
-- Goto frame in CPU Window:
-https://sourceforge.net/p/orwelldevcpp/tickets/151/
+Completed / no longer applicable
+- Rename file functionality (MoveFile): implemented in TMainForm.actUnitRenameExecute
+- TClassBrowser.AdvancedCustomDrawItem crash: old custom-draw code disabled, so the crash path is gone
+- Same word highlight when selected: implemented in TEditor.UpdateSelectionHighlight
+- Comment / uncomment / toggle comment (line and inline): implemented in main.pas
+- HTML / RTF / TeX export: implemented with ATSynEdit line-part APIs
+- Breakpoint gutter and line colors: implemented via GutterDecor + Bookmarks2 + OnCalcBookmarkColor
+- Old TDebugGutter / DebugAfterPaint: obsolete no-op, remove when convenient
