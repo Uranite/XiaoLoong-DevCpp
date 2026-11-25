@@ -1,0 +1,277 @@
+object NewTemplateForm: TNewTemplateForm
+  Left = 575
+  Height = 321
+  Top = 571
+  Width = 358
+  BorderStyle = bsDialog
+  Caption = 'New Template'
+  ClientHeight = 321
+  ClientWidth = 358
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 321
+    Top = 0
+    Width = 358
+    Align = alClient
+    ClientHeight = 321
+    ClientWidth = 358
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object devPages1: TPageControl
+      Left = 1
+      Height = 281
+      Top = 1
+      Width = 356
+      ActivePage = pgTemplate
+      Align = alTop
+      TabIndex = 0
+      TabOrder = 0
+      object pgTemplate: TTabSheet
+        Caption = 'Template info'
+        ClientHeight = 252
+        ClientWidth = 348
+        object lblName: TLabel
+          Left = 8
+          Height = 16
+          Top = 12
+          Width = 40
+          Caption = 'Name:'
+        end
+        object lblDescr: TLabel
+          Left = 8
+          Height = 16
+          Top = 40
+          Width = 71
+          Caption = 'Description:'
+        end
+        object lblCateg: TLabel
+          Left = 8
+          Height = 16
+          Top = 68
+          Width = 58
+          Caption = 'Category:'
+        end
+        object txtDescr: TEdit
+          Left = 112
+          Height = 24
+          Top = 36
+          Width = 225
+          TabOrder = 1
+          Text = 'txtDescr'
+        end
+        object cmbCateg: TComboBox
+          Left = 112
+          Height = 24
+          Top = 64
+          Width = 225
+          AutoDropDown = True
+          ItemHeight = 16
+          Sorted = True
+          TabOrder = 2
+          Text = 'cmbCateg'
+          OnChange = cmbNameChange
+        end
+        object cmbName: TComboBox
+          Left = 112
+          Height = 24
+          Top = 8
+          Width = 225
+          AutoDropDown = True
+          ItemHeight = 16
+          Sorted = True
+          TabOrder = 0
+          Text = 'cmbName'
+          OnChange = cmbNameChange
+        end
+        object grpIcons: TGroupBox
+          Left = 8
+          Height = 118
+          Top = 120
+          Width = 329
+          Caption = 'Icons'
+          ClientHeight = 97
+          ClientWidth = 325
+          ParentBackground = False
+          TabOrder = 3
+          object lstIcons: TListBox
+            Left = 12
+            Height = 85
+            Top = 0
+            Width = 181
+            ExtendedSelect = False
+            ItemHeight = 36
+            Style = lbOwnerDrawFixed
+            TabOrder = 0
+            OnClick = lstIconsClick
+            OnDrawItem = lstIconsDrawItem
+          end
+          object btnLib: TBitBtn
+            Left = 208
+            Height = 24
+            Hint = 'Select a icon from Dev-C++''s icon collection'
+            Top = 0
+            Width = 113
+            Caption = 'Library'
+            NumGlyphs = 2
+            TabOrder = 1
+            OnClick = btnLibClick
+          end
+          object btnBrowse: TBitBtn
+            Left = 208
+            Height = 22
+            Hint = 'Select a custom icon'
+            Top = 32
+            Width = 113
+            Caption = 'Browse...'
+            NumGlyphs = 2
+            TabOrder = 2
+            OnClick = btnBrowseClick
+          end
+          object btnRemove: TBitBtn
+            Left = 208
+            Height = 22
+            Hint = 'Do not use an icon for this project'
+            Top = 63
+            Width = 113
+            Caption = 'Remove'
+            Enabled = False
+            TabOrder = 3
+            OnClick = btnRemoveClick
+          end
+        end
+      end
+      object pgFiles: TTabSheet
+        Caption = 'Files'
+        ClientHeight = 252
+        ClientWidth = 348
+        object lblFiles: TLabel
+          Left = 8
+          Height = 16
+          Top = 12
+          Width = 100
+          Caption = 'Files in template:'
+        end
+        object lstFiles: TCheckListBox
+          Left = 16
+          Height = 213
+          Top = 28
+          Width = 321
+          ItemHeight = 23
+          TabOrder = 0
+        end
+      end
+      object pgExtras: TTabSheet
+        Caption = 'Extras'
+        ClientHeight = 252
+        ClientWidth = 348
+        object lblCompiler: TLabel
+          Left = 8
+          Height = 16
+          Top = 12
+          Width = 136
+          Caption = 'Compiler extra options:'
+        end
+        object lblLinker: TLabel
+          Left = 244
+          Height = 16
+          Top = 12
+          Width = 118
+          Caption = 'Linker extra options:'
+        end
+        object lblCppCompiler: TLabel
+          Left = 128
+          Height = 16
+          Top = 12
+          Width = 128
+          Caption = 'C++ compiler options:'
+        end
+        object memCompiler: TMemo
+          Left = 12
+          Height = 149
+          Top = 28
+          Width = 101
+          ScrollBars = ssVertical
+          TabOrder = 0
+        end
+        object memLinker: TMemo
+          Left = 240
+          Height = 148
+          Top = 29
+          Width = 105
+          ScrollBars = ssVertical
+          TabOrder = 2
+        end
+        object memCppCompiler: TMemo
+          Left = 120
+          Height = 149
+          Top = 28
+          Width = 109
+          ScrollBars = ssVertical
+          TabOrder = 1
+        end
+        object cbInclude: TCheckBox
+          Left = 16
+          Height = 20
+          Top = 192
+          Width = 209
+          Caption = 'Use project''s Include directories'
+          TabOrder = 3
+        end
+        object cbLibrary: TCheckBox
+          Left = 16
+          Height = 20
+          Top = 208
+          Width = 207
+          Caption = 'Use project''s Library directories'
+          TabOrder = 4
+        end
+        object cbResource: TCheckBox
+          Left = 16
+          Height = 20
+          Top = 224
+          Width = 225
+          Caption = 'Use project''s Resource directories'
+          TabOrder = 5
+        end
+      end
+    end
+    object btnCreate: TButton
+      Left = 130
+      Height = 25
+      Top = 288
+      Width = 75
+      Caption = 'Create'
+      Default = True
+      TabOrder = 1
+      OnClick = btnCreateClick
+    end
+    object btnCancel: TButton
+      Left = 266
+      Height = 25
+      Top = 288
+      Width = 75
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 2
+    end
+  end
+  object dlgPic: TOpenPictureDialog
+    Title = 'Open icon'
+    DefaultExt = '.ico'
+    Filter = 'Icons (*.ico)|*.ico'
+    Left = 87
+    Top = 286
+  end
+end

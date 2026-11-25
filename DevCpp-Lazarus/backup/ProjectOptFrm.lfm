@@ -1,0 +1,1312 @@
+object ProjectOptForm: TProjectOptForm
+  Left = 863
+  Height = 419
+  Top = 306
+  Width = 541
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Project Options'
+  ClientHeight = 419
+  ClientWidth = 541
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object PanelBackground: TPanel
+    Left = 0
+    Height = 419
+    Top = 0
+    Width = 541
+    Align = alClient
+    Caption = 'PanelBackground'
+    ClientHeight = 419
+    ClientWidth = 541
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object PageControl: TPageControl
+      Left = 0
+      Height = 353
+      Top = 0
+      Width = 534
+      ActivePage = tabGeneral
+      TabIndex = 0
+      TabOrder = 0
+      object tabGeneral: TTabSheet
+        Caption = 'General'
+        ClientHeight = 323
+        ClientWidth = 526
+        object lblPrjName: TLabel
+          Left = 8
+          Height = 17
+          Top = 13
+          Width = 38
+          Caption = 'Name:'
+        end
+        object lblFname: TLabel
+          Left = 8
+          Height = 17
+          Top = 48
+          Width = 54
+          Caption = 'Filename:'
+        end
+        object lblPrjFname: TLabel
+          Left = 88
+          Height = 33
+          Top = 48
+          Width = 425
+          AutoSize = False
+          Caption = 'lblPrjFname'
+        end
+        object lblUnits: TLabel
+          Left = 8
+          Height = 17
+          Top = 112
+          Width = 32
+          Caption = 'Units:'
+        end
+        object lblPrjUnits: TLabel
+          Left = 87
+          Height = 33
+          Top = 112
+          Width = 425
+          AutoSize = False
+          Caption = 'lblPrjUnits'
+        end
+        object lblPrjOutputFname: TLabel
+          Left = 88
+          Height = 33
+          Top = 80
+          Width = 425
+          AutoSize = False
+          Caption = 'lblPrjOutputFname'
+        end
+        object lblPrjOutput: TLabel
+          Left = 8
+          Height = 17
+          Top = 80
+          Width = 43
+          Caption = 'Output:'
+        end
+        object grpIcon: TGroupBox
+          Left = 8
+          Height = 175
+          Top = 143
+          Width = 225
+          Caption = '  Icon:  '
+          ClientHeight = 153
+          ClientWidth = 221
+          ParentBackground = False
+          TabOrder = 0
+          object btnIconBrowse: TBitBtn
+            Left = 96
+            Height = 30
+            Hint = 'Select a custom icon'
+            Top = 60
+            Width = 105
+            Caption = 'Browse...'
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            ParentFont = False
+            TabOrder = 0
+            OnClick = btnIconBrowseClick
+          end
+          object btnIconLib: TBitBtn
+            Left = 96
+            Height = 30
+            Hint = 'Select a icon from Dev-C++''s icon collection'
+            Top = 24
+            Width = 105
+            Caption = 'Library'
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            ParentFont = False
+            TabOrder = 1
+            OnClick = btnIconLibClick
+          end
+          object btnRemoveIcon: TBitBtn
+            Left = 96
+            Height = 30
+            Hint = 'Do not use an icon for this project'
+            Top = 97
+            Width = 105
+            Caption = 'Remove'
+            Enabled = False
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            ParentFont = False
+            TabOrder = 2
+            OnClick = btnRemoveIconClick
+          end
+          object Panel1: TPanel
+            Left = 22
+            Height = 44
+            Top = 50
+            Width = 44
+            ClientHeight = 44
+            ClientWidth = 44
+            ParentBackground = False
+            TabOrder = 3
+            object IconPreview: TImage
+              Left = 6
+              Height = 32
+              Top = 6
+              Width = 32
+              Center = True
+              Stretch = True
+            end
+          end
+        end
+        object grpType: TGroupBox
+          Left = 239
+          Height = 174
+          Top = 144
+          Width = 284
+          Caption = '  Type:  '
+          ClientHeight = 152
+          ClientWidth = 280
+          ParentBackground = False
+          TabOrder = 1
+          object lstType: TListBox
+            Left = 12
+            Height = 89
+            Top = 0
+            Width = 249
+            IntegralHeight = True
+            Items.Strings = (
+              'Win32 GUI'
+              'Win32 Console'
+              'Win32 Static Lib'
+              'Win32 DLL'
+            )
+            ItemHeight = 17
+            TabOrder = 0
+            OnClick = lstTypeClick
+          end
+          object chkSupportXP: TCheckBox
+            Left = 12
+            Height = 21
+            Top = 120
+            Width = 190
+            Caption = 'Support Windows XP Themes'
+            TabOrder = 1
+          end
+          object chkDefCpp: TCheckBox
+            Left = 12
+            Height = 21
+            Top = 96
+            Width = 244
+            Caption = 'Default to C++ when creating new files'
+            TabOrder = 2
+          end
+        end
+        object edProjectName: TEdit
+          Left = 87
+          Height = 25
+          Hint = 'Note: The exe filename is taken from the project filename, not this name'
+          Top = 10
+          Width = 426
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          ParentFont = False
+          TabOrder = 2
+        end
+      end
+      object tabFiles: TTabSheet
+        Caption = 'Files'
+        ClientHeight = 323
+        ClientWidth = 526
+        object lvFiles: TTreeView
+          Left = 8
+          Height = 315
+          Top = 3
+          Width = 209
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          HideSelection = False
+          Indent = 19
+          MultiSelect = True
+          MultiSelectStyle = [msControlSelect, msShiftSelect, msSiblingOnly]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+          Options = [tvoAllowMultiselect, tvoAutoItemHeight, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+          OnChange = lvFilesChange
+        end
+        object grpUnitOptions: TGroupBox
+          Left = 224
+          Height = 310
+          Top = 8
+          Width = 297
+          Caption = 'Unit Options'
+          ClientHeight = 288
+          ClientWidth = 293
+          ParentBackground = False
+          TabOrder = 1
+          object lblPriority: TLabel
+            Left = 9
+            Height = 26
+            Top = 8
+            Width = 153
+            AutoSize = False
+            Caption = 'Build priority:'
+          end
+          object chkCompile: TCheckBox
+            Left = 9
+            Height = 21
+            Top = 40
+            Width = 195
+            Caption = 'Include in compilation process'
+            Enabled = False
+            TabOrder = 0
+            OnClick = chkCompileClick
+          end
+          object chkCompileCpp: TCheckBox
+            Left = 9
+            Height = 21
+            Top = 88
+            Width = 138
+            Caption = 'Compile unit as C++'
+            Enabled = False
+            TabOrder = 1
+            OnClick = chkCompileClick
+          end
+          object chkOverrideBuildCmd: TCheckBox
+            Left = 9
+            Height = 21
+            Top = 112
+            Width = 164
+            Caption = 'Override build command'
+            Enabled = False
+            TabOrder = 2
+            OnClick = chkCompileClick
+          end
+          object txtOverrideBuildCmd: TMemo
+            Left = 3
+            Height = 128
+            Top = 152
+            Width = 281
+            Enabled = False
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            ParentFont = False
+            ScrollBars = ssBoth
+            TabOrder = 3
+            WordWrap = False
+            OnChange = txtOverrideBuildCmdChange
+          end
+          object chkLink: TCheckBox
+            Left = 9
+            Height = 21
+            Top = 64
+            Width = 164
+            Caption = 'Include in linking process'
+            Enabled = False
+            TabOrder = 4
+            OnClick = chkCompileClick
+          end
+          object spnPriority: TSpinEdit
+            Left = 168
+            Height = 25
+            Top = 8
+            Width = 85
+            Enabled = False
+            TabOrder = 5
+            OnChange = spnPriorityChange
+          end
+        end
+      end
+      object tabCompiler: TTabSheet
+        Caption = 'Compiler'
+        ClientHeight = 323
+        ClientWidth = 526
+        object lblCompilerSet: TLabel
+          Left = 8
+          Height = 17
+          Top = 4
+          Width = 106
+          Caption = 'Base compiler set:'
+        end
+        object lblCompilerHint: TLabel
+          Left = 8
+          Height = 17
+          Top = 56
+          Width = 230
+          Caption = 'Customize (applies to this project only):'
+        end
+        object cmbCompiler: TComboBox
+          Left = 8
+          Height = 25
+          Top = 25
+          Width = 495
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          ItemHeight = 17
+          ParentFont = False
+          Style = csDropDownList
+          TabOrder = 0
+          OnChange = cmbCompilerChange
+        end
+        object PageControl1: TPageControl
+          Left = 8
+          Height = 239
+          Top = 79
+          Width = 515
+          ActivePage = tabCompOptions2
+          TabIndex = 2
+          TabOrder = 1
+          object tabCompGeneral: TTabSheet
+            Caption = 'General'
+            ClientHeight = 209
+            ClientWidth = 507
+            ImageIndex = 1
+            object lblLangStd: TLabel
+              Left = 12
+              Height = 17
+              Top = 10
+              Width = 157
+              Caption = 'Language standard (-std=)'
+            end
+            object cmbLangStd: TComboBox
+              Left = 198
+              Height = 25
+              Top = 5
+              Width = 102
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              ItemHeight = 17
+              ParentFont = False
+              Style = csDropDownList
+              TabOrder = 0
+            end
+            object cmbLangStd2: TComboBox
+              Left = 326
+              Height = 25
+              Top = 5
+              Width = 102
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              ItemHeight = 17
+              ParentFont = False
+              Style = csDropDownList
+              TabOrder = 1
+            end
+            object cbStatic: TCheckBox
+              Left = 12
+              Height = 21
+              Hint = '-static-libgcc  -static-libstdc++'
+              Top = 56
+              Width = 214
+              Caption = 'statically link libgcc and libstdc++'
+              TabOrder = 2
+            end
+            object cbDebug: TCheckBox
+              Left = 12
+              Height = 21
+              Top = 80
+              Width = 242
+              Caption = 'Generate debugging information (-g3)'
+              TabOrder = 3
+            end
+            object cbProfile: TCheckBox
+              Left = 12
+              Height = 21
+              Top = 104
+              Width = 253
+              Caption = 'Generate profiling info for analysis (-pg)'
+              TabOrder = 4
+            end
+            object cbWall: TCheckBox
+              Left = 12
+              Height = 21
+              Top = 128
+              Width = 180
+              Caption = 'Show most warnings (-Wall)'
+              TabOrder = 5
+            end
+            object cbWextra: TCheckBox
+              Left = 12
+              Height = 21
+              Top = 152
+              Width = 234
+              Caption = 'Show some more warnings (-Wextra)'
+              TabOrder = 6
+            end
+            object cbANSI: TCheckBox
+              Left = 12
+              Height = 21
+              Top = 36
+              Width = 284
+              Caption = 'Support all ANSI standard C programs (-ansi)'
+              TabOrder = 7
+              OnClick = cbANSIClick
+            end
+            object lblOptimize: TLabel
+              Left = 32
+              Height = 17
+              Top = 184
+              Width = 137
+              Caption = 'Optimization level (-Ox)'
+            end
+            object cmbOptimize: TComboBox
+              Left = 184
+              Height = 25
+              Top = 184
+              Width = 153
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              ItemHeight = 17
+              ParentFont = False
+              Style = csDropDownList
+              TabOrder = 8
+            end
+          end
+          object tabCompOptions1: TTabSheet
+            Caption = 'Options 1'
+            ClientHeight = 209
+            ClientWidth = 507
+            ImageIndex = 1
+            object lblPtrWidth: TLabel
+              Left = 258
+              Height = 17
+              Top = -2
+              Width = 171
+              Caption = 'Target''s pointer width (-m##)'
+              Visible = False
+            end
+            object cbNoasm: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 8
+              Width = 377
+              Caption = 'Do not recognize asm, inline or typeof as keyword (-fno-asm)'
+              TabOrder = 0
+            end
+            object cbTradional: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 32
+              Width = 324
+              Caption = 'Imitate traditional C preprocessors (-traditional-cpp)'
+              TabOrder = 1
+            end
+            object cmbPtrWidth: TComboBox
+              Left = 436
+              Height = 25
+              Top = -2
+              Width = 68
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              ItemHeight = 17
+              ParentFont = False
+              Style = csDropDownList
+              TabOrder = 2
+              Visible = False
+            end
+            object cbShadow: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 80
+              Width = 392
+              Caption = 'Warn whenever local object shadows other objects. [-Wshadow]'
+              TabOrder = 3
+            end
+            object cbFloatEqual: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 104
+              Width = 380
+              Caption = 'Warn if floating-point in equality comparisons. [-Wfloat-equal]'
+              TabOrder = 4
+            end
+            object cbPedantic: TCheckBox
+              Left = 15
+              Height = 21
+              Top = 56
+              Width = 393
+              Caption = 'Issue all the warnings demanded by strict ISO C/C++ [-pedantic]'
+              TabOrder = 5
+            end
+            object cbVLA: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 176
+              Width = 367
+              Caption = 'Report using variable-length array as ERROR. [-Werror=vla]'
+              TabOrder = 6
+            end
+            object cbUninitialized: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 128
+              Width = 439
+              Caption = 'Turn WARNING "Variable uninitialized" to ERROR [-Werror=uninitialized]'
+              TabOrder = 7
+            end
+            object cbReturnType: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 152
+              Width = 407
+              Caption = 'Report no return type in function as ERROR. [-Werror=return-type]'
+              TabOrder = 8
+            end
+          end
+          object tabCompOptions2: TTabSheet
+            Caption = 'Options 2'
+            ClientHeight = 209
+            ClientWidth = 507
+            ImageIndex = 2
+            object OptionsTip: TLabel
+              Left = -14
+              Height = 20
+              Top = 152
+              Width = 521
+              Alignment = taCenter
+              AutoSize = False
+              Caption = 'For more information about GCC''s options, please visit'
+            end
+            object OptionsLink: TLabel
+              Cursor = crHandPoint
+              Left = -17
+              Height = 21
+              Top = 176
+              Width = 521
+              Alignment = taCenter
+              AutoSize = False
+              Caption = 'http://gcc.gnu.org/onlinedocs/gcc/Option-Summary.html'
+              Color = clBtnFace
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsUnderline]
+              ParentColor = False
+              ParentFont = False
+              OnClick = OptionsLinkClick
+            end
+            object cbStrip: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 80
+              Width = 312
+              Caption = 'Remove extra information from the executable (-s)'
+              TabOrder = 0
+            end
+            object cbPipe: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 56
+              Width = 359
+              Caption = 'Use pipes instead of temporary files in compilation (-pipe)'
+              TabOrder = 1
+            end
+            object lblBuiltin: TLabel
+              Left = 16
+              Height = 17
+              Top = 112
+              Width = 230
+              Caption = 'Enable use of specific instructions (-mx)'
+              Visible = False
+            end
+            object cmbBuiltin: TComboBox
+              Left = 256
+              Height = 25
+              Top = 104
+              Width = 153
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              ItemHeight = 17
+              ParentFont = False
+              Style = csDropDownList
+              TabOrder = 2
+              Visible = False
+            end
+            object cbMaxerror: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 32
+              Width = 346
+              Caption = 'Abort compilation for errors up to 10 (-fmax-errors=10)'
+              TabOrder = 3
+            end
+            object cbWfatal: TCheckBox
+              Left = 16
+              Height = 21
+              Top = 8
+              Width = 297
+              Caption = 'Abort compilation on first error (-Wfatal-errors)'
+              TabOrder = 4
+            end
+          end
+        end
+      end
+      object tabCompOpts: TTabSheet
+        Caption = 'Options'
+        ClientHeight = 323
+        ClientWidth = 526
+        object lblAdditions: TLabel
+          Left = 3
+          Height = 17
+          Top = 3
+          Width = 219
+          Caption = '  Additional Command Line Options:  '
+        end
+        object lblCompiler: TLabel
+          Left = 10
+          Height = 31
+          Top = 26
+          Width = 143
+          AutoSize = False
+          Caption = 'C Compiler:'
+        end
+        object lblCppCompiler: TLabel
+          Left = 3
+          Height = 32
+          Top = 113
+          Width = 143
+          AutoSize = False
+          Caption = 'C++ Compiler:'
+        end
+        object lblLinker: TLabel
+          Left = 3
+          Height = 26
+          Top = 219
+          Width = 143
+          AutoSize = False
+          Caption = 'Linker'
+          WordWrap = True
+        end
+        object edCompiler: TMemo
+          Left = 3
+          Height = 65
+          Top = 50
+          Width = 520
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Lines.Strings = (
+            'edCompiler'
+          )
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 0
+        end
+        object edCppCompiler: TMemo
+          Left = 3
+          Height = 70
+          Top = 138
+          Width = 520
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Lines.Strings = (
+            'edCppCompiler'
+          )
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 1
+        end
+        object edLinker: TMemo
+          Left = 3
+          Height = 67
+          Top = 251
+          Width = 520
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Lines.Strings = (
+            'edLinker'
+          )
+          ParentFont = False
+          ScrollBars = ssVertical
+          TabOrder = 2
+        end
+        object btnAddLib: TBitBtn
+          Left = 360
+          Height = 31
+          Top = 214
+          Width = 148
+          Caption = 'Add Library or Object'
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          ParentFont = False
+          TabOrder = 3
+          OnClick = btnAddLibClick
+        end
+      end
+      object tabFilesDir: TTabSheet
+        Caption = 'Directories'
+        ClientHeight = 323
+        ClientWidth = 526
+        object SubTabs: TTabControl
+          Left = 0
+          Height = 323
+          Top = 0
+          Width = 526
+          OnChange = SubTabsChange
+          TabIndex = 2
+          Tabs.Strings = (
+            'Libraries'
+            'Include Directories'
+            'Resource Directories'
+          )
+          Align = alClient
+          TabOrder = 0
+          object Panel2: TPanel
+            Left = 2
+            Height = 296
+            Top = 25
+            Width = 522
+            Align = alClient
+            Caption = 'Panel2'
+            ClientHeight = 296
+            ClientWidth = 522
+            ParentBackground = False
+            ParentColor = False
+            TabOrder = 1
+            object btnDirAdd: TButton
+              Tag = 2
+              Left = 164
+              Height = 23
+              Top = 264
+              Width = 100
+              Caption = '&Add'
+              Enabled = False
+              TabOrder = 0
+              OnClick = ButtonClick
+            end
+            object btnDirDelete: TButton
+              Tag = 3
+              Left = 274
+              Height = 23
+              Top = 264
+              Width = 100
+              Caption = '&Delete'
+              Enabled = False
+              TabOrder = 1
+              OnClick = ButtonClick
+            end
+            object btnDirReplace: TButton
+              Tag = 1
+              Left = 54
+              Height = 23
+              Top = 264
+              Width = 100
+              Caption = '&Replace'
+              Enabled = False
+              TabOrder = 2
+              OnClick = ButtonClick
+            end
+            object edDirEntry: TEdit
+              Left = 4
+              Height = 25
+              Top = 232
+              Width = 485
+              TabOrder = 3
+              OnChange = EditChange
+            end
+            object btnDirDelInval: TButton
+              Tag = 4
+              Left = 384
+              Height = 23
+              Top = 264
+              Width = 100
+              Caption = 'Delete Invalid'
+              TabOrder = 4
+              OnClick = ButtonClick
+            end
+            object lstDirList: TListBox
+              Left = 4
+              Height = 214
+              Top = 8
+              Width = 485
+              ItemHeight = 0
+              TabOrder = 5
+              OnClick = ListClick
+            end
+            object btnBrowse: TSpeedButton
+              Left = 495
+              Height = 22
+              Top = 235
+              Width = 23
+              Images = dmMain.MenuImages_Modern
+              ImageIndex = 76
+              OnClick = BrowseClick
+            end
+            object btnDirUp: TSpeedButton
+              Left = 496
+              Height = 22
+              Top = 80
+              Width = 23
+              Caption = '▲'
+              Enabled = False
+              OnClick = UpDownClick
+            end
+            object btnDirDown: TSpeedButton
+              Left = 496
+              Height = 22
+              Top = 136
+              Width = 23
+              Caption = '▼ '
+              Enabled = False
+              OnClick = UpDownClick
+            end
+          end
+        end
+      end
+      object tabOutputDir: TTabSheet
+        Caption = 'Output'
+        ClientHeight = 323
+        ClientWidth = 526
+        object btnExeOutDir: TSpeedButton
+          Left = 490
+          Height = 22
+          Top = 54
+          Width = 23
+          Images = dmMain.MenuImages_Modern
+          ImageIndex = 76
+          OnClick = BrowseExecutableOutDirClick
+        end
+        object btnLogOutputDir: TSpeedButton
+          Left = 490
+          Height = 22
+          Top = 194
+          Width = 23
+          Images = dmMain.MenuImages_Modern
+          ImageIndex = 76
+          OnClick = btnLogOutputDirClick
+        end
+        object btnObjOutDir: TSpeedButton
+          Left = 490
+          Height = 22
+          Top = 124
+          Width = 23
+          Images = dmMain.MenuImages_Modern
+          ImageIndex = 76
+          OnClick = BrowseLogDirClick
+        end
+        object lblExeOutput: TLabel
+          Left = 10
+          Height = 17
+          Top = 24
+          Width = 163
+          Caption = '&Executable output directory:'
+          FocusControl = edExeOutput
+        end
+        object lblObjOutput: TLabel
+          Left = 10
+          Height = 17
+          Top = 94
+          Width = 160
+          Caption = '&Object file output directory:'
+          FocusControl = edObjOutput
+        end
+        object edOverridenOutput: TEdit
+          Left = 32
+          Height = 25
+          Top = 264
+          Width = 440
+          TabOrder = 0
+        end
+        object chkOverrideOutput: TCheckBox
+          Left = 16
+          Height = 21
+          Top = 232
+          Width = 167
+          Caption = 'Override output filename:'
+          TabOrder = 1
+          OnClick = chkOverrideOutputClick
+        end
+        object chkLogOutput: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 160
+          Width = 153
+          Caption = '&Compiler log autosave:'
+          TabOrder = 2
+          OnClick = chkLogOutputClick
+        end
+        object edExeOutput: TEdit
+          Left = 32
+          Height = 25
+          Top = 54
+          Width = 440
+          TabOrder = 3
+        end
+        object edLogOutput: TEdit
+          Left = 32
+          Height = 25
+          Top = 192
+          Width = 440
+          TabOrder = 4
+        end
+        object edObjOutput: TEdit
+          Left = 32
+          Height = 25
+          Top = 124
+          Width = 440
+          TabOrder = 5
+        end
+      end
+      object tabMakefile: TTabSheet
+        Caption = 'Makefile'
+        ClientHeight = 323
+        ClientWidth = 526
+        object btnCustomMakeBrowse: TSpeedButton
+          Left = 480
+          Height = 32
+          Top = 48
+          Width = 32
+          Images = dmMain.MenuImages_Modern
+          ImageIndex = 2
+          OnClick = btnCustomMakeBrowseClick
+        end
+        object btnMakDown: TSpeedButton
+          Left = 495
+          Height = 24
+          Top = 208
+          Width = 24
+          Caption = '▼'
+          Enabled = False
+          OnClick = btnMakClick
+        end
+        object btnMakeBrowse: TSpeedButton
+          Left = 495
+          Height = 32
+          Top = 256
+          Width = 32
+          Images = dmMain.MenuImages_Modern
+          ImageIndex = 2
+          OnClick = btnMakeBrowseClick
+        end
+        object btnMakUp: TSpeedButton
+          Left = 496
+          Height = 24
+          Top = 168
+          Width = 24
+          Caption = '▲'
+          Enabled = False
+          OnClick = btnMakClick
+        end
+        object IncMakeLabel: TLabel
+          Left = 12
+          Height = 17
+          Top = 119
+          Width = 251
+          Caption = '&Include the following files into the Makefile:'
+        end
+        object InfoMakeBtn: TSpeedButton
+          Left = 13
+          Height = 25
+          Top = 80
+          Width = 500
+          Caption = 'Information about customizing the Makefile...'
+          Flat = True
+          Glyph.Data = {
+            DE010000424DDE01000000000000760000002800000024000000120000000100
+            0400000000006801000000000000000000001000000000000000000000000000
+            80000080000000808000800000008000800080800000C0C0C000808080000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333336633
+            3333333333333FF3333333330000333333364463333333333333388F33333333
+            00003333333E66433333333333338F38F3333333000033333333E66333333333
+            33338FF8F3333333000033333333333333333333333338833333333300003333
+            3333446333333333333333FF3333333300003333333666433333333333333888
+            F333333300003333333E66433333333333338F38F333333300003333333E6664
+            3333333333338F38F3333333000033333333E6664333333333338F338F333333
+            0000333333333E6664333333333338F338F3333300003333344333E666433333
+            333F338F338F3333000033336664333E664333333388F338F338F33300003333
+            E66644466643333338F38FFF8338F333000033333E6666666663333338F33888
+            3338F3330000333333EE666666333333338FF33333383333000033333333EEEE
+            E333333333388FFFFF8333330000333333333333333333333333388888333333
+            0000
+          }
+          NumGlyphs = 2
+          OnClick = InfoMakeBtnClick
+        end
+        object btnMakAdd: TButton
+          Tag = 2
+          Left = 164
+          Height = 23
+          Top = 287
+          Width = 100
+          Caption = '&Add'
+          Enabled = False
+          TabOrder = 0
+          OnClick = MakButtonClick
+        end
+        object btnMakDelete: TButton
+          Tag = 3
+          Left = 274
+          Height = 23
+          Top = 287
+          Width = 100
+          Caption = '&Delete'
+          Enabled = False
+          TabOrder = 1
+          OnClick = MakButtonClick
+        end
+        object btnMakDelInval: TButton
+          Tag = 4
+          Left = 384
+          Height = 23
+          Top = 287
+          Width = 100
+          Caption = 'Delete Invalid'
+          Enabled = False
+          TabOrder = 2
+          OnClick = MakButtonClick
+        end
+        object btnMakReplace: TButton
+          Tag = 1
+          Left = 54
+          Height = 23
+          Top = 287
+          Width = 100
+          Caption = '&Replace'
+          Enabled = False
+          TabOrder = 3
+          OnClick = MakButtonClick
+        end
+        object cbUseCustomMakefile: TCheckBox
+          Left = 13
+          Height = 21
+          Top = 16
+          Width = 387
+          Caption = 'Use custom Makefile (do not generate a Makefile, use this one)'
+          TabOrder = 4
+          OnClick = cbUseCustomMakefileClick
+        end
+        object edCustomMakefile: TEdit
+          Left = 16
+          Height = 25
+          Top = 48
+          Width = 456
+          ReadOnly = True
+          TabOrder = 5
+          Text = 'edCustomMakefile'
+        end
+        object edMakeInclude: TEdit
+          Left = 12
+          Height = 25
+          Top = 256
+          Width = 477
+          TabOrder = 6
+          OnChange = edMakeIncludeChange
+        end
+        object lbMakeIncludes: TListBox
+          Left = 13
+          Height = 108
+          Top = 140
+          Width = 476
+          ItemHeight = 0
+          TabOrder = 7
+          OnClick = lbMakeIncludesClick
+          OnDrawItem = lbMakeIncludesDrawItem
+        end
+      end
+      object tabVersion: TTabSheet
+        Caption = 'Version Info'
+        ClientHeight = 323
+        ClientWidth = 526
+        object chkVersionInfo: TCheckBox
+          Left = 12
+          Height = 21
+          Top = 8
+          Width = 190
+          Caption = 'Include version info in project'
+          TabOrder = 0
+          OnClick = chkVersionInfoClick
+        end
+        object grpVersion: TGroupBox
+          Left = 8
+          Height = 278
+          Top = 40
+          Width = 505
+          Caption = 'Version details'
+          ClientHeight = 256
+          ClientWidth = 501
+          ParentBackground = False
+          TabOrder = 1
+          object lblVerMajor: TLabel
+            Left = 8
+            Height = 17
+            Top = 0
+            Width = 38
+            Caption = 'Major:'
+          end
+          object lblVerMinor: TLabel
+            Left = 68
+            Height = 17
+            Top = 0
+            Width = 38
+            Caption = 'Minor:'
+          end
+          object lblVerRel: TLabel
+            Left = 131
+            Height = 17
+            Top = 0
+            Width = 48
+            Caption = 'Release:'
+          end
+          object lblVerBuild: TLabel
+            Left = 194
+            Height = 17
+            Top = 0
+            Width = 31
+            Caption = 'Build:'
+          end
+          object lblVerLang: TLabel
+            Left = 296
+            Height = 17
+            Top = 0
+            Width = 60
+            Caption = 'Language:'
+          end
+          object spnMajor: TSpinEdit
+            Left = 6
+            Height = 25
+            Top = 19
+            Width = 57
+            TabOrder = 0
+            OnChange = SetFileVersion
+          end
+          object spnMinor: TSpinEdit
+            Left = 69
+            Height = 25
+            Top = 19
+            Width = 57
+            TabOrder = 1
+            OnChange = SetFileVersion
+          end
+          object spnRelease: TSpinEdit
+            Left = 132
+            Height = 25
+            Top = 19
+            Width = 57
+            TabOrder = 2
+            OnChange = SetFileVersion
+          end
+          object spnBuild: TSpinEdit
+            Left = 195
+            Height = 25
+            Top = 19
+            Width = 57
+            TabOrder = 3
+            OnChange = SetFileVersion
+          end
+          object vleVersion: TValueListEditor
+            Left = 6
+            Height = 157
+            Top = 88
+            Width = 486
+            DefaultRowHeight = 24
+            FixedCols = 1
+            RowCount = 1
+            TabOrder = 7
+            DisplayOptions = [doAutoColResize, doKeyColFixed]
+            Options = [goVertLine, goHorzLine, goColSizing, goEditing, goAlwaysShowEditor, goThumbTracking]
+            ColWidths = (
+              150
+              315
+            )
+          end
+          object cmbLangID: TComboBox
+            Left = 291
+            Height = 25
+            Top = 19
+            Width = 193
+            ItemHeight = 17
+            Sorted = True
+            Style = csDropDownList
+            TabOrder = 4
+          end
+          object chkAutoIncBuild: TCheckBox
+            Left = 3
+            Height = 21
+            Top = 56
+            Width = 258
+            Caption = 'Auto-increment build number on compile'
+            TabOrder = 5
+          end
+          object chkSyncProduct: TCheckBox
+            Left = 291
+            Height = 21
+            Top = 56
+            Width = 188
+            Caption = 'Sync product with file version'
+            TabOrder = 6
+            OnClick = SetFileVersion
+          end
+        end
+      end
+    end
+    object btnOk: TBitBtn
+      Left = 259
+      Height = 33
+      Top = 370
+      Width = 85
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkOK
+      ModalResult = 1
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnOkClick
+    end
+    object btnCancel: TBitBtn
+      Left = 349
+      Height = 33
+      Top = 370
+      Width = 85
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkCancel
+      ModalResult = 2
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnCancelClick
+    end
+    object btnHelp: TBitBtn
+      Left = 440
+      Height = 33
+      Top = 370
+      Width = 85
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkHelp
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnHelpClick
+    end
+  end
+  object dlgOpen: TOpenDialog
+    Title = 'Open object file'
+    Filter = 'Object files (*.o;*.obj)|*.o;*.obj|Lib files (*.a;*.lib)|*.a;*.lib|Resource file (.rc)|*.rc|All files (*.*)|*.*'
+    Options = [ofHideReadOnly, ofAllowMultiSelect]
+    Left = 78
+    Top = 374
+  end
+  object dlgPic: TOpenPictureDialog
+    Title = 'Open icon'
+    DefaultExt = '.ico'
+    Filter = 'Icons (*.ico)|*.ico'
+    Left = 19
+    Top = 358
+  end
+  object dlgMakeInclude: TOpenDialog
+    Filter = 'Makefile Addons (*.mak)|*.mak|All Files (*.*)|*.*'
+    Left = 136
+    Top = 352
+  end
+  object dlgCustomMake: TOpenDialog
+    Filter = 'All Files (*.*)|*.*'
+    FilterIndex = 0
+    Left = 188
+    Top = 368
+  end
+end

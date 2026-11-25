@@ -1,0 +1,55 @@
+object RemoveUnitForm: TRemoveUnitForm
+  Left = 687
+  Height = 283
+  Top = 393
+  Width = 338
+  BorderIcons = [biSystemMenu, biMaximize]
+  Caption = 'Remove from project'
+  ClientHeight = 283
+  ClientWidth = 338
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object PanelGround: TPanel
+    Left = 0
+    Height = 283
+    Top = 0
+    Width = 338
+    Align = alClient
+    ClientHeight = 283
+    ClientWidth = 338
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object UnitList: TListBox
+      Left = 8
+      Height = 224
+      Top = 8
+      Width = 322
+      Align = alCustom
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ItemHeight = 0
+      MultiSelect = True
+      TabOrder = 0
+      OnKeyPress = UnitListKeyPress
+    end
+    object DelBtn: TButton
+      Left = 124
+      Height = 35
+      Top = 240
+      Width = 83
+      Anchors = [akBottom]
+      Caption = 'Delete'
+      TabOrder = 1
+      OnClick = DelBtnClick
+    end
+  end
+end

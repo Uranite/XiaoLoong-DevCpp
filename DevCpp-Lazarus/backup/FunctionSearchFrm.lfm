@@ -1,0 +1,70 @@
+object FunctionSearchForm: TFunctionSearchForm
+  Left = 694
+  Height = 377
+  Top = 563
+  Width = 469
+  BorderStyle = bsDialog
+  Caption = 'Goto function...'
+  ClientHeight = 377
+  ClientWidth = 469
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object lblSearch: TLabel
+    Left = 4
+    Height = 17
+    Top = 8
+    Width = 63
+    Caption = 'Search for:'
+  end
+  object lvEntries: TListView
+    Left = 0
+    Height = 345
+    Top = 32
+    Width = 469
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Columns = <    
+      item
+        Width = 30
+      end    
+      item
+        Caption = 'Type'
+      end    
+      item
+        Caption = 'Function'
+        Width = 300
+      end    
+      item
+        Caption = 'Line'
+      end>
+    ColumnClick = False
+    HideSelection = False
+    LargeImages = dmMain.ClassImages
+    ReadOnly = True
+    RowSelect = True
+    SmallImages = dmMain.ClassImages
+    StateImages = dmMain.ClassImages
+    TabStop = False
+    TabOrder = 0
+    ViewStyle = vsReport
+    OnCompare = lvEntriesCompare
+    OnDblClick = lvEntriesDblClick
+  end
+  object txtSearch: TEdit
+    Left = 84
+    Height = 25
+    Top = 4
+    Width = 379
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 1
+    OnChange = txtSearchChange
+    OnKeyDown = txtSearchKeyDown
+    OnKeyPress = txtSearchKeyPress
+  end
+end

@@ -1,0 +1,59 @@
+object GotoLineForm: TGotoLineForm
+  Left = 587
+  Height = 44
+  Top = 624
+  Width = 279
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsToolWindow
+  Caption = 'Go to line...'
+  ClientHeight = 44
+  ClientWidth = 279
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  KeyPreview = True
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnKeyUp = FormKeyUp
+  object PanelGround: TPanel
+    Left = 0
+    Height = 44
+    Top = 0
+    Width = 279
+    Align = alClient
+    ClientHeight = 44
+    ClientWidth = 279
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object GotoLabel: TLabel
+      Left = 11
+      Height = 17
+      Top = 12
+      Width = 113
+      Caption = 'Go to line number :'
+    end
+    object Line: TSpinEdit
+      Left = 130
+      Height = 25
+      Top = 8
+      Width = 65
+      TabOrder = 0
+      Value = 1
+    end
+    object BtnOK: TButton
+      Left = 211
+      Height = 25
+      Top = 8
+      Width = 60
+      Caption = '&OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 1
+    end
+  end
+end

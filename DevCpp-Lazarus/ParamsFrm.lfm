@@ -1,0 +1,106 @@
+object ParamsForm: TParamsForm
+  Left = 586
+  Height = 187
+  Top = 326
+  Width = 297
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Parameters'
+  ClientHeight = 187
+  ClientWidth = 297
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  object PanelGround: TPanel
+    Left = 0
+    Height = 187
+    Top = 0
+    Width = 297
+    Align = alClient
+    ClientHeight = 187
+    ClientWidth = 297
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object grpParameters: TGroupBox
+      Left = 8
+      Height = 71
+      Top = 8
+      Width = 281
+      Caption = 'Parameters to pass to your program :'
+      ClientHeight = 50
+      ClientWidth = 277
+      ParentBackground = False
+      TabOrder = 0
+      object ParamEdit: TEdit
+        Left = 14
+        Height = 24
+        Top = 8
+        Width = 256
+        TabOrder = 0
+      end
+    end
+    object grpHost: TGroupBox
+      Left = 8
+      Height = 60
+      Top = 85
+      Width = 281
+      Caption = 'Host Application :'
+      ClientHeight = 39
+      ClientWidth = 277
+      ParentBackground = False
+      TabOrder = 1
+      object LoadBtn: TSpeedButton
+        Left = 248
+        Height = 22
+        Top = 0
+        Width = 22
+        Caption = '...'
+        OnClick = LoadBtnClick
+      end
+      object HostEdit: TEdit
+        Left = 14
+        Height = 24
+        Top = 0
+        Width = 228
+        TabOrder = 0
+      end
+    end
+    object OkBtn: TBitBtn
+      Left = 112
+      Height = 33
+      Top = 151
+      Width = 80
+      Default = True
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkOK
+      ModalResult = 1
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 2
+    end
+    object CancelBtn: TBitBtn
+      Left = 212
+      Height = 33
+      Top = 151
+      Width = 77
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkCancel
+      ModalResult = 2
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 3
+    end
+  end
+end

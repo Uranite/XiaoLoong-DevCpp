@@ -1,0 +1,634 @@
+object EnvironOptForm: TEnvironOptForm
+  Left = 1134
+  Height = 475
+  Top = 304
+  Width = 484
+  BorderStyle = bsDialog
+  Caption = 'Environment Options'
+  ClientHeight = 475
+  ClientWidth = 484
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object PanelBackground: TPanel
+    Left = 0
+    Height = 475
+    Top = 0
+    Width = 484
+    Align = alClient
+    ClientHeight = 475
+    ClientWidth = 484
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object PagesMain: TPageControl
+      Left = 0
+      Height = 425
+      Top = 0
+      Width = 484
+      ActivePage = tabGeneral
+      HotTrack = True
+      TabIndex = 0
+      TabOrder = 0
+      object tabGeneral: TTabSheet
+        Caption = 'General'
+        ClientHeight = 395
+        ClientWidth = 476
+        ParentShowHint = False
+        object lblMRU: TLabel
+          Left = 19
+          Height = 24
+          Top = 353
+          Width = 157
+          AutoSize = False
+          Caption = 'Max Files in History List:'
+        end
+        object lblMsgTabs: TLabel
+          Left = 16
+          Height = 25
+          Top = 125
+          Width = 160
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Editor Tab Location:'
+        end
+        object lblLang: TLabel
+          Left = 16
+          Height = 24
+          Top = 10
+          Width = 160
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Interface Language:'
+        end
+        object lblTheme: TLabel
+          Left = 16
+          Height = 27
+          Top = 54
+          Width = 160
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Interface Theme:'
+        end
+        object UIfontlabel: TLabel
+          Left = 21
+          Height = 25
+          Top = 94
+          Width = 155
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Interface font:'
+        end
+        object lblAutoOpen: TLabel
+          Left = 396
+          Height = 14
+          Top = 190
+          Width = 77
+          AutoSize = False
+          Caption = 'X Auto Open Project:'
+          Visible = False
+        end
+        object cbBackups: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 189
+          Width = 317
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'Create File Backups when opening files'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+        end
+        object cbMinOnRun: TCheckBox
+          Left = 367
+          Height = 21
+          Top = 27
+          Width = 94
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'X  Minimize on Run'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          Visible = False
+        end
+        object cbDefCpp: TCheckBox
+          Left = 367
+          Height = 21
+          Top = 4
+          Width = 81
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'X Default to C++ on New Project '
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          Visible = False
+        end
+        object cbShowBars: TCheckBox
+          Left = 384
+          Height = 21
+          Top = 123
+          Width = 81
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'X Show Toolbars in Full Screen'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          Visible = False
+        end
+        object cbMultiLineTab: TCheckBox
+          Left = 386
+          Height = 21
+          Top = 94
+          Width = 66
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'X Enable Editor Multiline Tabs'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 4
+          Visible = False
+        end
+        object seMRUMax: TSpinEdit
+          Left = 182
+          Height = 25
+          Top = 353
+          Width = 51
+          TabOrder = 6
+        end
+        object cboTabsTop: TComboBox
+          Left = 182
+          Height = 25
+          Top = 123
+          Width = 179
+          ItemHeight = 17
+          Items.Strings = (
+            'Top'
+            'Bottom'
+            'Left'
+            'Right'
+          )
+          Style = csDropDownList
+          TabOrder = 7
+        end
+        object cboLang: TComboBox
+          Left = 182
+          Height = 25
+          Top = 9
+          Width = 179
+          ItemHeight = 17
+          Style = csDropDownList
+          TabOrder = 8
+        end
+        object cboTheme: TComboBox
+          Left = 182
+          Height = 25
+          Top = 50
+          Width = 179
+          ItemHeight = 17
+          Style = csDropDownList
+          TabOrder = 9
+        end
+        object cbUIfont: TComboBox
+          Left = 182
+          Height = 28
+          Top = 87
+          Width = 131
+          DropDownCount = 10
+          ItemHeight = 22
+          Sorted = True
+          Style = csOwnerDrawVariable
+          TabOrder = 10
+          OnDrawItem = cbUIfontDrawItem
+        end
+        object cbUIfontsize: TComboBox
+          Left = 319
+          Height = 26
+          Top = 87
+          Width = 45
+          DropDownCount = 10
+          ItemHeight = 20
+          Items.Strings = (
+            '8'
+            '9'
+            '10'
+            '11'
+            '12'
+            '13'
+            '14'
+          )
+          Style = csOwnerDrawVariable
+          TabOrder = 11
+          OnChange = cbUIfontsizeChange
+          OnDrawItem = cbUIfontsizeDrawItem
+        end
+        object cbPauseConsole: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 292
+          Width = 233
+          Caption = 'Pause console programs after return'
+          TabOrder = 5
+        end
+        object cbShowMenu: TCheckBox
+          Left = 367
+          Height = 21
+          Top = 49
+          Width = 98
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'X Show Menu in Full Screen'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 12
+          Visible = False
+        end
+        object cbDeleteExe: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 319
+          Width = 230
+          Caption = 'Delete executable file before closing'
+          TabOrder = 13
+        end
+        object cbWatchHint: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 267
+          Width = 286
+          Caption = 'Watch variable under mouse while debugging'
+          TabOrder = 14
+        end
+        object cbShowProgress: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 241
+          Width = 270
+          Caption = '&Show Progress Window during compilation'
+          TabOrder = 15
+        end
+        object cboAutoOpen: TComboBox
+          Left = 398
+          Height = 25
+          Top = 210
+          Width = 75
+          ItemHeight = 17
+          Items.Strings = (
+            'All project files'
+            'Only first project file'
+            'Last closed files'
+            'None'
+          )
+          Style = csDropDownList
+          TabOrder = 16
+          Visible = False
+        end
+        object cbAutoCloseProgress: TCheckBox
+          Left = 383
+          Height = 21
+          Top = 148
+          Width = 256
+          Caption = 'X &Auto close after compilationompilation'
+          TabOrder = 17
+          Visible = False
+        end
+        object cbAutoFormat: TCheckBox
+          Left = 17
+          Height = 21
+          Top = 211
+          Width = 288
+          Caption = 'Automatically format current file before saving'
+          TabOrder = 18
+        end
+        object cbAutoLoadLast: TCheckBox
+          Left = 16
+          Height = 21
+          Top = 165
+          Width = 317
+          Anchors = [akTop, akLeft, akRight]
+          Caption = 'Auto Open last closed project or files'
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 19
+        end
+      end
+      object tabPaths: TTabSheet
+        Caption = 'Directories'
+        ClientHeight = 395
+        ClientWidth = 476
+        ParentShowHint = False
+        object lblUserDir: TLabel
+          Left = 16
+          Height = 23
+          Top = 115
+          Width = 193
+          AutoSize = False
+          Caption = 'User''s Default Directory'
+        end
+        object lblTemplatesDir: TLabel
+          Left = 14
+          Height = 27
+          Top = 250
+          Width = 147
+          AutoSize = False
+          Caption = 'Templates Directory'
+        end
+        object lblSplash: TLabel
+          Left = 16
+          Height = 28
+          Top = 175
+          Width = 179
+          AutoSize = False
+          Caption = 'Splash Screen Image'
+        end
+        object lblIcoLib: TLabel
+          Left = 14
+          Height = 28
+          Top = 294
+          Width = 147
+          AutoSize = False
+          Caption = 'Icon Library Path'
+        end
+        object lblLangPath: TLabel
+          Left = 14
+          Height = 28
+          Top = 335
+          Width = 147
+          AutoSize = False
+          Caption = 'Language Path'
+        end
+        object btnDefBrws: TSpeedButton
+          Tag = 1
+          Left = 431
+          Height = 22
+          Top = 144
+          Width = 23
+          Images = dmMain.MenuImages_Classic
+          ImageIndex = 76
+          OnClick = BrowseClick
+        end
+        object btnOutputbrws: TSpeedButton
+          Tag = 2
+          Left = 431
+          Height = 22
+          Top = 250
+          Width = 23
+          Images = dmMain.MenuImages_Classic
+          ImageIndex = 76
+          OnClick = BrowseClick
+        end
+        object btnBrwIcon: TSpeedButton
+          Tag = 3
+          Left = 431
+          Height = 22
+          Top = 297
+          Width = 23
+          Images = dmMain.MenuImages_Classic
+          ImageIndex = 76
+          OnClick = BrowseClick
+        end
+        object btnBrwLang: TSpeedButton
+          Tag = 5
+          Left = 431
+          Height = 22
+          Top = 334
+          Width = 23
+          Images = dmMain.MenuImages_Classic
+          ImageIndex = 76
+          OnClick = BrowseClick
+        end
+        object btnBrwSplash: TSpeedButton
+          Tag = 4
+          Left = 431
+          Height = 22
+          Top = 198
+          Width = 23
+          Images = dmMain.MenuImages_Classic
+          ImageIndex = 76
+          OnClick = BrowseClick
+        end
+        object lblOptionsDir: TLabel
+          Left = 16
+          Height = 31
+          Top = 10
+          Width = 457
+          AutoSize = False
+          Caption = 'Current Options directory. Click the button to reset Dev-C++.'
+        end
+        object edUserDir: TEdit
+          Left = 16
+          Height = 25
+          Top = 144
+          Width = 409
+          ReadOnly = True
+          TabOrder = 0
+          Text = 'edUserDir'
+        end
+        object edTemplatesDir: TEdit
+          Left = 167
+          Height = 25
+          Top = 252
+          Width = 258
+          ReadOnly = True
+          TabOrder = 1
+          Text = 'edTemplatesDir'
+        end
+        object edSplash: TEdit
+          Left = 16
+          Height = 25
+          Top = 198
+          Width = 409
+          TabOrder = 2
+          Text = 'edSplash'
+        end
+        object edIcoLib: TEdit
+          Left = 167
+          Height = 25
+          Top = 294
+          Width = 258
+          ReadOnly = True
+          TabOrder = 3
+          Text = 'edIcoLib'
+        end
+        object edLang: TEdit
+          Left = 167
+          Height = 25
+          Top = 335
+          Width = 258
+          ReadOnly = True
+          TabOrder = 4
+          Text = 'edLang'
+        end
+        object edOptionsDir: TEdit
+          Left = 16
+          Height = 25
+          Top = 47
+          Width = 438
+          ReadOnly = True
+          TabOrder = 5
+          Text = 'edOptionsDir'
+        end
+        object btnResetDev: TButton
+          Left = 230
+          Height = 28
+          Top = 78
+          Width = 224
+          Caption = 'Remove settings and exit'
+          TabOrder = 6
+          OnClick = btnResetDevClick
+        end
+      end
+      object tabExternal: TTabSheet
+        Caption = 'External Programs'
+        ClientHeight = 395
+        ClientWidth = 476
+        object lblExternal: TLabel
+          Left = 16
+          Height = 17
+          Top = 12
+          Width = 186
+          Caption = 'External programs associations:'
+        end
+        object btnExtAdd: TSpeedButton
+          Left = 125
+          Height = 28
+          Top = 332
+          Width = 99
+          Anchors = [akBottom]
+          Caption = 'Add'
+          OnClick = btnExtAddClick
+        end
+        object btnExtDel: TSpeedButton
+          Left = 256
+          Height = 28
+          Top = 332
+          Width = 99
+          Anchors = [akBottom]
+          Caption = 'Delete'
+          OnClick = btnExtDelClick
+        end
+        object vleExternal: TValueListEditor
+          Left = 16
+          Height = 288
+          Top = 40
+          Width = 441
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          DefaultRowHeight = 24
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          ParentFont = False
+          RowCount = 2
+          TabOrder = 0
+          OnEditButtonClick = vleExternalEditButtonClick
+          KeyOptions = [keyEdit, keyAdd, keyDelete]
+          Options = [goVertLine, goHorzLine, goEditing, goAlwaysShowEditor, goThumbTracking]
+          TitleCaptions.Strings = (
+            'Extension'
+            'External program'
+          )
+          OnValidate = vleExternalValidate
+          ColWidths = (
+            101
+            336
+          )
+        end
+      end
+      object tabAssocs: TTabSheet
+        Caption = 'File Associations'
+        ClientHeight = 395
+        ClientWidth = 476
+        ParentShowHint = False
+        object lblAssocFileTypes: TLabel
+          Left = 16
+          Height = 17
+          Top = 41
+          Width = 59
+          Caption = 'File Types:'
+        end
+        object lblAssocDesc: TLabel
+          Left = 3
+          Height = 61
+          Top = 335
+          Width = 442
+          Alignment = taCenter
+          AutoSize = False
+          Caption = 'Just check or un-check for which file types Dev-C++ will be registered as the default application to open them...'
+          WordWrap = True
+        end
+        object lstAssocFileTypes: TCheckListBox
+          Left = 16
+          Height = 264
+          Top = 64
+          Width = 448
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          ItemHeight = 23
+          TabOrder = 0
+        end
+        object cbCheckAssocs: TCheckBox
+          Left = 16
+          Height = 21
+          Top = 11
+          Width = 209
+          Caption = 'Check file associations on exiting'
+          TabOrder = 1
+        end
+      end
+    end
+    object btnOk: TBitBtn
+      Left = 272
+      Height = 36
+      Top = 432
+      Width = 85
+      Anchors = [akRight, akBottom]
+      Default = True
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkOK
+      ModalResult = 1
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnOkClick
+    end
+    object btnCancel: TBitBtn
+      Left = 384
+      Height = 36
+      Top = 432
+      Width = 85
+      Anchors = [akRight, akBottom]
+      Cancel = True
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkCancel
+      ModalResult = 2
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 2
+    end
+    object btnHelp: TBitBtn
+      Left = 24
+      Height = 35
+      Top = 432
+      Width = 85
+      Anchors = [akRight, akBottom]
+      DefaultCaption = True
+      Enabled = False
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkHelp
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnHelpClick
+    end
+  end
+  object dlgPic: TOpenPictureDialog
+    Left = 168
+    Top = 426
+  end
+end

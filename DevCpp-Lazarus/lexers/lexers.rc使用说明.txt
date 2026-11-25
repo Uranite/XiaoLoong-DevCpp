@@ -1,0 +1,42 @@
+我想要把 lexers 文件夹中的 *.lcf 文件嵌入到可执行文件中，从而使可执行文件不必依赖 lexers 文件夹。从别的资料中看到，可以编写一个 lexers.rc 文件，把 三个 *.lcf 文件声明为 RCDATA 资源，然后再编译为 lexers.res 。怎么做？
+
+你这个思路完全正确，Lazarus/FPC 下就是把 .lcf 当二进制塞进 RCDATA，编译期由 windres 或 fpcres 转成 .res，运行期用 TResourceStream 喂给 EControl。
+
+新建 lexers.rc，编写内容如下：
+
+LEXER_C      RCDATA "lexers/C.lcf"
+LEXER_CPP    RCDATA "lexers/C++.lcf"
+LEXER_FORTRAN RCDATA "lexers/Fortran.lcf"
+
+
+注意点：
+
+资源名 必须大写、不带引号、不含空格（Windows 资源名规范，FPC/Lazarus 也按这个来）
+
+路径用相对路径，相对于 rc 文件所在目录；也可以用绝对路径
+
+不要给资源名加 TEXT() 包装，RCDATA 就是裸名
+
+2. 编译 rc → res（三种方式，任选其一）
+方式 A：让 Lazarus 自动编译（最省事）
+
+在项目 .lpr 或任意一个始终参与编译的 unit 里加：
+
+{$R lexers.rc}
+
+Lazarus 构建时会自动调用 windres（Windows）或 fpcres（新版本 FPC 可切）把 lexers.rc 编成 lexers.res 链进 exe。你不需要手动产 res 文件。
+
+如果 Linux/macOS 上报找不到 windres，装 binutils-mingw-w64 或在 fpc.cfg 里用 -FCx86_64-w64-mingw32-windres 指定。
+
+方式 B：手动用 fpcres（跨平台推荐）
+fpcres -of res lexers.rc -o lexers.res
+然后在代码里改挂：
+{$R lexers.res}
+
+方式 C：手动用 windres
+windres lexers.rc -O res -o lexers.res
+
+（老习惯，Windows 上没问题；跨平台不如 fpcres）
+
+经验项：如果你改了 .lcf 内容，必须重新编译 rc/res，否则 exe 里还是旧资源。
+

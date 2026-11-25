@@ -1,0 +1,297 @@
+object ExceptionFrm: TExceptionFrm
+  Left = 666
+  Height = 340
+  Top = 421
+  Width = 600
+  BorderStyle = bsDialog
+  Caption = 'Oops!'
+  ClientHeight = 340
+  ClientWidth = 600
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object PanelGround: TPanel
+    Left = 0
+    Height = 340
+    Top = 0
+    Width = 600
+    Align = alClient
+    ClientHeight = 340
+    ClientWidth = 600
+    ParentBackground = False
+    TabOrder = 0
+    object btnShowReport: TButton
+      Left = 8
+      Height = 25
+      Hint = 'Show bug report'
+      Top = 292
+      Width = 105
+      Caption = 'Show report'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      OnClick = btnShowReportClick
+    end
+    object memEmailReport: TMemo
+      Left = 8
+      Height = 60
+      Top = 226
+      Width = 584
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      Lines.Strings = (
+        'memUserReport'
+      )
+      ParentFont = False
+      ScrollBars = ssVertical
+      TabOrder = 1
+      OnEnter = memEmailReportEnter
+      OnExit = memEmailReportExit
+    end
+    object memUserReport: TMemo
+      Left = 8
+      Height = 60
+      Top = 160
+      Width = 584
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      Lines.Strings = (
+        'memUserReport'
+      )
+      ParentFont = False
+      ScrollBars = ssVertical
+      TabOrder = 2
+      OnEnter = memUserReportEnter
+      OnExit = memUserReportExit
+    end
+    object memBugReport: TMemo
+      Left = 8
+      Height = 182
+      Top = 340
+      Width = 584
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Courier New'
+      Lines.Strings = (
+        'memBugReport'
+      )
+      ParentFont = False
+      ReadOnly = True
+      ScrollBars = ssVertical
+      TabOrder = 3
+      WordWrap = False
+    end
+    object btnTerminate: TButton
+      Left = 500
+      Height = 33
+      Hint = 'Closes this window and terminates the application execution'
+      Top = 122
+      Width = 92
+      Caption = '&Terminate'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+      OnClick = btnTerminateClick
+    end
+    object btnContinue: TButton
+      Left = 400
+      Height = 35
+      Hint = 'Closes this window and attempts to continue the application execution'
+      Top = 120
+      Width = 92
+      Cancel = True
+      Caption = '&Continue'
+      ModalResult = 1
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      OnClick = btnContinueClick
+    end
+    object btnSend: TButton
+      Left = 8
+      Height = 25
+      Hint = 'Sends a bug report to the application support team describing the error'
+      Top = 130
+      Width = 217
+      Caption = '&Send anonymous bug report'
+      Default = True
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 6
+      OnClick = btnSendClick
+    end
+    object lblUpdateLink: TLabel
+      Cursor = crHandPoint
+      Left = 136
+      Height = 15
+      Top = 317
+      Width = 364
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'https://gitee.com/devcpp/devcpp'
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      OnClick = lblUpdateLinkClick
+    end
+    object lblUpdateSuggest: TLabel
+      Left = 128
+      Height = 19
+      Top = 292
+      Width = 464
+      AutoSize = False
+      Caption = 'Please check for updates here, which might solve this bug:'
+    end
+    object Image1: TImage
+      Left = 8
+      Height = 32
+      Top = 4
+      Width = 32
+      AutoSize = True
+      Picture.Data = {
+        055449636F6EBE0800000000010001002020000001000800B008000016000000
+        2800000020000000400000000100080000000000800400000000000000000000
+        0001000000000000000000000000800000800000008080008000000080008000
+        80800000C0C0C000C0DCC000F0CAA600CCFFFF0099FFFF0066FFFF0033FFFF00
+        FFCCFF00CCCCFF0099CCFF0066CCFF0033CCFF0000CCFF00FF99FF00CC99FF00
+        9999FF006699FF003399FF000099FF00FF66FF00CC66FF009966FF006666FF00
+        3366FF000066FF00FF33FF00CC33FF009933FF006633FF003333FF000033FF00
+        CC00FF009900FF006600FF003300FF00FFFFCC00CCFFCC0099FFCC0066FFCC00
+        66FFCC0033FFCC0000FFCC00FFCCCC00CCCCCC0099CCCC0066CCCC0033CCCC00
+        00CCCC00FF99CC00CC99CC009999CC006699CC003399CC000099CC00FF66CC00
+        CC66CC009966CC006666CC003366CC000066CC00FF33CC00CC33CC009933CC00
+        6633CC003333CC000033CC00FF00CC00CC00CC009900CC006600CC003300CC00
+        0000CC00FFFF9900CCFF990099FF990066FF990033FF990000FF9900FFCC9900
+        CCCC990099CC990066CC990033CC990000CC9900FF999900CC99990099999900
+        669999003399990000999900FF669900CC669900996699006666990033669900
+        00669900FF339900CC33990099339900663399003333990000339900FF009900
+        CC00990099009900660099003300990000009900FFFF6600CCFF660099FF6600
+        66FF660033FF660000FF6600FFCC6600CCCC660099CC660066CC660033CC6600
+        00CC6600FF996600CC99660099996600669966003399660000996600FF666600
+        CC66660099666600666666003366660000666600FF336600CC33660099336600
+        663366003333660000336600FF006600CC006600990066006600660033006600
+        00006600FFFF3300CCFF330099FF330066FF330033FF330000FF3300FFCC3300
+        CCCC330099CC330066CC330033CC330000CC3300FF993300CC99330099993300
+        669933003399330000993300FF663300CC663300996633006666330033663300
+        00663300FF333300CC33330099333300663333003333330000333300FF003300
+        CC00330099003300660033003300330000003300CCFF000099FF000066FF0000
+        33FF0000FFCC0000CCCC000099CC000066CC000033CC000000CC0000FF990000
+        CC99000099990000669900003399000000990000FF660000CC66000099660000
+        666600000066000033660000FF330000CC330000993300006633000033330000
+        00330000CC0000009900000066000000330000000000DD000000BB000000AA00
+        000088000000770000005500000044000000220000DD000000BB000000AA0000
+        0088000000770000005500000044000000220000DDDDDD005555550077777700
+        7777770044444400222222001111110077000000550000004400000022000000
+        F0FBFF00A4A0A000808080000000FF0000FF000000FFFF00FF000000FF00FF00
+        FFFF0000FFFFFF00000000000000000000000000000000000000000000000000
+        0000000000000000000000000000F1F100000000000000000000000000000000
+        000000000000000000000000F100F0F0B3F0F0F0000000000000000000000000
+        000000000000000000000000F1F0F0B3B3B3B3B3B3B300000000000000000000
+        002400000000000000000000F0F0B3B3B33333EDEDB3F0000000000000000000
+        000000000000000000000000F0B3B3B3ED330A0A33EDED000000000000240000
+        001E000000002400000000F1F0B3B3B333330A0A0A0A0A000000000000001E00
+        0000000000000000000000F0B3B3EDED3333330A0A0A0A330000000000000000
+        001800001E000000000000F1F0B3EDEDED0A0A0A0A0A0A0A0000000000000018
+        0000001800000000000000F1F0B3EDED3333330A0A0A0A330000000000000000
+        000000000000000000000000F1F0B3B333330A330A0A33ED000000000000EC07
+        180018001E00240000000000F1B3B3B3ED3333330AEDED000000000000EC0000
+        00000000000000000000000000F1B3B3B3B3EDEDEDEDB30000000000EC000000
+        18000018000000000000000000F1F1B3F0EDB3B3F0F0000000000000EC00001E
+        00000000000000000000000000F1F1F1B3F0F0F100000000000000EC00000000
+        00001E00001E000000000000000000F10000000000000000000000EC00002400
+        000000000000240000000000000000000000000000000000000000EC00000000
+        0000000000000000000000000000000000000000000000000000EC0000000000
+        0000000000000000000000000000000000000000000000000000EC0000000000
+        00D8D8D8000000000000000000000000000000000000000000EC000000000000
+        D8FFFFFFD80000000000000000000000000000000000000000EC0000000000D8
+        FF55312AFFD80000000000000000000000EC0000000000ECEC000000000000D8
+        FFA37F552AD8000000000000000000000000ECECECECEC0000000000000000D8
+        CBA3A355FFD800000000000000000000000000000000000000000000000000D8
+        CBCBA35531D80000000000000000000000000000000000000000000000000000
+        D8CBCB7FD8000000000000000000000000000000000000000000000000000000
+        D8CBA9CBD8000000000000000000000000000000000000000000000000000000
+        00D8CBCBD8000000000000000000000000000000000000000000000000000000
+        00D8CBD800000000000000000000000000000000000000000000000000000000
+        00D8CBD800000000000000000000000000000000000000000000000000000000
+        0000D80000000000000000000000000000000000000000000000000000000000
+        0000D80000000000000000000000000000000000000000000000000000000000
+        0000000000000000F80FFFFFE003FFFFC001FFFF8000FFBF8000FFFF00007BBD
+        00007DFF00007FB700007EEF00007FFF00007C5500007BFF8000F76F8000F6FF
+        C001EFDBE003EDFDF80FEFFFFC1FDFFFFC1FDF8FFF7FBF07FF7FBE03FFBE7E03
+        FFC1FE03FFFFFE03FFFFFF07FFFFFF07FFFFFF87FFFFFF8FFFFFFF8FFFFFFFDF
+        FFFFFFDFFFFFFFFF
+      }
+    end
+    object Bevel2: TBevel
+      Left = 1
+      Height = 2
+      Top = 1
+      Width = 598
+      Align = alTop
+    end
+    object lblErrorTitle: TLabel
+      Left = 8
+      Height = 23
+      Top = 74
+      Width = 114
+      AutoSize = False
+      Caption = 'Error message:'
+    end
+    object lblAddress: TLabel
+      Left = 128
+      Height = 16
+      Top = 53
+      Width = 65
+      Caption = 'lblAddress'
+    end
+    object lblAddressTitle: TLabel
+      Left = 8
+      Height = 16
+      Top = 52
+      Width = 114
+      AutoSize = False
+      Caption = 'Address:'
+    end
+    object lblTitle: TLabel
+      Left = 52
+      Height = 20
+      Top = 16
+      Width = 424
+      Caption = 'An unexpected error has occured in the application...'
+      Color = clRed
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblError: TLabel
+      Left = 128
+      Height = 38
+      Top = 75
+      Width = 461
+      AutoSize = False
+      Caption = 'lblError'
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      WordWrap = True
+    end
+  end
+end

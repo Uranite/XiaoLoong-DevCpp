@@ -1,0 +1,33 @@
+# Project: devcppPortable
+# Makefile created by Dev-C++ 5.16
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+RES      = devcppPortable_private.res
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+LIBS     = -L"D:/我的文档/GitHub/devcpp/Release/MinGW32/lib" -L"D:/我的文档/GitHub/devcpp/Release/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc -lshlwapi -m32 -g3 -mwindows
+INCS     = -I"D:/我的文档/GitHub/devcpp/Release/MinGW32/include" -I"D:/我的文档/GitHub/devcpp/Release/MinGW32/lib/gcc/mingw32/9.2.0/include"
+CXXINCS  = -I"D:/我的文档/GitHub/devcpp/Release/MinGW32/include" -I"D:/我的文档/GitHub/devcpp/Release/MinGW32/lib/gcc/mingw32/9.2.0/include" -I"D:/我的文档/GitHub/devcpp/Release/MinGW32/lib/gcc/mingw32/9.2.0/include/c++"
+BIN      = devcppPortable.exe
+CXXFLAGS = $(CXXINCS) -m32 -Wall -Wextra -pedantic -g3 -mwindows -pipe
+CFLAGS   = $(INCS) -m32 -Wall -Wextra -pedantic -g3 -mwindows -pipe
+RM       = del /q
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+devcppPortable_private.res: devcppPortable_private.rc resource.rc
+	$(WINDRES) -i devcppPortable_private.rc -F pe-i386 --input-format=rc -o devcppPortable_private.res -O coff 
+

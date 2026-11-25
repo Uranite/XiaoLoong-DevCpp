@@ -1,0 +1,211 @@
+object NewProjectForm: TNewProjectForm
+  Left = 502
+  Height = 350
+  Top = 439
+  Width = 540
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'New Project'
+  ClientHeight = 350
+  ClientWidth = 540
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object Panel1: TPanel
+    Left = 0
+    Height = 350
+    Top = 0
+    Width = 540
+    Align = alClient
+    Caption = 'Panel1'
+    ClientHeight = 350
+    ClientWidth = 540
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object TemplateLabel: TLabel
+      Left = 8
+      Height = 51
+      Top = 204
+      Width = 273
+      AutoSize = False
+      Caption = '<description>'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentColor = False
+      ParentFont = False
+      WordWrap = True
+    end
+    object lblPrjName: TLabel
+      Left = 8
+      Height = 17
+      Top = 253
+      Width = 42
+      Anchors = [akLeft, akRight, akBottom]
+      Caption = 'Name: '
+    end
+    object btnOk: TBitBtn
+      Left = 320
+      Height = 36
+      Top = 307
+      Width = 83
+      Anchors = [akRight, akBottom]
+      Caption = '&OK'
+      Default = True
+      Enabled = False
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Glyph.Data = {
+        DE010000424DDE01000000000000760000002800000024000000120000000100
+        0400000000006801000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333333333333333330000333333333333333333333333F33333333333
+        00003333344333333333333333388F3333333333000033334224333333333333
+        338338F3333333330000333422224333333333333833338F3333333300003342
+        222224333333333383333338F3333333000034222A22224333333338F338F333
+        8F33333300003222A3A2224333333338F3838F338F33333300003A2A333A2224
+        33333338F83338F338F33333000033A33333A222433333338333338F338F3333
+        0000333333333A222433333333333338F338F33300003333333333A222433333
+        333333338F338F33000033333333333A222433333333333338F338F300003333
+        33333333A222433333333333338F338F00003333333333333A22433333333333
+        3338F38F000033333333333333A223333333333333338F830000333333333333
+        333A333333333333333338330000333333333333333333333333333333333333
+        0000
+      }
+      ModalResult = 1
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 0
+    end
+    object btnCancel: TBitBtn
+      Left = 445
+      Height = 36
+      Top = 307
+      Width = 87
+      Anchors = [akRight, akBottom]
+      Cancel = True
+      DefaultCaption = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkCancel
+      ModalResult = 2
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 1
+    end
+    object TabsMain: TTabControl
+      Left = 0
+      Height = 198
+      Top = 0
+      Width = 540
+      OnChange = TabsMainChange
+      TabIndex = 0
+      Tabs.Strings = (
+        'Categries'
+      )
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      TabOrder = 2
+      object ProjView: TListView
+        Left = 2
+        Height = 171
+        Top = 25
+        Width = 536
+        Align = alClient
+        BorderStyle = bsNone
+        Columns = <>
+        ColumnClick = False
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        HideSelection = False
+        IconOptions.AutoArrange = True
+        LargeImages = ImageList_Projects
+        ParentFont = False
+        ReadOnly = True
+        SmallImages = ImageList_Projects
+        TabOrder = 0
+        ViewStyle = vsIcon
+        OnChange = ProjViewChange
+        OnDblClick = ProjViewDblClick
+      end
+    end
+    object btnHelp: TBitBtn
+      Left = 16
+      Height = 36
+      Top = 307
+      Width = 75
+      Anchors = [akRight, akBottom]
+      DefaultCaption = True
+      Enabled = False
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Kind = bkHelp
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnHelpClick
+    end
+    object cbDefault: TCheckBox
+      Left = 287
+      Height = 21
+      Top = 229
+      Width = 152
+      Caption = '&Make default language'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+      TabOrder = 4
+    end
+    object rbCpp: TRadioButton
+      Left = 399
+      Height = 21
+      Top = 204
+      Width = 89
+      Caption = 'C&++ project'
+      Checked = True
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+      TabOrder = 5
+      TabStop = True
+    end
+    object rbC: TRadioButton
+      Left = 287
+      Height = 21
+      Top = 204
+      Width = 71
+      Caption = '&C project'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 6
+    end
+    object edProjectName: TEdit
+      Left = 11
+      Height = 25
+      Top = 276
+      Width = 521
+      Anchors = [akLeft, akRight, akBottom]
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+      TabOrder = 7
+      OnChange = edProjectNameChange
+    end
+  end
+  object ImageList_Projects: TImageList
+    Height = 32
+    Width = 32
+    Left = 108
+    Top = 51
+  end
+end

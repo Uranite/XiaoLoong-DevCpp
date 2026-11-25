@@ -1,0 +1,143 @@
+object ImportMSVCForm: TImportMSVCForm
+  Left = 400
+  Height = 261
+  Top = 431
+  Width = 365
+  BorderStyle = bsDialog
+  Caption = 'Import MS Visual C++(tm) project'
+  ClientHeight = 261
+  ClientWidth = 365
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 261
+    Top = 0
+    Width = 365
+    Align = alClient
+    ClientHeight = 261
+    ClientWidth = 365
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object lbSelect: TLabel
+      Left = 8
+      Height = 24
+      Top = 8
+      Width = 256
+      AutoSize = False
+      Caption = 'Select Visual C++ project file:'
+    end
+    object btnBrowse: TSpeedButton
+      Left = 328
+      Height = 23
+      Top = 32
+      Width = 23
+      Caption = '...'
+      OnClick = btnBrowseClick
+    end
+    object txtVC: TEdit
+      Left = 8
+      Height = 24
+      Top = 32
+      Width = 312
+      TabOrder = 0
+      Text = 'txtVC'
+      OnChange = txtDevChange
+    end
+    object gbOptions: TGroupBox
+      Left = 8
+      Height = 152
+      Top = 64
+      Width = 349
+      Caption = '  Import options  '
+      ClientHeight = 131
+      ClientWidth = 345
+      ParentBackground = False
+      TabOrder = 1
+      object lbConf: TLabel
+        Left = 16
+        Height = 24
+        Top = 8
+        Width = 200
+        AutoSize = False
+        Caption = 'Configuration to import:'
+      end
+      object lbDev: TLabel
+        Left = 16
+        Height = 24
+        Top = 64
+        Width = 208
+        AutoSize = False
+        Caption = 'Dev-C++ project filename:'
+      end
+      object btnBrowseDev: TSpeedButton
+        Left = 314
+        Height = 23
+        Top = 88
+        Width = 23
+        Caption = '...'
+        OnClick = btnBrowseDevClick
+      end
+      object cmbConf: TComboBox
+        Left = 16
+        Height = 24
+        Top = 32
+        Width = 321
+        ItemHeight = 16
+        ParentColor = True
+        Style = csDropDownList
+        TabOrder = 0
+      end
+      object txtDev: TEdit
+        Left = 16
+        Height = 24
+        Top = 88
+        Width = 289
+        TabOrder = 1
+        Text = 'txtDev'
+        OnChange = txtDevChange
+      end
+    end
+    object btnImport: TButton
+      Left = 154
+      Height = 30
+      Top = 224
+      Width = 75
+      Caption = 'Import'
+      Default = True
+      TabOrder = 2
+      OnClick = btnImportClick
+    end
+    object btnCancel: TButton
+      Left = 261
+      Height = 30
+      Top = 224
+      Width = 75
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 3
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'MSVC++ files|*.dsp'
+    Left = 284
+    Top = 48
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 284
+    Top = 124
+  end
+end

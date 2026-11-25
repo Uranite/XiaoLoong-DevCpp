@@ -1,0 +1,3 @@
+LEXER_C RCDATA "lexers/C.lcf"
+LEXER_CPP RCDATA "lexers/C++.lcf"
+LEXER_FORTRAN RCDATA "lexers/Fortran.lcf"

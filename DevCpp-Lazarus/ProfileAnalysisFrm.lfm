@@ -1,0 +1,320 @@
+object ProfileAnalysisForm: TProfileAnalysisForm
+  Left = 609
+  Height = 491
+  Top = 306
+  Width = 670
+  Caption = 'Profile analysis'
+  ClientHeight = 491
+  ClientWidth = 670
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  FormStyle = fsStayOnTop
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 491
+    Top = 0
+    Width = 670
+    Align = alClient
+    ClientHeight = 491
+    ClientWidth = 670
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object ProfilePageControl: TPageControl
+      Left = 1
+      Height = 489
+      Top = 1
+      Width = 668
+      ActivePage = tabFlat
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+      TabIndex = 0
+      TabOrder = 0
+      OnChange = ProfilePageControlChange
+      object tabFlat: TTabSheet
+        Caption = 'Flat output'
+        ClientHeight = 456
+        ClientWidth = 660
+        object Splitter2: TSplitter
+          Cursor = crVSplit
+          Left = 0
+          Height = 8
+          Top = 316
+          Width = 660
+          Align = alBottom
+          ResizeAnchor = akBottom
+        end
+        object memFlat: TMemo
+          Left = 0
+          Height = 132
+          Top = 324
+          Width = 660
+          Align = alBottom
+          Color = clBtnFace
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Courier New'
+          ParentFont = False
+          ReadOnly = True
+          ScrollBars = ssBoth
+          TabOrder = 0
+        end
+        object lvFlat: TListView
+          Left = 0
+          Height = 316
+          Top = 0
+          Width = 660
+          Align = alClient
+          BorderStyle = bsNone
+          Columns = <          
+            item
+              Caption = 'Function name'
+              Width = 200
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = '% time'
+              Width = 60
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Cumul. secs'
+              Width = 90
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Self secs'
+              Width = 70
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Calls'
+              Width = 65
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Self ts/call'
+              Width = 82
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Total ts/call'
+              Width = 90
+            end>
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          GridLines = True
+          ParentFont = False
+          ParentShowHint = False
+          ReadOnly = True
+          RowSelect = True
+          ShowHint = True
+          TabOrder = 1
+          ViewStyle = vsReport
+          OnAdvancedCustomDraw = lvFlatAdvancedCustomDraw
+          OnClick = lvFlatClick
+          OnCustomDrawItem = lvFlatCustomDrawItem
+          OnMouseMove = lvFlatMouseMove
+        end
+      end
+      object tabGraph: TTabSheet
+        Caption = 'Call graph'
+        ClientHeight = 456
+        ClientWidth = 660
+        ImageIndex = 1
+        object Splitter1: TSplitter
+          Cursor = crVSplit
+          Left = 0
+          Height = 8
+          Top = 316
+          Width = 660
+          Align = alBottom
+          ResizeAnchor = akBottom
+        end
+        object memGraph: TMemo
+          Left = 0
+          Height = 132
+          Top = 324
+          Width = 660
+          Align = alBottom
+          Color = clBtnFace
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Courier New'
+          ParentFont = False
+          ReadOnly = True
+          ScrollBars = ssBoth
+          TabOrder = 0
+        end
+        object lvGraph: TListView
+          Left = 0
+          Height = 316
+          Top = 0
+          Width = 660
+          Align = alClient
+          BorderStyle = bsNone
+          Columns = <          
+            item
+              Caption = 'Function name'
+              Width = 250
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Index'
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = '% time'
+              Width = 75
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Self'
+              Width = 75
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Children'
+              Width = 120
+            end          
+            item
+              Alignment = taRightJustify
+              Caption = 'Called'
+              Width = 75
+            end>
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          GridLines = True
+          ParentFont = False
+          ParentShowHint = False
+          ReadOnly = True
+          RowSelect = True
+          ShowHint = True
+          TabOrder = 1
+          ViewStyle = vsReport
+          OnAdvancedCustomDraw = lvGraphAdvancedCustomDraw
+          OnClick = lvFlatClick
+          OnCustomDrawItem = lvGraphCustomDrawItem
+          OnMouseMove = lvFlatMouseMove
+        end
+      end
+      object tabOpts: TTabSheet
+        Caption = 'Profiling Options'
+        ClientHeight = 456
+        ClientWidth = 660
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        ImageIndex = 2
+        ParentFont = False
+        object FuncHiding: TGroupBox
+          Left = 8
+          Height = 113
+          Top = 16
+          Width = 353
+          Caption = ' Function Hiding '
+          ClientHeight = 91
+          ClientWidth = 349
+          ParentBackground = False
+          TabOrder = 0
+          object PrevText: TLabel
+            Left = 16
+            Height = 17
+            Top = 78
+            Width = 195
+            Caption = 'Supress functions called less than'
+          end
+          object PostText: TLabel
+            Left = 272
+            Height = 17
+            Top = 78
+            Width = 31
+            Caption = 'times'
+          end
+          object chkHideNotCalled: TCheckBox
+            Left = 16
+            Height = 21
+            Top = 24
+            Width = 240
+            Caption = 'Hide functions not called long enough'
+            Checked = True
+            State = cbChecked
+            TabOrder = 0
+            OnClick = commandUpdate
+          end
+          object chkSuppressStatic: TCheckBox
+            Left = 16
+            Height = 21
+            Top = 48
+            Width = 288
+            Caption = 'Suppress statically declared (private) functions'
+            TabOrder = 1
+            OnClick = commandUpdate
+          end
+          object spnMinCount: TSpinEdit
+            Left = 217
+            Height = 25
+            Top = 75
+            Width = 49
+            MaxValue = 999999999
+            TabOrder = 2
+            Value = 1
+            OnChange = commandUpdate
+          end
+        end
+        object btnApply: TButton
+          Left = 238
+          Height = 25
+          Top = 247
+          Width = 75
+          Caption = 'Apply'
+          TabOrder = 1
+          OnClick = btnApplyClick
+        end
+        object CustomCommands: TGroupBox
+          Left = 8
+          Height = 90
+          Top = 135
+          Width = 353
+          Caption = ' Custom Commands '
+          ClientHeight = 68
+          ClientWidth = 349
+          ParentBackground = False
+          TabOrder = 2
+          object chkCustom: TCheckBox
+            Left = 16
+            Height = 21
+            Top = 24
+            Width = 192
+            Caption = 'Use these commands instead:'
+            TabOrder = 0
+            OnClick = chkCustomClick
+          end
+          object editCustom: TEdit
+            Left = 16
+            Height = 25
+            Top = 48
+            Width = 289
+            Enabled = False
+            TabOrder = 1
+            Text = 'editCustom'
+          end
+        end
+      end
+    end
+  end
+end

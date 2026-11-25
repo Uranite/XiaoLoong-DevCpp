@@ -1,0 +1,131 @@
+object ViewToDoForm: TViewToDoForm
+  Left = 486
+  Height = 267
+  Top = 308
+  Width = 628
+  BorderStyle = bsSizeToolWin
+  Caption = 'To-Do list'
+  ClientHeight = 267
+  ClientWidth = 628
+  Color = clForm
+  Constraints.MinHeight = 136
+  Constraints.MinWidth = 394
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 267
+    Top = 0
+    Width = 628
+    Align = alClient
+    ClientHeight = 267
+    ClientWidth = 628
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object lblFilter: TLabel
+      Left = 8
+      Height = 16
+      Top = 203
+      Width = 32
+      Anchors = [akLeft, akBottom]
+      Caption = 'Filter:'
+    end
+    object lv: TListView
+      Left = 0
+      Height = 193
+      Top = 0
+      Width = 629
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderStyle = bsNone
+      Checkboxes = True
+      Columns = <      
+        item
+          Caption = 'Done'
+          MaxWidth = 150
+          MinWidth = 50
+          Width = 60
+        end      
+        item
+          Caption = 'Priority'
+          Width = 90
+        end      
+        item
+          Caption = 'Description'
+          Width = 250
+        end      
+        item
+          Caption = 'Filename'
+          Width = 140
+        end      
+        item
+          Caption = 'User'
+          Width = 80
+        end>
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+      ReadOnly = True
+      RowSelect = True
+      SortType = stBoth
+      TabOrder = 0
+      ViewStyle = vsReport
+      OnColumnClick = lvColumnClick
+      OnCompare = lvCompare
+      OnCustomDrawItem = lvCustomDrawItem
+      OnCustomDrawSubItem = lvCustomDrawSubItem
+      OnDblClick = lvDblClick
+      OnMouseDown = lvMouseDown
+    end
+    object chkNoDone: TCheckBox
+      Left = 8
+      Height = 20
+      Top = 239
+      Width = 219
+      Anchors = [akLeft, akBottom]
+      Caption = 'Don''t show items marked as done'
+      TabOrder = 1
+      OnClick = chkNoDoneClick
+    end
+    object cmbFilter: TComboBox
+      Left = 72
+      Height = 24
+      Top = 200
+      Width = 245
+      Anchors = [akLeft, akBottom]
+      ItemHeight = 16
+      Items.Strings = (
+        'All files (in project and not)'
+        'Open files only (in project and not)'
+        'All project files'
+        'Open project files only'
+        'Non-project open files'
+        'Current file only'
+      )
+      Style = csDropDownList
+      TabOrder = 2
+      OnChange = cmbFilterChange
+    end
+    object btnClose: TBitBtn
+      Left = 504
+      Height = 35
+      Top = 223
+      Width = 96
+      DefaultCaption = True
+      Kind = bkClose
+      ModalResult = 11
+      TabOrder = 3
+    end
+  end
+end

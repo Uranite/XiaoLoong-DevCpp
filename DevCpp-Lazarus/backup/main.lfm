@@ -1,0 +1,3216 @@
+object MainForm: TMainForm
+  Left = 488
+  Height = 800
+  Top = 128
+  Width = 1200
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  AlphaBlend = True
+  Caption = 'Dev-C++'
+  ClientHeight = 800
+  ClientWidth = 1200
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -6
+  Font.Name = 'MS Sans Serif'
+  Menu = MainMenu
+  Position = poWorkAreaCenter
+  ShowHint = True
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnContextPopup = FormContextPopup
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnMouseWheel = FormMouseWheel
+  OnShow = FormShow
+  object SplitterBottom: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 8
+    Top = 580
+    Width = 1200
+    Align = alBottom
+    ResizeAnchor = akBottom
+    OnMoved = SplitterBottomMoved
+  end
+  object SplitterLeft: TSplitter
+    Left = 248
+    Height = 538
+    Top = 42
+    Width = 6
+  end
+  object Splitter2: TBevel
+    Left = 0
+    Height = 2
+    Top = 0
+    Width = 0
+    Shape = bsBottomLine
+  end
+  object LeftPageControl: TPageControl
+    Left = 0
+    Height = 538
+    Top = 42
+    Width = 248
+    ActivePage = LeftProjectSheet
+    Align = alLeft
+    TabIndex = 0
+    TabOrder = 1
+    OnChange = LeftPageControlChange
+    OnResize = LeftPageControlResize
+    object LeftProjectSheet: TTabSheet
+      Caption = 'Project'
+      ClientHeight = 512
+      ClientWidth = 240
+      object ProjectView: TTreeView
+        Left = 0
+        Height = 480
+        Top = 32
+        Width = 240
+        Align = alClient
+        DragMode = dmAutomatic
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        HideSelection = False
+        HotTrack = True
+        MultiSelect = True
+        MultiSelectStyle = [msControlSelect, msShiftSelect]
+        ParentFont = False
+        PopupMenu = BrowserPopup
+        ReadOnly = True
+        RightClickSelect = True
+        SortType = stText
+        TabOrder = 0
+        Options = [tvoAllowMultiselect, tvoAutoItemHeight, tvoHotTrack, tvoKeepCollapsedNodes, tvoReadOnly, tvoRightClickSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+        OnClick = ProjectViewClick
+        OnCompare = ProjectViewCompare
+        OnContextPopup = ProjectViewContextPopup
+        OnDragDrop = ProjectViewDragDrop
+        OnDragOver = ProjectViewDragOver
+        OnKeyDown = ProjectViewKeyDown
+        OnKeyPress = ProjectViewKeyPress
+        OnMouseDown = ProjectViewMouseDown
+      end
+      object tbProjectLeft: TToolBar
+        Left = 0
+        Top = 0
+        Width = 240
+        AutoSize = True
+        ButtonHeight = 30
+        ButtonWidth = 30
+        Caption = 'tbProjectLeft'
+        Color = clBtnFace
+        EdgeBorders = [ebBottom]
+        EdgeInner = esLowered
+        EdgeOuter = esRaised
+        Images = dmMain.MenuImages_Classic
+        ParentColor = False
+        TabOrder = 1
+        Transparent = True
+        Wrapable = False
+        object tbnNewProject: TToolButton
+          Left = 1
+          Top = 0
+          Action = actNewProject
+        end
+        object ToolButton2: TToolButton
+          Left = 31
+          Height = 30
+          Top = 0
+          Caption = 'ToolButton2'
+          ImageIndex = 36
+          Style = tbsSeparator
+        end
+        object tbnProjectNew: TToolButton
+          Left = 39
+          Top = 0
+          Action = actProjectNew
+        end
+        object tbnNewClass: TToolButton
+          Left = 69
+          Top = 0
+          Action = actNewClass
+        end
+        object tbnProjectAdd: TToolButton
+          Left = 99
+          Top = 0
+          Action = actProjectAdd
+        end
+        object tbnProjectRemove: TToolButton
+          Left = 129
+          Top = 0
+          Action = actProjectRemove
+        end
+        object ToolButton26: TToolButton
+          Left = 159
+          Height = 30
+          Top = 0
+          Caption = 'ToolButton26'
+          ImageIndex = 41
+          Style = tbsSeparator
+        end
+        object tbnProjectOptions: TToolButton
+          Left = 167
+          Top = 0
+          Action = actProjectOptions
+        end
+      end
+    end
+    object LeftClassSheet: TTabSheet
+      Caption = 'Classes'
+      ClientHeight = 512
+      ClientWidth = 240
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      object BrowserView: TTreeView
+        Left = 0
+        Height = 512
+        Top = 0
+        Width = 240
+        Align = alClient
+        DefaultItemHeight = 25
+        DragMode = dmAutomatic
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -20
+        Font.Name = 'Segoe UI Light'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        HideSelection = False
+        HotTrack = True
+        MultiSelect = True
+        MultiSelectStyle = [msControlSelect, msShiftSelect]
+        ParentFont = False
+        PopupMenu = BrowserPopup
+        ReadOnly = True
+        RightClickSelect = True
+        SortType = stText
+        TabOrder = 0
+        Options = [tvoAllowMultiselect, tvoHotTrack, tvoKeepCollapsedNodes, tvoReadOnly, tvoRightClickSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+        OnClick = BrowserViewClick
+      end
+    end
+    object LeftDebugSheet: TTabSheet
+      Caption = 'Debug'
+      ClientHeight = 512
+      ClientWidth = 240
+      object SplitterDebug: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 10
+        Top = 176
+        Width = 240
+        Align = alTop
+        ResizeAnchor = akTop
+      end
+      object txtLocals: TMemo
+        Left = 0
+        Height = 309
+        Top = 186
+        Width = 240
+        Align = alClient
+        ScrollBars = ssVertical
+        TabOrder = 2
+      end
+      object cbWatchLocals: TCheckBox
+        Left = 0
+        Height = 17
+        Top = 495
+        Width = 240
+        Align = alBottom
+        Caption = 'Auto refresh'
+        Color = clBtnFace
+        ParentColor = False
+        TabOrder = 3
+        OnClick = cbWatchLocalsClick
+      end
+      object tbDebugLeft: TToolBar
+        Left = 0
+        Top = 0
+        Width = 240
+        AutoSize = True
+        ButtonHeight = 30
+        ButtonWidth = 30
+        Caption = 'tbLeftProject'
+        Color = clBtnFace
+        EdgeBorders = [ebBottom]
+        EdgeInner = esLowered
+        EdgeOuter = esRaised
+        Images = dmMain.MenuImages_Classic
+        ParentColor = False
+        TabOrder = 0
+        object tbnAddWatch: TToolButton
+          Left = 1
+          Top = 0
+          Action = actAddWatch
+        end
+        object tbnModifyWatch: TToolButton
+          Left = 31
+          Top = 0
+          Action = actModifyWatch
+        end
+        object tbnRemoveWatch: TToolButton
+          Left = 61
+          Top = 0
+          Action = actRemoveWatch
+        end
+      end
+      object DebugView: TTreeView
+        Left = 0
+        Height = 144
+        Top = 32
+        Width = 240
+        Align = alTop
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        ParentFont = False
+        PopupMenu = DebugPopup
+        ReadOnly = True
+        RightClickSelect = True
+        TabOrder = 1
+        Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoRightClickSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+        OnAdvancedCustomDrawItem = DebugViewAdvancedCustomDrawItem
+        OnKeyDown = DebugViewKeyDown
+      end
+    end
+  end
+  object MessageControl: TPageControl
+    Left = 0
+    Height = 190
+    Top = 588
+    Width = 1200
+    ActivePage = LogSheet
+    Align = alBottom
+    MultiLine = True
+    Options = [nboMultiLine]
+    PopupMenu = MessagePopup
+    TabIndex = 2
+    TabOrder = 2
+    OnChange = MessageControlChange
+    OnResize = MessageControlResize
+    object ResSheet: TTabSheet
+      Caption = 'Resource'
+      ClientHeight = 164
+      ClientWidth = 1192
+      ImageIndex = 66
+      object ResourceOutput: TListView
+        Left = 0
+        Height = 164
+        Top = 0
+        Width = 1192
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWindow
+        Columns = <        
+          item
+            Caption = 'Line'
+            Width = 75
+          end        
+          item
+            Caption = 'Col'
+            Width = 62
+          end        
+          item
+            Caption = 'Unit'
+            Width = 450
+          end        
+          item
+            Caption = 'Message'
+            Width = 250
+          end>
+        ColumnClick = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'Courier New'
+        GridLines = True
+        HideSelection = False
+        ParentFont = False
+        ParentShowHint = False
+        ReadOnly = True
+        RowSelect = True
+        ShowHint = True
+        TabOrder = 0
+        ViewStyle = vsReport
+        OnAdvancedCustomDraw = CompilerOutputAdvancedCustomDraw
+        OnAdvancedCustomDrawItem = CompilerOutputAdvancedCustomDrawItem
+        OnDblClick = CompilerOutputDblClick
+        OnDeletion = ResourceOutputDeletion
+        OnKeyDown = CompilerOutputKeyDown
+        OnMouseLeave = CompilerOutputMouseLeave
+      end
+    end
+    object CompSheet: TTabSheet
+      Caption = 'Compiler'
+      ClientHeight = 164
+      ClientWidth = 1192
+      ImageIndex = 65
+      object CompilerOutput: TListView
+        Left = 0
+        Height = 164
+        Top = 0
+        Width = 1192
+        Align = alClient
+        AutoWidthLastColumn = True
+        BorderStyle = bsNone
+        Color = clWindow
+        Columns = <        
+          item
+            Caption = 'Line'
+            Width = 188
+          end        
+          item
+            Caption = 'Col'
+            Width = 188
+          end        
+          item
+            Caption = 'Unit'
+            Width = 450
+          end        
+          item
+            Caption = 'Message'
+            Width = 366
+          end>
+        ColumnClick = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        GridLines = True
+        HideSelection = False
+        OwnerDraw = True
+        ParentFont = False
+        ParentShowHint = False
+        ReadOnly = True
+        RowSelect = True
+        ShowHint = True
+        TabOrder = 0
+        ViewStyle = vsReport
+        OnAdvancedCustomDraw = CompilerOutputAdvancedCustomDraw
+        OnAdvancedCustomDrawItem = CompilerOutputAdvancedCustomDrawItem
+        OnClick = CompilerOutputDblClick
+        OnDblClick = CompilerOutputDblClick
+        OnDeletion = CompilerOutputDeletion
+        OnKeyDown = CompilerOutputKeyDown
+        OnMouseLeave = CompilerOutputMouseLeave
+        OnMouseMove = CompilerOutputMouseMove
+      end
+    end
+    object LogSheet: TTabSheet
+      Caption = 'Compile log'
+      ClientHeight = 164
+      ClientWidth = 1192
+      ImageIndex = 35
+      object LogLeftPanel: TPanel
+        Left = 0
+        Height = 164
+        Top = 0
+        Width = 269
+        Align = alLeft
+        ClientHeight = 164
+        ClientWidth = 269
+        ParentBackground = False
+        TabOrder = 0
+        object btnAbortCompilation: TSpeedButton
+          Left = 2
+          Height = 35
+          Top = 10
+          Width = 150
+          Action = actAbortCompilation
+        end
+        object pbCompilation: TProgressBar
+          Left = 2
+          Height = 25
+          Top = 50
+          Width = 231
+          Step = 1
+          TabOrder = 0
+        end
+        object chkShortenPaths: TCheckBox
+          Left = 2
+          Height = 17
+          Top = 80
+          Width = 126
+          Action = actShortenCompPaths
+          Color = clBtnFace
+          ParentColor = False
+          TabOrder = 1
+        end
+        object chkTranslateMsg: TCheckBox
+          Left = 2
+          Height = 17
+          Top = 110
+          Width = 111
+          Action = actMsgTranslate
+          TabOrder = 2
+        end
+      end
+      object LogRightPanel: TPanel
+        Left = 269
+        Height = 164
+        Top = 0
+        Width = 923
+        Align = alClient
+        Alignment = taRightJustify
+        ClientHeight = 164
+        ClientWidth = 923
+        ParentBackground = False
+        TabOrder = 1
+        object LogOutput: TMemo
+          Left = 1
+          Height = 162
+          Top = 1
+          Width = 921
+          Align = alClient
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Courier New'
+          ParentFont = False
+          ReadOnly = True
+          ScrollBars = ssVertical
+          TabOrder = 0
+          WantTabs = True
+        end
+      end
+    end
+    object DebugSheet: TTabSheet
+      Caption = 'Debugging'
+      ClientHeight = 164
+      ClientWidth = 1192
+      ImageIndex = 40
+      object DebugSendPanel: TPanel
+        Left = 152
+        Height = 164
+        Top = 0
+        Width = 1040
+        Align = alClient
+        ClientHeight = 164
+        ClientWidth = 1040
+        ParentBackground = False
+        TabOrder = 0
+        object DebugCmdPanel: TPanel
+          Left = 1
+          Height = 35
+          Top = 1
+          Width = 1038
+          Align = alTop
+          AutoSize = True
+          ClientHeight = 35
+          ClientWidth = 1038
+          ParentBackground = False
+          TabOrder = 0
+          object lblSendCommandGdb: TLabel
+            Left = 1
+            Height = 25
+            Top = 9
+            Width = 166
+            AutoSize = False
+            Caption = 'Command to GDB:'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ParentFont = False
+          end
+          object btnCmdNext: TSpeedButton
+            Left = 376
+            Height = 31
+            Hint = 'next'
+            Top = 2
+            Width = 31
+            Action = actNextLine
+            Caption = 'n'
+          end
+          object btnCmdStep: TSpeedButton
+            Left = 411
+            Height = 31
+            Hint = 'step'
+            Top = 2
+            Width = 32
+            Action = actStepLine
+            Caption = 's'
+          end
+          object btnCmdfinish: TSpeedButton
+            Left = 446
+            Height = 31
+            Hint = 'finish'
+            Top = 2
+            Width = 34
+            Action = actSkipFunction
+            Caption = 'fin'
+          end
+          object btnCmdContinue: TSpeedButton
+            Left = 482
+            Height = 31
+            Hint = 'continue'
+            Top = 2
+            Width = 32
+            Action = actContinue
+            Caption = 'c'
+          end
+          object btnNextIns: TSpeedButton
+            Left = 556
+            Height = 31
+            Hint = 'next instruction'
+            Top = 2
+            Width = 24
+            Action = actNextIns
+            Caption = 'ni'
+          end
+          object btnIntoIns: TSpeedButton
+            Left = 585
+            Height = 31
+            Hint = 'into instruction'
+            Top = 2
+            Width = 31
+            Action = actStepIns
+            Caption = 'si'
+          end
+          object btnViewCPU: TSpeedButton
+            Left = 636
+            Height = 31
+            Hint = 'View CPU Window'
+            Top = 2
+            Width = 61
+            Action = actViewCPU
+            Caption = 'CPU'
+          end
+          object btnCmdUntil: TSpeedButton
+            Left = 519
+            Height = 31
+            Hint = 'until'
+            Top = 2
+            Width = 32
+            Action = actRuntoCursor
+            Caption = 'u'
+          end
+          object cmbGdbCommand: TComboBox
+            Left = 201
+            Height = 32
+            Top = 1
+            Width = 164
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            ItemHeight = 24
+            ParentFont = False
+            TabOrder = 0
+            OnKeyPress = cmbGdbCommandKeyPress
+            OnSelect = cmbGdbCommandSelect
+          end
+        end
+        object DebugOutput: TMemo
+          Left = 1
+          Height = 127
+          Top = 36
+          Width = 1038
+          Align = alClient
+          DoubleBuffered = True
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Courier New'
+          ParentDoubleBuffered = False
+          ParentFont = False
+          ReadOnly = True
+          ScrollBars = ssVertical
+          TabOrder = 1
+        end
+      end
+      object DebugStartPanel: TPanel
+        Left = 0
+        Height = 164
+        Top = 0
+        Width = 152
+        Align = alLeft
+        AutoSize = True
+        ClientHeight = 164
+        ClientWidth = 152
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'MS Sans Serif'
+        ParentBackground = False
+        ParentBidiMode = False
+        ParentFont = False
+        TabOrder = 1
+        object EvalOutput: TMemo
+          Left = 1
+          Height = 103
+          Top = 60
+          Width = 150
+          Align = alClient
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Courier New'
+          ParentFont = False
+          ReadOnly = True
+          ScrollBars = ssVertical
+          TabOrder = 0
+        end
+        object EvalCmdPanel: TPanel
+          Left = 1
+          Height = 59
+          Top = 1
+          Width = 150
+          Align = alTop
+          AutoSize = True
+          ClientHeight = 59
+          ClientWidth = 150
+          ParentBackground = False
+          TabOrder = 1
+          object EvaluateInput: TComboBox
+            Left = 0
+            Height = 29
+            Top = 29
+            Width = 145
+            Anchors = [akTop, akLeft, akRight]
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Courier New'
+            ItemHeight = 21
+            ParentFont = False
+            TabOrder = 0
+            OnKeyPress = EvaluateInputKeyPress
+          end
+          object lblEvaluate: TLabel
+            Left = 1
+            Height = 16
+            Top = 1
+            Width = 56
+            Caption = 'Evaluate:'
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ParentFont = False
+          end
+        end
+      end
+    end
+    object FindSheet: TTabSheet
+      Caption = 'Find results'
+      ClientHeight = 164
+      ClientWidth = 1192
+      ImageIndex = 24
+      object FindOutput: TListView
+        Left = 0
+        Height = 164
+        Top = 0
+        Width = 1192
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clWhite
+        Columns = <        
+          item
+            Width = 38
+          end        
+          item
+            Caption = 'Line'
+            Width = 75
+          end        
+          item
+            Caption = 'Col'
+            Width = 75
+          end        
+          item
+            Caption = 'Unit'
+            Width = 450
+          end        
+          item
+            Caption = 'Message'
+            Width = 120
+          end>
+        ColumnClick = False
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        GridLines = True
+        ParentFont = False
+        ParentShowHint = False
+        ReadOnly = True
+        RowSelect = True
+        ShowHint = True
+        TabOrder = 0
+        ViewStyle = vsReport
+        OnAdvancedCustomDraw = FindOutputAdvancedCustomDraw
+        OnAdvancedCustomDrawSubItem = FindOutputAdvancedCustomDrawSubItem
+        OnDblClick = FindOutputDblClick
+        OnDeletion = FindOutputDeletion
+        OnKeyDown = FindOutputKeyDown
+        OnSelectItem = FindOutputSelectItem
+      end
+    end
+    object CloseSheet: TTabSheet
+      Caption = 'Close'
+      ImageIndex = 67
+    end
+  end
+  object ToolbarDock: TControlBar
+    Left = 0
+    Height = 42
+    Top = 0
+    Width = 1200
+    Align = alTop
+    Color = clBtnFace
+    ParentColor = False
+    RowSize = 40
+    TabOrder = 0
+    OnClick = ToolbarDockClick
+    OnContextPopup = ToolbarDockContextPopup
+    object tbMain: TToolBar
+      Left = 16
+      Height = 36
+      Top = 4
+      Width = 885
+      Align = alNone
+      AutoSize = True
+      ButtonHeight = 36
+      ButtonWidth = 38
+      Caption = 'Main'
+      EdgeInner = esNone
+      EdgeOuter = esNone
+      Images = dmMain.ToolImages_Classic
+      TabOrder = 0
+      Wrapable = False
+      object btnNew: TToolButton
+        Left = 1
+        Top = 0
+        Action = actNewSource
+        AutoSize = True
+      end
+      object btnOpen: TToolButton
+        Left = 39
+        Top = 0
+        Action = actOpen
+        AutoSize = True
+        ImageIndex = 1
+      end
+      object btnSave: TToolButton
+        Left = 77
+        Top = 0
+        Action = actSave
+        AutoSize = True
+        ImageIndex = 2
+      end
+      object btnSaveAll: TToolButton
+        Left = 115
+        Top = 0
+        Action = actSaveAll
+        AutoSize = True
+        ImageIndex = 3
+      end
+      object btnClose: TToolButton
+        Left = 153
+        Top = 0
+        Action = actClose
+        AutoSize = True
+        ImageIndex = 4
+      end
+      object btnSep1: TToolButton
+        Left = 191
+        Height = 36
+        Top = 0
+        AutoSize = True
+        ImageIndex = 10
+        Style = tbsSeparator
+      end
+      object btnUndo: TToolButton
+        Left = 199
+        Top = 0
+        Action = actUndo
+        AutoSize = True
+        ImageIndex = 5
+      end
+      object btnRedo: TToolButton
+        Left = 237
+        Top = 0
+        Action = actRedo
+        AutoSize = True
+        ImageIndex = 6
+      end
+      object btnSep2: TToolButton
+        Left = 275
+        Height = 36
+        Top = 0
+        AutoSize = True
+        Caption = 'btnSep2'
+        ImageIndex = 8
+        Style = tbsSeparator
+      end
+      object btnCut: TToolButton
+        Left = 283
+        Top = 0
+        Action = actCut
+        AutoSize = True
+        ImageIndex = 7
+      end
+      object btnCopy: TToolButton
+        Left = 321
+        Top = 0
+        Action = actCopy
+        AutoSize = True
+        ImageIndex = 8
+      end
+      object btnPaste: TToolButton
+        Left = 359
+        Top = 0
+        Action = actPaste
+        AutoSize = True
+        ImageIndex = 9
+      end
+      object btnSep3: TToolButton
+        Left = 397
+        Height = 36
+        Top = 0
+        AutoSize = True
+        Caption = 'btnSep3'
+        ImageIndex = 10
+        Style = tbsSeparator
+      end
+      object btnInsert: TToolButton
+        Left = 405
+        Top = 0
+        Action = actInsert
+        AutoSize = True
+        ImageIndex = 10
+      end
+      object btnComment: TToolButton
+        Left = 443
+        Top = 0
+        Action = actToggleComment
+        AutoSize = True
+        ImageIndex = 11
+      end
+      object btnFind: TToolButton
+        Left = 481
+        Top = 0
+        Action = actFind
+        AutoSize = True
+        ImageIndex = 12
+      end
+      object btnSep4: TToolButton
+        Left = 519
+        Height = 36
+        Top = 0
+        AutoSize = True
+        Caption = 'btnSep4'
+        ImageIndex = 13
+        Style = tbsSeparator
+      end
+      object btnCompile: TToolButton
+        Left = 527
+        Top = 0
+        Action = actCompile
+        AutoSize = True
+        ImageIndex = 13
+      end
+      object btnRun: TToolButton
+        Left = 565
+        Top = 0
+        Action = actRun
+        AutoSize = True
+        ImageIndex = 14
+      end
+      object btnCompRun: TToolButton
+        Left = 603
+        Top = 0
+        Action = actCompRun
+        AutoSize = True
+        ImageIndex = 15
+      end
+      object btnSep5: TToolButton
+        Left = 641
+        Height = 36
+        Top = 0
+        AutoSize = True
+        Caption = 'btnSep5'
+        ImageIndex = 16
+        Style = tbsSeparator
+      end
+      object btnDebug: TToolButton
+        Left = 649
+        Top = 0
+        Action = actDebug
+        AutoSize = True
+        ImageIndex = 16
+      end
+      object btnStop: TToolButton
+        Left = 687
+        Top = 0
+        Action = actStopExecute
+        AutoSize = True
+        ImageIndex = 17
+      end
+      object btnNext: TToolButton
+        Left = 725
+        Top = 0
+        Action = actNextLine
+        AutoSize = True
+        ImageIndex = 18
+      end
+      object btnStep: TToolButton
+        Left = 763
+        Top = 0
+        Action = actStepLine
+        AutoSize = True
+        ImageIndex = 19
+      end
+      object btnSkipFunc: TToolButton
+        Left = 801
+        Top = 0
+        Action = actSkipFunction
+        AutoSize = True
+        ImageIndex = 20
+      end
+      object btnSep6: TToolButton
+        Left = 839
+        Height = 36
+        Top = 0
+        AutoSize = True
+        Caption = 'btnSep6'
+        ImageIndex = 21
+        Style = tbsSeparator
+      end
+      object btnHomepage: TToolButton
+        Left = 847
+        Top = 0
+        Action = actHelpHomepage
+        AutoSize = True
+        ImageIndex = 21
+      end
+    end
+  end
+  object Statusbar: TStatusBar
+    Left = 0
+    Height = 22
+    Top = 778
+    Width = 1200
+    Panels = <    
+      item
+        Width = 312
+      end    
+      item
+        Style = psOwnerDraw
+        Width = 750
+      end    
+      item
+        Alignment = taCenter
+        Width = 100
+      end    
+      item
+        Alignment = taCenter
+        Width = 100
+      end    
+      item
+        Alignment = taCenter
+        Width = 100
+      end>
+    SimplePanel = False
+    UseSystemFont = False
+    OnDrawPanel = StatusbarDrawPanel
+    OnMouseDown = StatusbarMouseDown
+    OnResize = StatusbarResize
+  end
+  object PageControlPanel: TPanel
+    Left = 254
+    Height = 538
+    Top = 42
+    Width = 946
+    Align = alClient
+    ClientHeight = 538
+    ClientWidth = 946
+    ParentBackground = False
+    TabOrder = 4
+    OnResize = PageControlPanelResize
+    object EditorPageControlSplitter: TSplitter
+      Left = 876
+      Height = 536
+      Top = 1
+      Width = 0
+      Align = alRight
+      ResizeAnchor = akRight
+      Visible = False
+    end
+    object EditorPageControlLeft: TPageControl
+      Left = 1
+      Height = 536
+      Top = 1
+      Width = 875
+      Align = alClient
+      HotTrack = True
+      MultiLine = True
+      Options = [nboMultiLine]
+      PopupMenu = EditorPopup
+      TabOrder = 0
+      Visible = False
+      OnChange = EditorPageControlLeftChange
+      OnDragDrop = EditorPageControlLeftDragDrop
+      OnDragOver = EditorPageControlLeftDragOver
+      OnMouseDown = EditorPageControlLeftMouseDown
+      OnMouseMove = EditorPageControlLeftMouseMove
+    end
+    object EditorPageControlRight: TPageControl
+      Left = 876
+      Height = 536
+      Top = 1
+      Width = 69
+      Align = alRight
+      HotTrack = True
+      MultiLine = True
+      Options = [nboMultiLine]
+      PopupMenu = EditorPopup
+      TabOrder = 1
+      Visible = False
+      OnChange = EditorPageControlLeftChange
+      OnDragDrop = EditorPageControlLeftDragDrop
+      OnDragOver = EditorPageControlLeftDragOver
+      OnMouseDown = EditorPageControlLeftMouseDown
+      OnMouseMove = EditorPageControlLeftMouseMove
+    end
+  end
+  object MainMenu: TMainMenu
+    OwnerDraw = True
+    Left = 368
+    Top = 130
+    object FileMenu: TMenuItem
+      Caption = '&File'
+      OnClick = actFileMenuExecute
+      object NewSourceFileItem: TMenuItem
+        Tag = 2
+        Action = actNewSource
+      end
+      object N34: TMenuItem
+        Caption = '-'
+      end
+      object OpenprojectItem: TMenuItem
+        Tag = 1
+        Action = actOpen
+      end
+      object SaveUnitItem: TMenuItem
+        Tag = 3
+        Action = actSave
+      end
+      object SaveUnitAsItem: TMenuItem
+        Action = actSaveAs
+      end
+      object SaveallItem: TMenuItem
+        Action = actSaveAll
+      end
+      object N33: TMenuItem
+        Caption = '-'
+      end
+      object CloseItem: TMenuItem
+        Tag = 4
+        Action = actClose
+      end
+      object CloseAll2: TMenuItem
+        Action = actCloseAll
+      end
+      object N35: TMenuItem
+        Caption = '-'
+      end
+      object Encoding: TMenuItem
+        Action = actFileEncoding
+      end
+      object Properties: TMenuItem
+        Action = actFileProperties
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object ImportItem: TMenuItem
+        Caption = '&Import'
+        object ImportMSVisualCproject: TMenuItem
+          Action = actImportMSVC
+        end
+        object ImportCBCproject: TMenuItem
+          Action = actImportCB
+        end
+      end
+      object ExportItem: TMenuItem
+        Caption = '&Export'
+        object HTMLItem: TMenuItem
+          Action = actExportHTML
+        end
+        object RTFItem: TMenuItem
+          Action = actExportRTF
+        end
+        object TEXItem: TMenuItem
+          Action = actExportTex
+        end
+        object N19: TMenuItem
+          Caption = '-'
+        end
+        object ProjecttoHTMLItem: TMenuItem
+          Action = actExportProject
+        end
+      end
+      object N43: TMenuItem
+        Caption = '-'
+      end
+      object PrintItem: TMenuItem
+        Tag = 5
+        Action = actPrint
+      end
+      object PrinterSetupItem: TMenuItem
+        Action = actPrintSU
+        GroupIndex = 9
+        Visible = False
+      end
+      object N21: TMenuItem
+        Caption = '-'
+        GroupIndex = 9
+      end
+      object N76: TMenuItem
+        Caption = '-'
+        GroupIndex = 9
+      end
+      object N11: TMenuItem
+        Caption = '-'
+        GroupIndex = 9
+      end
+      object ClearhistoryItem: TMenuItem
+        Action = actHistoryClear
+        GroupIndex = 9
+      end
+      object N3: TMenuItem
+        Caption = '-'
+        Enabled = False
+        GroupIndex = 9
+      end
+      object ExitItem: TMenuItem
+        Action = actExit
+        GroupIndex = 9
+      end
+    end
+    object EditMenu: TMenuItem
+      Caption = '&Edit'
+      OnClick = actFileMenuExecute
+      object UndoItem: TMenuItem
+        Tag = 6
+        Action = actUndo
+      end
+      object RedoItem: TMenuItem
+        Action = actRedo
+      end
+      object N4: TMenuItem
+        Caption = '-'
+        Enabled = False
+      end
+      object CutItem: TMenuItem
+        Action = actCut
+      end
+      object CopyItem: TMenuItem
+        Action = actCopy
+      end
+      object PasteItem: TMenuItem
+        Action = actPaste
+      end
+      object SelectallItem: TMenuItem
+        Action = actSelectAll
+      end
+      object N23: TMenuItem
+        Caption = '-'
+      end
+      object InsertItem: TMenuItem
+        Action = actInsert
+      end
+      object AddToDoitem: TMenuItem
+        Action = actAddToDo
+      end
+      object ShowCodeCompletion: TMenuItem
+        Action = actCodeCompletion
+      end
+      object ToggleBookmarks: TMenuItem
+        Action = actToggleBookmark
+      end
+      object PrevBookmark: TMenuItem
+        Action = actPrevBookmark
+      end
+      object NextBookmark: TMenuItem
+        Action = actNextBookmark
+      end
+      object N26: TMenuItem
+        Caption = '-'
+      end
+      object Comment: TMenuItem
+        Action = actComment
+        Visible = False
+      end
+      object Uncomment: TMenuItem
+        Action = actUncomment
+        Visible = False
+      end
+      object ToggleComment: TMenuItem
+        Action = actToggleComment
+      end
+      object actCommentInlineSel: TMenuItem
+        Action = actToggleCommentInline
+      end
+      object N27: TMenuItem
+        Caption = '-'
+      end
+      object Indent: TMenuItem
+        Action = actIndent
+      end
+      object Unindent: TMenuItem
+        Action = actUnindent
+      end
+      object N64: TMenuItem
+        Caption = '-'
+      end
+      object CollapseAll: TMenuItem
+        Action = actCollapse
+      end
+      object UncollapseAll: TMenuItem
+        Action = actUnCollapse
+      end
+      object N37: TMenuItem
+        Caption = '-'
+      end
+      object DuplicateLine: TMenuItem
+        Action = actDuplicateLine
+      end
+      object DeleteLine: TMenuItem
+        Action = actDeleteLine
+      end
+      object DeleteToLineEnd: TMenuItem
+        Action = actDeleteToLineEnd
+      end
+      object DeleteToLineBegin: TMenuItem
+        Action = actDeleteToLineBegin
+      end
+      object N68: TMenuItem
+        Caption = '-'
+      end
+      object MoveSelUp: TMenuItem
+        Action = actMoveSelUp
+      end
+      object MoveSelDown: TMenuItem
+        Action = actMoveSelDown
+      end
+    end
+    object SearchMenu: TMenuItem
+      Caption = '&Search'
+      OnClick = actFileMenuExecute
+      object FindItem: TMenuItem
+        Tag = 7
+        Action = actFind
+      end
+      object FindinallfilesItem: TMenuItem
+        Action = actFindAll
+      end
+      object ReplaceItem: TMenuItem
+        Action = actReplace
+      end
+      object ReplaceAll1: TMenuItem
+        Action = actReplaceAll
+      end
+      object N72: TMenuItem
+        Caption = '-'
+      end
+      object actSearchAgain1: TMenuItem
+        Action = actSearchAgain
+      end
+      object SearchAgainBackwards1: TMenuItem
+        Action = actRevSearchAgain
+      end
+      object N75: TMenuItem
+        Caption = '-'
+      end
+      object IncrementalSearch1: TMenuItem
+        Action = actIncremental
+      end
+      object N7: TMenuItem
+        Caption = '-'
+        Enabled = False
+      end
+      object Gotofunction1: TMenuItem
+        Action = actGotoFunction
+      end
+      object GotolineItem: TMenuItem
+        Action = actGotoLine
+      end
+    end
+    object ViewMenu: TMenuItem
+      Caption = '&View'
+      OnClick = actFileMenuExecute
+      object AutoModeItem: TMenuItem
+        Action = actColorAutoMode
+      end
+      object DarkModeItem: TMenuItem
+        Action = actColorDarkMode
+      end
+      object LightModeItem: TMenuItem
+        Action = actColorLightMode
+      end
+      object Separator3: TMenuItem
+        Caption = '-'
+      end
+      object IconThemeClassicItem: TMenuItem
+        Action = actIconThemeClassic
+      end
+      object IconThemeOutlineItem: TMenuItem
+        Action = actIconThemeOutline
+      end
+      object Separator4: TMenuItem
+        Caption = '-'
+      end
+      object ColorSchemeItem: TMenuItem
+        Caption = 'Editor Color Scheme'
+        OnClick = ColorSchemeItemClick
+      end
+      object Separator2: TMenuItem
+        Caption = '-'
+      end
+      object ProjectManagerItem: TMenuItem
+        Action = actProjectManager
+        AutoCheck = True
+      end
+      object ToolMainItem: TMenuItem
+        Action = actToolbar
+        AutoCheck = True
+      end
+      object MessageManagerItem: TMenuItem
+        Action = actMessagePanel
+        AutoCheck = True
+      end
+      object StatusbarItem: TMenuItem
+        Action = actStatusbar
+        AutoCheck = True
+      end
+      object ToDolist1: TMenuItem
+        Action = actViewToDoList
+      end
+      object N14: TMenuItem
+        Caption = '-'
+      end
+      object MoveToOtherViewItem: TMenuItem
+        Action = actSwapEditor
+      end
+      object SwapHeaderSourceItem: TMenuItem
+        Action = actSwapHeaderSource
+      end
+      object FloatingPojectManagerItem: TMenuItem
+        Caption = '&Floating Project Manager'
+        Visible = False
+        OnClick = FloatingPojectManagerItemClick
+      end
+      object FloatingReportwindowItem: TMenuItem
+        Caption = 'Floating &Report window'
+        Visible = False
+        OnClick = FloatingReportwindowItemClick
+      end
+      object N77: TMenuItem
+        Caption = '-'
+      end
+      object ShowSpecialCharsItem: TMenuItem
+        Action = actShowSpecialChars
+        AutoCheck = True
+      end
+      object ShowRulerItem: TMenuItem
+        Action = actShowTopRuler
+      end
+      object ShowLineNumberItem: TMenuItem
+        Action = actShowLineNumber
+      end
+      object ShowMinimapItem: TMenuItem
+        Action = actShowMinimap
+        AutoCheck = True
+      end
+      object ShowMacromapItem: TMenuItem
+        Action = actShowMacromap
+        AutoCheck = True
+      end
+      object WordWrapItem: TMenuItem
+        Action = actWordWrap
+        AutoCheck = True
+      end
+      object N78: TMenuItem
+        Caption = '-'
+      end
+      object ScrollUpItem: TMenuItem
+        Action = actScrollUp
+      end
+      object ScrollDownItem: TMenuItem
+        Action = actScrollDown
+      end
+    end
+    object ProjectMenu: TMenuItem
+      Caption = '&Project'
+      OnClick = actFileMenuExecute
+      object NewprojectItem: TMenuItem
+        Action = actNewProject
+      end
+      object SaveprojectasItem: TMenuItem
+        Action = actSaveProjectAs
+      end
+      object CloseprojectItem: TMenuItem
+        Action = actCloseProject
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object NewunitinprojectItem: TMenuItem
+        Tag = 2
+        Action = actProjectNew
+      end
+      object NewClassItem: TMenuItem
+        Action = actNewClass
+      end
+      object AddtoprojectItem: TMenuItem
+        Action = actProjectAdd
+      end
+      object RemovefromprojectItem: TMenuItem
+        Action = actProjectRemove
+      end
+      object ProjectoptionsItem: TMenuItem
+        Action = actProjectOptions
+      end
+      object N6: TMenuItem
+        Caption = '-'
+      end
+      object NewTemplateItem: TMenuItem
+        Action = actNewTemplate
+      end
+    end
+    object ExecuteMenu: TMenuItem
+      Caption = 'E&xecute'
+      OnClick = actFileMenuExecute
+      object CompileItem: TMenuItem
+        Tag = 8
+        Action = actCompile
+      end
+      object RunItem: TMenuItem
+        Tag = 9
+        Action = actRun
+      end
+      object CompileandRunItem: TMenuItem
+        Action = actCompRun
+      end
+      object RebuildallItem: TMenuItem
+        Action = actRebuild
+      end
+      object N69: TMenuItem
+        Caption = '-'
+      end
+      object SyntaxCheckItem: TMenuItem
+        Action = actSyntaxCheck
+      end
+      object SyntaxCheckCurrentFile1: TMenuItem
+        Action = actSyntaxCheckFile
+        Visible = False
+      end
+      object N10: TMenuItem
+        Caption = '-'
+        Visible = False
+      end
+      object mnuExecParameters: TMenuItem
+        Action = actExecParams
+      end
+      object N29: TMenuItem
+        Caption = '-'
+      end
+      object Abortcompilation2: TMenuItem
+        Action = actGotoBreakPoint
+        ShortCut = 113
+      end
+      object oggleBreakpoint1: TMenuItem
+        Action = actBreakPoint
+      end
+      object Abortcompilation1: TMenuItem
+        Action = actDebug
+      end
+      object Programreset1: TMenuItem
+        Action = actStopExecute
+      end
+      object Nextline1: TMenuItem
+        Action = actNextLine
+      end
+      object Intoline1: TMenuItem
+        Action = actStepLine
+      end
+      object Skipfunction1: TMenuItem
+        Action = actSkipFunction
+      end
+      object N8: TMenuItem
+        Caption = '-'
+      end
+      object N49: TMenuItem
+        Action = actProjectMakeFile
+      end
+      object CleanItem: TMenuItem
+        Action = actClean
+      end
+      object N25: TMenuItem
+        Caption = '-'
+      end
+      object Profileanalysis1: TMenuItem
+        Action = actProfile
+      end
+      object DeleteProfilingInformation: TMenuItem
+        Action = actDeleteProfile
+      end
+    end
+    object ToolsMenu: TMenuItem
+      Caption = '&Tools'
+      OnClick = actToolsMenuExecute
+      object MenuItem3: TMenuItem
+        Action = actFormatCurrentFile
+      end
+      object MenuItem4: TMenuItem
+        Action = actFormatOptions
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
+      end
+      object CompileroptionsItem: TMenuItem
+        Tag = 11
+        Action = actCompOptions
+      end
+      object EnvironmentoptionsItem: TMenuItem
+        Tag = 12
+        Action = actEnviroOptions
+      end
+      object EditorOptionsItem: TMenuItem
+        Action = actEditorOptions
+      end
+      object N20: TMenuItem
+        Caption = '-'
+      end
+      object ConfiguredevShortcuts1: TMenuItem
+        Action = actConfigShortcuts
+      end
+      object ConfiguretoolsItem: TMenuItem
+        Action = actConfigTools
+      end
+      object FixHiDPI: TMenuItem
+        Action = actFixHighDPI
+        Visible = False
+      end
+      object N5: TMenuItem
+        Caption = '-'
+      end
+      object ToolFileExplorer: TMenuItem
+        Action = actFileExplorer
+      end
+      object OpenConsole: TMenuItem
+        Action = actConsoleOpen
+      end
+      object SetConsoleLarge: TMenuItem
+        Action = actConsoleLarge
+      end
+      object SetConsoleDefault: TMenuItem
+        Action = actConsoleDefault
+      end
+      object TextDiff: TMenuItem
+        Action = actCodeDiff
+      end
+      object N24: TMenuItem
+        Caption = '-'
+      end
+      object PackageManagerItem: TMenuItem
+        Action = actPackageManager
+        Bitmap.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000000000000000
+          00000000000000000000000000000000000000000000BFBFBF4066727FBF2033
+          3DFF7F7F7FFFDFDFDF4000000000000000000000000000000000000000000000
+          0000000000000000000000000000BFBFBF40596672BF4D7298FF7FB2E5FF2665
+          92FF3A4653FF7F7F7FFFDFDFDF40000000000000000000000000000000000000
+          000000000000BFBFBF40596672BF4D7298FF6698CBFF6698CBFF7FB2E5FF265F
+          8FFF4078A8FF2D3A46FF7F7F7FFFDFDFDF40000000000000000000000000BFBF
+          BF40596672BF4D7298FF6698CBFF6698CBFF6698CBFF6698CBFF7FB2E5FF3366
+          98FF266592FF4073A5FF2D3A46FF7F7F7FFFDFDFDF400000000000000000334C
+          66FF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF7FB2E5FF3366
+          98FF265F8FFF4078A8FF336698FF2D3A46FF7F7F7FFFDFDFDF4000000000334C
+          66FF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF7FB2E5FF3366
+          98FF336698FF266592FF4073A5FF266592FF404040FF9E9E9EBF00000000334C
+          66FF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFF7FB2E5FF3366
+          98FF336698FF1A5886FF266592FF336698FF7F7F7F800000000000000000334C
+          66FF6698CBFF6698CBFF6698CBFF6698CBFF6698CBFFB3CCE5FFB1B1B1FFA5B2
+          BEFF336698FF1A5886FF4D7FB2FF336698FF7F7F7F800000000000000000334C
+          66FF6698CBFF6698CBFF6698CBFFB3CCE5FF8080D3FF1B1BC2FF191947FF3131
+          31FF8CC4E5FF1A5886FF4D7FB2FF336698FF7F7F7F800000000000000000334C
+          66FF6698CBFFB3CCE5FFE1FFFFFF1B1B6EFF6B6BFFFF3636DCFF0000B0FF002B
+          6EFF00AAFFFF80BDDCFF4D7FB2FF336698FF7F7F7F8000000000000000005966
+          73FF80A5B9FF1B525DFFC3FFFFFF363680FF6B6BFFFF3636E5FF0000ABFF0000
+          54FF00AAFFFF005580FF99B3CCFF336698FF7F7F7F800000000000000000BFBF
+          BF4040525DFF36BFBFFF8AB1B1FF5B5B80FFBEC5FFFFAAC0FFFF242BCBFF0000
+          54FF00AAFFFF00AAFFFF1A334CFFCCD9E5FF7F7F7F8000000000000000000000
+          0000407F7FBF36FFFFFF717171FF808080FF6B80BFFF8EABFFFF6B80BFFF002B
+          6EFF00AAFFFF00AAFFFF404040FF7F7F7F800000000000000000000000000000
+          0000BFBFBF4047BFBFFFA6D8D8FFD1E7E7FF35525DFF304466FF0D1A26FF0095
+          BFFF008080FF008080FFBFBFBF40000000000000000000000000000000000000
+          000000000000BFBFBF4096BFBFFF9FBFBFFF003856FF99B3CCFF808080FF6968
+          68FFDDDDDDFF7F7F7F8000000000000000000000000000000000000000000000
+          00000000000000000000BFBFBF40727C7CFF808080FF7F7F7F80000000007878
+          78BF747474FFBFBFBF4000000000000000000000000000000000
+        }
+        ImageIndex = 73
+      end
+      object RunTests: TMenuItem
+        Action = actRunTests
+        AutoCheck = True
+        Visible = False
+      end
+    end
+    object WindowMenu: TMenuItem
+      Caption = '&Window'
+      GroupIndex = 9
+      OnClick = actWindowMenuExecute
+      object CloseAllItem: TMenuItem
+        Action = actCloseAll
+      end
+      object N28: TMenuItem
+        Caption = '-'
+      end
+      object FullscreenmodeItem: TMenuItem
+        Action = actFullScreen
+        AutoCheck = True
+      end
+      object N36: TMenuItem
+        Caption = '-'
+      end
+      object PreviousItem: TMenuItem
+        Action = actPrevWindow
+      end
+      object NextItem: TMenuItem
+        Action = actNextWindow
+      end
+      object N32: TMenuItem
+        Caption = '-'
+      end
+      object ListItem: TMenuItem
+        Caption = '&List...'
+        OnClick = ListItemClick
+      end
+    end
+    object HelpMenu: TMenuItem
+      Caption = '&Help'
+      GroupIndex = 9
+      OnClick = actFileMenuExecute
+      object HelpTutorial: TMenuItem
+        Action = actHelpTutorial
+      end
+      object HelpManual: TMenuItem
+        Action = actHelpManual
+      end
+      object HelpFAQ: TMenuItem
+        Action = actHelpFAQ
+      end
+      object ShowTipsItem: TMenuItem
+        Action = actHelpTips
+      end
+      object N47: TMenuItem
+        Caption = '-'
+      end
+      object HelpGNUCLib: TMenuItem
+        Action = actHelpCLib
+      end
+      object HelpHomepage: TMenuItem
+        Action = actHelpHomepage
+      end
+      object Donate1: TMenuItem
+        Action = actHelpDonate
+        Visible = False
+      end
+      object N50: TMenuItem
+        Caption = '-'
+      end
+      object AboutDevCppItem: TMenuItem
+        Tag = 18
+        Action = actHelpAbout
+      end
+    end
+  end
+  object EditorPopup: TPopupMenu
+    Left = 550
+    Top = 140
+    object N15: TMenuItem
+      Caption = '-'
+    end
+    object Close1: TMenuItem
+      Action = actClose
+    end
+    object Movetootherview1: TMenuItem
+      Action = actSwapEditor
+    end
+    object N16: TMenuItem
+      Caption = '-'
+    end
+    object UndoPopItem: TMenuItem
+      Action = actUndo
+    end
+    object RedoPopItem: TMenuItem
+      Action = actRedo
+    end
+    object MenuItem1: TMenuItem
+      Caption = '-'
+    end
+    object CutPopItem: TMenuItem
+      Action = actCut
+    end
+    object CopyPopItem: TMenuItem
+      Action = actCopy
+    end
+    object PastePopItem: TMenuItem
+      Action = actPaste
+    end
+    object SelectAllPopItem: TMenuItem
+      Action = actSelectAll
+    end
+    object N22: TMenuItem
+      Caption = '-'
+    end
+    object GotoDeclEditor: TMenuItem
+      Action = actGotoDeclEditor
+    end
+    object GotoDefineEditor: TMenuItem
+      Action = actGotoImplEditor
+    end
+    object Swapheadersource1: TMenuItem
+      Action = actSwapHeaderSource
+    end
+    object MenuItem2: TMenuItem
+      Caption = '-'
+    end
+    object InsertPopItem: TMenuItem
+      Action = actInsert
+    end
+    object AddToDoitem1: TMenuItem
+      Action = actAddToDo
+      Visible = False
+    end
+    object ToggleBookmarks1: TMenuItem
+      Action = actToggleBookmark
+      Visible = False
+    end
+    object GotoPrevBookmark1: TMenuItem
+      Action = actPrevBookmark
+      Visible = False
+    end
+    object GotoNextBookmark1: TMenuItem
+      Action = actNextBookmark
+      Visible = False
+    end
+    object N38: TMenuItem
+      Caption = '-'
+    end
+    object actOpenFolder1: TMenuItem
+      Action = actOpenFolder
+    end
+    object mnuFileProps: TMenuItem
+      Action = actFileProperties
+    end
+  end
+  object UnitPopup: TPopupMenu
+    Left = 550
+    Top = 220
+    object RemoveFilefromprojectPopItem: TMenuItem
+      Action = actUnitRemove
+    end
+    object RenamefilePopItem: TMenuItem
+      Action = actUnitRename
+    end
+    object N30: TMenuItem
+      Caption = '-'
+    end
+    object OpenPopItem: TMenuItem
+      Action = actUnitOpen
+    end
+    object mnuOpenWith: TMenuItem
+      Caption = 'Open with'
+      OnClick = mnuOpenWithClick
+    end
+    object ClosefilePopItem: TMenuItem
+      Action = actUnitClose
+    end
+    object N40: TMenuItem
+      Caption = '-'
+    end
+    object mnuUnitProperties: TMenuItem
+      Action = actFileProperties
+    end
+  end
+  object ProjectPopup: TPopupMenu
+    Left = 780
+    Top = 220
+    object NewunitinprojectPopItem: TMenuItem
+      Tag = 2
+      Action = actProjectNew
+    end
+    object AddtoprojectPopItem: TMenuItem
+      Action = actProjectAdd
+    end
+    object RemovefromprojectPopItem: TMenuItem
+      Action = actProjectRemove
+    end
+    object N39: TMenuItem
+      Caption = '-'
+    end
+    object Newfolder1: TMenuItem
+      Action = actProjectNewFolder
+    end
+    object MenuItem18: TMenuItem
+      Caption = '-'
+    end
+    object ProjectoptionsPopItem: TMenuItem
+      Action = actProjectOptions
+    end
+    object N48: TMenuItem
+      Caption = '-'
+    end
+    object CloseProject1: TMenuItem
+      Action = actCloseProject
+    end
+  end
+  object ActionList: TActionList
+    Left = 370
+    Top = 420
+    object actViewCPU: TAction
+      Category = 'Debug'
+      Caption = '&CPU window'
+      OnExecute = ViewCPUItemClick
+      OnUpdate = actUpdateDebuggerRunningCPU
+    end
+    object actNewSource: TAction
+      Tag = 1
+      Category = 'File'
+      Caption = 'New &Source File'
+      ImageIndex = 0
+      ShortCut = 16462
+      OnExecute = actNewSourceExecute
+    end
+    object actNewFiles: TAction
+      Category = 'File'
+      Caption = '&New Files X'
+      OnExecute = actNewFilesExecute
+    end
+    object actNewProject: TAction
+      Tag = 2
+      Category = 'File'
+      Caption = 'New &Project...'
+      ImageIndex = 1
+      OnExecute = actNewProjectExecute
+    end
+    object actNewTemplate: TAction
+      Tag = 4
+      Category = 'Project'
+      Caption = 'New &Template...'
+      OnExecute = actNewTemplateExecute
+      OnUpdate = actNewTemplateUpdate
+    end
+    object actNewClass: TAction
+      Category = 'Project'
+      Caption = 'New &Class...'
+      ImageIndex = 31
+      OnExecute = actBrowserNewClassExecute
+      OnUpdate = actBrowserNewClassUpdate
+    end
+    object actOpen: TAction
+      Tag = 1
+      Category = 'File'
+      Caption = '&Open File or Project...'
+      ImageIndex = 2
+      ShortCut = 16463
+      OnExecute = actOpenExecute
+    end
+    object actHistoryClear: TAction
+      Tag = 2
+      Category = 'File'
+      Caption = '&Clear History'
+      OnExecute = actHistoryClearExecute
+    end
+    object actSave: TAction
+      Tag = 3
+      Category = 'File'
+      Caption = '&Save'
+      ImageIndex = 3
+      ShortCut = 16467
+      OnExecute = actSaveExecute
+      OnUpdate = actSaveUpdate
+    end
+    object actSaveAs: TAction
+      Tag = 4
+      Category = 'File'
+      Caption = 'Save &As'
+      ImageIndex = 4
+      OnExecute = actSaveAsExecute
+      OnUpdate = actSaveAsUpdate
+    end
+    object actSaveProjectAs: TAction
+      Category = 'File'
+      Caption = 'Save project as...'
+      ImageIndex = 5
+      OnExecute = actSaveProjectAsExecute
+      OnUpdate = actUpdateProject
+    end
+    object actSaveAll: TAction
+      Tag = 5
+      Category = 'File'
+      Caption = 'Save A&ll'
+      ImageIndex = 6
+      ShortCut = 24659
+      OnExecute = actSaveAllExecute
+      OnUpdate = actSaveAllUpdate
+    end
+    object actClose: TAction
+      Tag = 7
+      Category = 'File'
+      Caption = '&Close'
+      ImageIndex = 7
+      ShortCut = 16471
+      OnExecute = actCloseExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actCloseAll: TAction
+      Tag = 11
+      Category = 'File'
+      Caption = 'Close All'
+      ShortCut = 24663
+      OnExecute = actCloseAllExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actCloseProject: TAction
+      Tag = 6
+      Category = 'File'
+      Caption = 'Close Project'
+      ImageIndex = 8
+      OnExecute = actCloseProjectExecute
+      OnUpdate = actUpdateProject
+    end
+    object actExportHTML: TAction
+      Tag = 1
+      Category = 'File'
+      Caption = 'to &HTML'
+      OnExecute = actExportHTMLExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actExportRTF: TAction
+      Tag = 2
+      Category = 'File'
+      Caption = 'to &RTF'
+      OnExecute = actExportRTFExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actExportTex: TAction
+      Tag = 3
+      Category = 'File'
+      Caption = 'to &Tex'
+      OnExecute = actExportTexExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actExportProject: TAction
+      Tag = 3
+      Category = 'File'
+      Caption = '&Project to HTML'
+      OnExecute = actExportProjectExecute
+      OnUpdate = actUpdateProject
+    end
+    object actPrint: TAction
+      Tag = 8
+      Category = 'File'
+      Caption = '&Print'
+      ImageIndex = 9
+      ShortCut = 16464
+      OnExecute = actPrintExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actPrintSU: TAction
+      Tag = 9
+      Category = 'File'
+      Caption = 'Prin&ter Setup...'
+      OnExecute = actPrintSUExecute
+    end
+    object actExit: TAction
+      Tag = 10
+      Category = 'File'
+      Caption = 'E&xit Dev-C++'
+      ImageIndex = 10
+      ShortCut = 32883
+      OnExecute = actExitExecute
+    end
+    object actUndo: TAction
+      Tag = 1
+      Category = 'Edit'
+      Caption = '&Undo'
+      ImageIndex = 11
+      ShortCut = 16474
+      OnExecute = actUndoExecute
+      OnUpdate = actUndoUpdate
+    end
+    object actRedo: TAction
+      Tag = 2
+      Category = 'Edit'
+      Caption = '&Redo'
+      ImageIndex = 12
+      ShortCut = 24666
+      OnExecute = actRedoExecute
+      OnUpdate = actRedoUpdate
+    end
+    object actCut: TAction
+      Tag = 3
+      Category = 'Edit'
+      Caption = 'C&ut'
+      ImageIndex = 13
+      ShortCut = 16472
+      OnExecute = actCutExecute
+      OnUpdate = actCutUpdate
+    end
+    object actCopy: TAction
+      Tag = 4
+      Category = 'Edit'
+      Caption = '&Copy'
+      ImageIndex = 14
+      ShortCut = 16451
+      OnExecute = actCopyExecute
+      OnUpdate = actCopyUpdate
+    end
+    object actPaste: TAction
+      Tag = 5
+      Category = 'Edit'
+      Caption = '&Paste'
+      ImageIndex = 15
+      ShortCut = 16470
+      OnExecute = actPasteExecute
+      OnUpdate = actPasteUpdate
+    end
+    object actSelectAll: TAction
+      Tag = 6
+      Category = 'Edit'
+      Caption = '&Select All'
+      ShortCut = 16449
+      OnExecute = actSelectAllExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actFind: TAction
+      Tag = 1
+      Category = 'Search'
+      Caption = '&Find'
+      ImageIndex = 24
+      ShortCut = 16454
+      OnExecute = actFindExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actFindAll: TAction
+      Tag = 2
+      Category = 'Search'
+      Caption = 'Fin&d in all Files'
+      ShortCut = 24646
+      OnExecute = actFindAllExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actReplace: TAction
+      Tag = 3
+      Category = 'Search'
+      Caption = '&Replace'
+      ImageIndex = 25
+      ShortCut = 16466
+      OnExecute = actReplaceExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actReplaceAll: TAction
+      Category = 'Search'
+      Caption = 'Replace All'
+      ShortCut = 24658
+      OnExecute = actReplaceAllExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actIncremental: TAction
+      Category = 'Search'
+      Caption = 'Incremental Search'
+      ShortCut = 16453
+      OnExecute = actIncrementalExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actGotoLine: TAction
+      Tag = 5
+      Category = 'Search'
+      Caption = '&Go to line...'
+      ShortCut = 16455
+      OnExecute = actGotoLineExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actProjectManager: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = '&Project Manager'
+      ImageIndex = 26
+      ShortCut = 16465
+      OnExecute = actProjectManagerExecute
+    end
+    object actStatusbar: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = '&Statusbar'
+      ImageIndex = 28
+      OnExecute = actStatusbarExecute
+    end
+    object actShowSpecialChars: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Show Space/Tab/EOL'
+      OnExecute = actShowSpecialCharsExecute
+    end
+    object actScrollUp: TAction
+      Category = 'Edit'
+      Caption = 'Scroll Up'
+      ShortCut = 16422
+      OnExecute = actScrollUpExecute
+    end
+    object actScrollDown: TAction
+      Category = 'Edit'
+      Caption = 'Scroll Down'
+      ShortCut = 16424
+      OnExecute = actScrollDownExecute
+    end
+    object actProjectNew: TAction
+      Tag = 1
+      Category = 'Project'
+      Caption = '&New Unit'
+      ImageIndex = 30
+      OnExecute = actProjectNewExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectAdd: TAction
+      Tag = 2
+      Category = 'Project'
+      Caption = '&Add file...'
+      ImageIndex = 32
+      OnExecute = actProjectAddExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectRemove: TAction
+      Tag = 3
+      Category = 'Project'
+      Caption = '&Remove file...'
+      ImageIndex = 33
+      OnExecute = actProjectRemoveExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectOptions: TAction
+      Tag = 5
+      Category = 'Project'
+      Caption = 'Project &Options...'
+      ImageIndex = 34
+      ShortCut = 16456
+      OnExecute = actProjectOptionsExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectMakeFile: TAction
+      Category = 'Project'
+      Caption = 'Edit &Makefile'
+      OnExecute = actProjectMakeFileExecute
+      OnUpdate = actUpdateMakeFile
+    end
+    object actProjectSource: TAction
+      Tag = 6
+      Category = 'Project'
+      Caption = 'Source'
+      OnExecute = actProjectSourceExecute
+      OnUpdate = actUpdateProject
+    end
+    object actCompile: TAction
+      Tag = 1
+      Category = 'Execute'
+      Caption = '&Compile'
+      Hint = 'Compile'
+      ImageIndex = 35
+      ShortCut = 120
+      OnExecute = actCompileExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actRun: TAction
+      Tag = 2
+      Category = 'Execute'
+      Caption = '&Run'
+      Hint = 'Run'
+      ImageIndex = 36
+      ShortCut = 121
+      OnExecute = actRunExecute
+      OnUpdate = actRunUpdate
+    end
+    object actCompRun: TAction
+      Tag = 3
+      Category = 'Execute'
+      Caption = 'Compile && Run'
+      Hint = 'Compile and Run'
+      ImageIndex = 37
+      ShortCut = 122
+      OnExecute = actCompRunExecute
+      OnUpdate = actCompileRunUpdate
+    end
+    object actRebuild: TAction
+      Tag = 4
+      Category = 'Execute'
+      Caption = 'R&ebuild All'
+      Hint = 'Rebuild All'
+      ShortCut = 123
+      OnExecute = actRebuildExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actClean: TAction
+      Tag = 5
+      Category = 'Execute'
+      Caption = 'C&lean'
+      Hint = 'Clean'
+      ImageIndex = 49
+      OnExecute = actCleanExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actDebug: TAction
+      Tag = 6
+      Category = 'Debug'
+      Caption = '&Debug'
+      ImageIndex = 40
+      ShortCut = 116
+      OnExecute = actDebugExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actCompOptions: TAction
+      Tag = 1
+      Category = 'Tools'
+      Caption = '&Compiler Options...'
+      ImageIndex = 51
+      OnExecute = actCompOptionsExecute
+    end
+    object actEnviroOptions: TAction
+      Tag = 2
+      Category = 'Tools'
+      Caption = '&Environment Options...'
+      ImageIndex = 52
+      OnExecute = actEnviroOptionsExecute
+    end
+    object actEditorOptions: TAction
+      Tag = 3
+      Category = 'Tools'
+      Caption = 'E&ditor Options...'
+      ImageIndex = 53
+      OnExecute = actEditorOptionsExecute
+    end
+    object actConfigTools: TAction
+      Tag = 4
+      Category = 'Tools'
+      Caption = 'Configure &Tools...'
+      ImageIndex = 55
+      OnExecute = actConfigToolsExecute
+    end
+    object actFullScreen: TAction
+      Tag = 1
+      Category = 'Window'
+      AutoCheck = True
+      Caption = '&Full screen mode'
+      ImageIndex = 58
+      ShortCut = 16506
+      OnExecute = actFullScreenExecute
+    end
+    object actNextWindow: TAction
+      Tag = 2
+      Category = 'Window'
+      Caption = '&Next'
+      ShortCut = 16393
+      OnExecute = actNextWindowExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actPrevWindow: TAction
+      Tag = 3
+      Category = 'Window'
+      Caption = '&Previous'
+      ShortCut = 24585
+      OnExecute = actPrevWindowExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actHelpAbout: TAction
+      Category = 'Help'
+      Caption = '&About Dev-C++...'
+      ImageIndex = 64
+      OnExecute = actHelpAboutExecute
+    end
+    object actUnitRemove: TAction
+      Tag = 1
+      Category = 'Project'
+      Caption = '&Remove from project'
+      OnExecute = actUnitRemoveExecute
+      OnUpdate = actUpdateProject
+    end
+    object actUnitRename: TAction
+      Tag = 2
+      Category = 'Project'
+      Caption = 'Re&name file'
+      ShortCut = 113
+      OnExecute = actUnitRenameExecute
+      OnUpdate = actUpdateProject
+    end
+    object actUnitHeader: TAction
+      Tag = 5
+      Category = 'Project'
+      Caption = 'Open &Header'
+      OnUpdate = actUpdateProject
+    end
+    object actUnitOpen: TAction
+      Tag = 4
+      Category = 'Project'
+      Caption = '&Open'
+      OnExecute = actUnitOpenExecute
+      OnUpdate = actUpdateProject
+    end
+    object actUnitClose: TAction
+      Tag = 3
+      Category = 'Project'
+      Caption = '&Close'
+      OnExecute = actUnitCloseExecute
+      OnUpdate = actUpdateProject
+    end
+    object actBreakPoint: TAction
+      Category = 'Debug'
+      Caption = 'Toggle Breakpoint'
+      ImageIndex = 39
+      ShortCut = 115
+      OnExecute = actBreakPointExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actAddWatch: TAction
+      Category = 'Debug'
+      Caption = '&Add watch'
+      ImageIndex = 46
+      OnExecute = actAddWatchExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actEditWatch: TAction
+      Category = 'Debug'
+      Caption = '&Edit watch'
+    end
+    object actContinue: TAction
+      Category = 'Debug'
+      Caption = '&Continue'
+      OnExecute = actContinueExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actWatchItem: TAction
+      Category = 'Debug'
+      Caption = '&Watch variables'
+      ImageIndex = 45
+      OnUpdate = actUpdatePageorProject
+    end
+    object actRemoveWatch: TAction
+      Category = 'Debug'
+      Caption = '&Remove watch'
+      ImageIndex = 47
+      OnExecute = actRemoveWatchExecute
+      OnUpdate = actUpdateDeleteWatch
+    end
+    object actStopExecute: TAction
+      Category = 'Debug'
+      Caption = 'Stop exec'
+      Hint = 'Stop execution'
+      ImageIndex = 41
+      ShortCut = 117
+      OnExecute = actStopExecuteExecute
+      OnUpdate = actStopExecuteUpdate
+    end
+    object actSyntaxCheck: TAction
+      Category = 'Execute'
+      Caption = '&Syntax Check'
+      Hint = 'Syntax Check'
+      ImageIndex = 38
+      OnExecute = actSyntaxCheckExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actConfigShortcuts: TAction
+      Category = 'Tools'
+      Caption = 'Configure &Shortcuts'
+      ImageIndex = 54
+      OnExecute = actConfigShortcutsExecute
+    end
+    object actComment: TAction
+      Category = 'Edit'
+      Caption = 'Comment'
+      OnExecute = actCommentExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actUncomment: TAction
+      Category = 'Edit'
+      Caption = 'Uncomment'
+      OnExecute = actUncommentExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actToggleComment: TAction
+      Category = 'Edit'
+      Caption = 'Toggle Comment'
+      ImageIndex = 20
+      ShortCut = 16575
+      OnExecute = actToggleCommentExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actToggleCommentInline: TAction
+      Category = 'Edit'
+      Caption = 'Toggle Inline Comment'
+      ImageIndex = 21
+      ShortCut = 16570
+      OnExecute = actToggleCommentInlineExecute
+      OnUpdate = actToggleCommentInlineUpdate
+    end
+    object actIndent: TAction
+      Category = 'Edit'
+      Caption = 'Indent'
+      ImageIndex = 22
+      ShortCut = 9
+      OnExecute = actIndentExecute
+      OnUpdate = actUpdateIndent
+    end
+    object actUnindent: TAction
+      Category = 'Edit'
+      Caption = 'Unindent'
+      ImageIndex = 23
+      ShortCut = 8201
+      OnExecute = actUnindentExecute
+      OnUpdate = actUpdateIndent
+    end
+    object actGotoFunction: TAction
+      Category = 'Search'
+      Caption = 'Goto function'
+      ShortCut = 24647
+      OnExecute = actGotoFunctionExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actBrowserGotoDeclaration: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Goto declaration'
+      OnExecute = actBrowserGotoDeclarationExecute
+      OnUpdate = actBrowserGotoDeclarationUpdate
+    end
+    object actBrowserGotoDefinition: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Goto definition'
+      OnExecute = actBrowserGotoDefinitionExecute
+      OnUpdate = actBrowserGotoDefinitionUpdate
+    end
+    object actBrowserNewClass: TAction
+      Category = 'ClassBrowser'
+      Caption = 'New class'
+      ImageIndex = 32
+      OnExecute = actBrowserNewClassExecute
+      OnUpdate = actBrowserNewClassUpdate
+    end
+    object actBrowserNewMember: TAction
+      Category = 'ClassBrowser'
+      Caption = 'New member function'
+      ImageIndex = 72
+      OnExecute = actBrowserNewMemberExecute
+      OnUpdate = actBrowserNewMemberUpdate
+    end
+    object actBrowserNewVar: TAction
+      Category = 'ClassBrowser'
+      Caption = 'New variable'
+      ImageIndex = 73
+      OnExecute = actBrowserNewVarExecute
+      OnUpdate = actBrowserNewVarUpdate
+    end
+    object actBrowserViewAll: TAction
+      Category = 'ClassBrowser'
+      Caption = 'All files'
+      Checked = True
+      OnExecute = actBrowserViewAllExecute
+      OnUpdate = actBrowserViewAllUpdate
+    end
+    object actBrowserViewProject: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Project files'
+      OnExecute = actBrowserViewProjectExecute
+      OnUpdate = actBrowserViewAllUpdate
+    end
+    object actBrowserViewCurrent: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Current file'
+      OnExecute = actBrowserViewCurrentExecute
+      OnUpdate = actBrowserViewAllUpdate
+    end
+    object actSyntaxCheckFile: TAction
+      Category = 'Execute'
+      Caption = '&Syntax Check Current File'
+      Hint = 'Syntax Check File'
+      ShortCut = 16504
+      OnExecute = actSyntaxCheckFileExecute
+      OnUpdate = actCompileUpdate
+    end
+    object actProfile: TAction
+      Category = 'Execute'
+      Caption = 'Profile analysis'
+      Hint = 'Profiling'
+      ImageIndex = 50
+      OnExecute = actProfileExecute
+      OnUpdate = actCompileRunUpdate
+    end
+    object actBrowserViewIncludes: TAction
+      Category = 'ClassBrowser'
+      Caption = 'System Headers'
+      OnExecute = actBrowserViewIncludesExecute
+      OnUpdate = actBrowserViewAllUpdate
+    end
+    object actBrowserAddFolder: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Add folder'
+    end
+    object actBrowserRemoveFolder: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Remove folder'
+    end
+    object actBrowserRenameFolder: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Rename folder'
+    end
+    object actCloseAllButThis: TAction
+      Category = 'File'
+      Caption = 'Close All Except This'
+      OnExecute = actCloseAllButThisExecute
+    end
+    object actFileProperties: TAction
+      Category = 'File'
+      Caption = 'Properties'
+      OnExecute = actFilePropertiesExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actAddToDo: TAction
+      Category = 'Edit'
+      Caption = 'Add To-Do item...'
+      ShortCut = 16468
+      OnExecute = actAddToDoExecute
+      OnUpdate = actUpdatePageorProject
+    end
+    object actProjectNewFolder: TAction
+      Category = 'Project'
+      Caption = 'Add folder'
+      OnExecute = actProjectNewFolderExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectRemoveFolder: TAction
+      Category = 'Project'
+      Caption = 'Remove folder'
+      OnExecute = actProjectRemoveFolderExecute
+      OnUpdate = actUpdateProject
+    end
+    object actProjectRenameFolder: TAction
+      Category = 'Project'
+      Caption = 'Rename folder'
+      OnExecute = actProjectRenameFolderExecute
+      OnUpdate = actUpdateProject
+    end
+    object actImportMSVC: TAction
+      Category = 'File'
+      Caption = 'MS Visual C++ project'
+      OnExecute = actImportMSVCExecute
+    end
+    object actExecParams: TAction
+      Category = 'Execute'
+      Caption = 'Parameters...'
+      OnExecute = actExecParamsExecute
+    end
+    object actHelpTips: TAction
+      Category = 'Help'
+      Caption = 'Tips'
+      OnExecute = actHelpTipsExecute
+    end
+    object actAbortCompilation: TAction
+      Category = 'Execute'
+      Caption = 'Abort compilation'
+      OnExecute = actAbortCompilationExecute
+      OnUpdate = actAbortCompilationUpdate
+    end
+    object actBrowserShowInherited: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Show inherited members'
+      OnExecute = actBrowserShowInheritedExecute
+    end
+    object actAttachProcess: TAction
+      Category = 'Debug'
+      Caption = 'Attach to process...'
+      OnExecute = actAttachProcessExecute
+      OnUpdate = actAttachProcessUpdate
+    end
+    object actModifyWatch: TAction
+      Category = 'Debug'
+      Caption = '&Modify watch'
+      ImageIndex = 48
+      OnExecute = actModifyWatchExecute
+      OnUpdate = actModifyWatchUpdate
+    end
+    object actNextLine: TAction
+      Category = 'Debug'
+      Caption = '&Next line'
+      ImageIndex = 42
+      ShortCut = 118
+      OnExecute = actNextLineExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actStepLine: TAction
+      Category = 'Debug'
+      Caption = 'Into line'
+      ImageIndex = 43
+      ShortCut = 119
+      OnExecute = actStepLineExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actDeleteProfile: TAction
+      Category = 'Execute'
+      Caption = 'Delete Profiling information'
+      Hint = 'Delete Profile'
+      OnExecute = actDeleteProfileExecute
+      OnUpdate = actRunUpdate
+    end
+    object actGotoDeclEditor: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Goto Declaration'
+      OnExecute = actGotoImplDeclEditorExecute
+    end
+    object actGotoImplEditor: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Goto Implementation'
+      OnExecute = actGotoImplDeclEditorExecute
+    end
+    object actCollapse: TAction
+      Category = 'Edit'
+      Caption = 'Collapse All'
+      OnExecute = actCollapseExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actUnCollapse: TAction
+      Category = 'Edit'
+      Caption = 'Uncollapse All'
+      OnExecute = actUnCollapseExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actInsert: TAction
+      Category = 'Edit'
+      Caption = 'Insert Snippet'
+      ImageIndex = 16
+      OnExecute = actInsertExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actNextIns: TAction
+      Category = 'Debug'
+      Caption = 'Next instruc.'
+      Hint = 'Next Instruction'
+      OnExecute = actNextInsExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actStepIns: TAction
+      Category = 'Debug'
+      Caption = 'Into instruc.'
+      Hint = 'Into instruction'
+      OnExecute = actStepInsExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actSkipFunction: TAction
+      Category = 'Debug'
+      Caption = 'Skip function'
+      ImageIndex = 44
+      ShortCut = 8311
+      OnExecute = actSkipFunctionExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actMsgCut: TAction
+      Category = 'Messages'
+      Caption = 'Cut'
+      ShortCut = 16472
+      OnExecute = actMsgCutExecute
+    end
+    object actMsgCopy: TAction
+      Category = 'Messages'
+      Caption = 'Copy'
+      ShortCut = 16451
+      OnExecute = actMsgCopyExecute
+    end
+    object actMsgCopyAll: TAction
+      Category = 'Messages'
+      Caption = 'Copy All'
+      ShortCut = 24643
+      OnExecute = actMsgCopyAllExecute
+    end
+    object actMsgPaste: TAction
+      Category = 'Messages'
+      Caption = 'Paste'
+      ShortCut = 16470
+      OnExecute = actMsgPasteExecute
+    end
+    object actMsgSelAll: TAction
+      Category = 'Messages'
+      Caption = 'Select All'
+      ShortCut = 16449
+      OnExecute = actMsgSelAllExecute
+    end
+    object actMsgSaveAll: TAction
+      Category = 'Messages'
+      Caption = 'Save All'
+      ShortCut = 16467
+      OnExecute = actMsgSaveAllExecute
+    end
+    object actMsgClear: TAction
+      Category = 'Messages'
+      Caption = 'Clear'
+      OnExecute = actMsgClearExecute
+    end
+    object actSearchAgain: TAction
+      Category = 'Search'
+      Caption = 'Search Again'
+      ShortCut = 114
+      OnExecute = actSearchAgainExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actRevSearchAgain: TAction
+      Category = 'Search'
+      Caption = 'Search Again Backwards'
+      ShortCut = 8306
+      OnExecute = actRevSearchAgainExecute
+      OnUpdate = actUpdateEmptyEditorFindForm
+    end
+    object actDeleteLine: TAction
+      Category = 'Edit'
+      Caption = 'Delete Line'
+      ShortCut = 16473
+      OnExecute = actDeleteLineExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actDeleteToLineEnd: TAction
+      Category = 'Edit'
+      Caption = 'Delete to End of Line'
+      ShortCut = 16459
+      OnExecute = actDeleteToLineEndExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actDeleteToLineBegin: TAction
+      Category = 'Edit'
+      Caption = 'Delete to Beginning of Line'
+      ShortCut = 24651
+      OnExecute = actDeleteToLineBeginExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actDuplicateLine: TAction
+      Category = 'Edit'
+      Caption = 'Duplicate Line'
+      ShortCut = 16452
+      OnExecute = actDuplicateLineExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actMoveSelUp: TAction
+      Category = 'Edit'
+      Caption = 'Move Selection Up'
+      ShortCut = 32806
+      OnExecute = actMoveSelUpExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actMoveSelDown: TAction
+      Category = 'Edit'
+      Caption = 'Move Selection Down'
+      ShortCut = 32808
+      OnExecute = actMoveSelDownExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actCodeCompletion: TAction
+      Category = 'ClassBrowser'
+      Caption = 'Code Completion'
+      ImageIndex = 74
+      ShortCut = 16397
+      OnExecute = actCodeCompletionExecute
+      OnUpdate = actCodeCompletionUpdate
+    end
+    object actPackageCheck: TAction
+      Category = 'Tools'
+      Caption = '&Check for Packages'
+    end
+    object actPackageManager: TAction
+      Category = 'Tools'
+      Caption = 'Package Manager'
+      OnExecute = actPackageManagerExecute
+    end
+    object actHelpTutorial: TAction
+      Category = 'Help'
+      Caption = 'Dev-C++ &Tutorial'
+      ImageIndex = 59
+      OnExecute = actHelpTutorialExecute
+    end
+    object actShortenCompPaths: TAction
+      Category = 'Execute'
+      Caption = 'Shorten compiler paths'
+      OnExecute = actShortenCompPathsExecute
+    end
+    object actGotoBreakPoint: TAction
+      Category = 'Debug'
+      Caption = 'Goto Breakpoint'
+      OnExecute = actGotoBreakPointExecute
+      OnUpdate = actUpdateDebuggerRunning
+    end
+    object actFormatCurrentFile: TAction
+      Category = 'AStyle'
+      Caption = 'Format Current File'
+      ImageIndex = 56
+      ShortCut = 24641
+      OnExecute = actFormatCurrentFileExecute
+      OnUpdate = actUpdateEmptyEditor
+    end
+    object actFormatOptions: TAction
+      Category = 'AStyle'
+      Caption = 'Formatting Options'
+      ImageIndex = 57
+      OnExecute = actFormatOptionsExecute
+    end
+    object actRunTests: TAction
+      Category = 'Tests'
+      Caption = 'Run Tests'
+      ShortCut = 16497
+      OnExecute = actRunTestsExecute
+    end
+    object actHelpCLib: TAction
+      Category = 'Help'
+      Caption = 'C/C++ Library'
+      ImageIndex = 62
+      OnExecute = actHelpCLibExecute
+    end
+    object actHelpFAQ: TAction
+      Category = 'Help'
+      Caption = 'C/C++ FAQ'
+      ImageIndex = 61
+      OnExecute = actHelpFAQExecute
+    end
+    object actHelpDonate: TAction
+      Category = 'Help'
+      Caption = 'Donate'
+      OnExecute = actHelpDonateExecute
+    end
+    object actMsgTranslate: TAction
+      Category = 'Messages'
+      Caption = 'Translage Message'
+      OnExecute = actMsgTranslateExecute
+    end
+    object actHelpHomepage: TAction
+      Category = 'Help'
+      Caption = 'Dev-C++ Homepage'
+      ImageIndex = 63
+      OnExecute = actHelpHomepageExecute
+    end
+    object actToggleBookmark: TAction
+      Category = 'Edit'
+      Caption = 'Toggle Bookmark'
+      ImageIndex = 17
+      ShortCut = 16461
+      OnExecute = actToggleBookmarkExecute
+    end
+    object actPrevBookmark: TAction
+      Category = 'Edit'
+      Caption = 'Goto Prev Bookmark'
+      ImageIndex = 18
+      ShortCut = 16458
+      OnExecute = actPrevBookmarkExecute
+    end
+    object actNextBookmark: TAction
+      Category = 'Edit'
+      Caption = 'Goto Next Bookmark'
+      ImageIndex = 19
+      ShortCut = 24650
+      OnExecute = actNextBookmarkExecute
+    end
+    object actHelpManual: TAction
+      Category = 'Help'
+      Caption = 'Dev-C++ Manual'
+      ImageIndex = 60
+      OnExecute = actHelpManualExecute
+    end
+    object actRuntoCursor: TAction
+      Category = 'Debug'
+      Caption = 'Run to Cursor'
+      OnExecute = actRuntoCursorExecute
+      OnUpdate = actRuntoCursorUpdate
+    end
+    object actFileExplorer: TAction
+      Category = 'Tools'
+      Caption = 'Open File Explorer Here'
+      ImageIndex = 68
+      OnExecute = actFileExplorerExecute
+    end
+    object actConsoleOpen: TAction
+      Category = 'Tools'
+      Caption = 'Open Console Here'
+      ImageIndex = 69
+      OnExecute = actConsoleOpenExecute
+    end
+    object actConsoleLarge: TAction
+      Category = 'Tools'
+      Caption = 'actConsoleLarge'
+      ImageIndex = 70
+      OnExecute = actConsoleLargeExecute
+    end
+    object actConsoleDefault: TAction
+      Category = 'Tools'
+      Caption = 'actConsoleDefault'
+      OnExecute = actConsoleDefaultExecute
+    end
+    object actCodeDiff: TAction
+      Category = 'Tools'
+      Caption = 'Text Diff'
+      ImageIndex = 71
+      OnExecute = actCodeDiffExecute
+    end
+    object actFixHighDPI: TAction
+      Category = 'Tools'
+      Caption = 'Fix HighDPI for Dev-C++'
+      OnExecute = actFixHighDPIExecute
+    end
+    object actImportCB: TAction
+      Category = 'File'
+      Caption = 'Code::Blocks project'
+      OnExecute = actImportCBExecute
+    end
+    object actOpenFolder: TAction
+      Category = 'File'
+      Caption = 'Open Containing Folder'
+      ShortCut = 16450
+      OnExecute = actOpenFolderExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actFileEncoding: TAction
+      Category = 'File'
+      Caption = 'Encoding'
+      OnExecute = actFileEncodingExecute
+    end
+    object actShowTopRuler: TAction
+      Category = 'View'
+      Caption = 'Show Top Ruler'
+      OnExecute = actShowTopRulerExecute
+    end
+    object actShowLineNumber: TAction
+      Category = 'View'
+      Caption = 'Show Line Number'
+      OnExecute = actShowLineNumberExecute
+    end
+    object actShowMinimap: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Show Minimap'
+      OnExecute = actShowMinimapExecute
+    end
+    object actShowMacromap: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Show Micromap'
+      OnExecute = actShowMacromapExecute
+    end
+    object actWordWrap: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Word Wrap'
+      ShortCut = 16469
+      OnExecute = actWordWrapExecute
+    end
+    object actShowBars: TAction
+      Category = 'View'
+      Caption = 'Show Toolbars'
+      ShortCut = 16507
+      OnExecute = actShowBarsExecute
+    end
+    object actSwapHeaderSource: TAction
+      Category = 'View'
+      Caption = '&Swap Header/Source'
+      OnExecute = actSwapHeaderSourceExecute
+      OnUpdate = actUpdatePageCount
+    end
+    object actViewToDoList: TAction
+      Category = 'View'
+      Caption = 'To-Do list...'
+      ImageIndex = 29
+      OnExecute = actViewToDoListExecute
+      OnUpdate = actUpdatePageorProject
+    end
+    object actSwapEditor: TAction
+      Category = 'View'
+      Caption = 'Move To Other View'
+      OnExecute = actSwapEditorExecute
+      OnUpdate = actSwapEditorUpdate
+    end
+    object actToolbar: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Toolbar'
+      ImageIndex = 27
+      OnExecute = actToolBarExecute
+    end
+    object actMessagePanel: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Message Panel'
+      ImageIndex = 72
+      OnExecute = actMessagePanelExecute
+    end
+    object actColorAutoMode: TAction
+      Category = 'View'
+      Caption = 'Color Mode：Auto'
+      OnExecute = actColorAutoModeExecute
+    end
+    object actColorDarkMode: TAction
+      Category = 'View'
+      Caption = 'Color Mode：Dark'
+      OnExecute = actColorDarkModeExecute
+    end
+    object actColorLightMode: TAction
+      Category = 'View'
+      Caption = 'Color Mode：Light'
+      OnExecute = actColorLightModeExecute
+    end
+    object actIconThemeClassic: TAction
+      Category = 'View'
+      Caption = 'Classic Theme'
+      OnExecute = actIconThemeClassicExecute
+    end
+    object actIconThemeOutline: TAction
+      Category = 'View'
+      Caption = 'Outline Theme'
+      OnExecute = actIconThemeOutlineExecute
+    end
+    object actColorScheme: TAction
+      Category = 'View'
+      Caption = 'actColorScheme'
+    end
+  end
+  object MessagePopup: TPopupMenu
+    Left = 780
+    Top = 310
+    object actMsgCut1: TMenuItem
+      Action = actMsgCut
+    end
+    object MsgCopyItem: TMenuItem
+      Action = actMsgCopy
+    end
+    object MsgCopyAllItem: TMenuItem
+      Action = actMsgCopyAll
+    end
+    object MsgPasteItem: TMenuItem
+      Action = actMsgPaste
+    end
+    object N74: TMenuItem
+      Caption = '-'
+    end
+    object MsgSellAllItem: TMenuItem
+      Action = actMsgSelAll
+    end
+    object N71: TMenuItem
+      Caption = '-'
+    end
+    object MsgSaveAllItem: TMenuItem
+      Action = actMsgSaveAll
+    end
+    object N73: TMenuItem
+      Caption = '-'
+    end
+    object MsgClearItem: TMenuItem
+      Action = actMsgClear
+    end
+  end
+  object BrowserPopup: TPopupMenu
+    Left = 370
+    Top = 310
+    object mnuBrowserGotoDecl: TMenuItem
+      Action = actBrowserGotoDeclaration
+    end
+    object mnuBrowserGotoImpl: TMenuItem
+      Action = actBrowserGotoDefinition
+      Default = True
+    end
+    object mnuBrowserSep1: TMenuItem
+      Caption = '-'
+    end
+    object mnuBrowserNewClass: TMenuItem
+      Action = actBrowserNewClass
+    end
+    object mnuBrowserNewMember: TMenuItem
+      Action = actBrowserNewMember
+    end
+    object mnuBrowserNewVariable: TMenuItem
+      Action = actBrowserNewVar
+    end
+    object N31: TMenuItem
+      Caption = '-'
+    end
+    object mnuBrowserViewMode: TMenuItem
+      Caption = 'View mode'
+      object mnuBrowserViewAll: TMenuItem
+        Action = actBrowserViewAll
+        RadioItem = True
+      end
+      object mnuBrowserViewProject: TMenuItem
+        Action = actBrowserViewProject
+        RadioItem = True
+      end
+      object mnuBrowserViewCurrent: TMenuItem
+        Action = actBrowserViewCurrent
+        RadioItem = True
+      end
+      object mnuBrowserViewInclude: TMenuItem
+        Action = actBrowserViewIncludes
+        RadioItem = True
+      end
+      object N42: TMenuItem
+        Caption = '-'
+      end
+      object Showinheritedmembers1: TMenuItem
+        Action = actBrowserShowInherited
+      end
+    end
+  end
+  object DebugPopup: TPopupMenu
+    OnPopup = DebugPopupPopup
+    Left = 550
+    Top = 310
+    object AddwatchPop: TMenuItem
+      Action = actAddWatch
+    end
+    object ModifyWatchPop: TMenuItem
+      Action = actModifyWatch
+    end
+    object N67: TMenuItem
+      Caption = '-'
+    end
+    object RemoveWatchPop: TMenuItem
+      Action = actRemoveWatch
+    end
+    object ClearallWatchPop: TMenuItem
+      Caption = '&Clear all'
+      OnClick = ClearallWatchPopClick
+    end
+  end
+  object FolderPopup: TPopupMenu
+    Left = 370
+    Top = 220
+    object Addfolder2: TMenuItem
+      Action = actProjectNewFolder
+    end
+    object Renamefolder2: TMenuItem
+      Action = actProjectRenameFolder
+    end
+    object Removefolder2: TMenuItem
+      Action = actProjectRemoveFolder
+    end
+    object N44: TMenuItem
+      Caption = '-'
+    end
+    object SourceFile1: TMenuItem
+      Action = actProjectNew
+    end
+    object Addfile1: TMenuItem
+      Action = actProjectAdd
+    end
+  end
+end

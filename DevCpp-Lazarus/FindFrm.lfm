@@ -1,0 +1,347 @@
+object FindForm: TFindForm
+  Left = 534
+  Height = 323
+  Top = 299
+  Width = 348
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Find Text'
+  ClientHeight = 323
+  ClientWidth = 348
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  PopupMenu = FindPopup
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 323
+    Top = 0
+    Width = 348
+    Align = alClient
+    ClientHeight = 323
+    ClientWidth = 348
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object FindTabs: TTabControl
+      Left = 1
+      Height = 272
+      Top = 1
+      Width = 346
+      OnChange = FindTabsChange
+      TabIndex = 0
+      Tabs.Strings = (
+        'Find'
+        'Find in files'
+        'Replace'
+        'Replace in files'
+      )
+      Align = alTop
+      Anchors = []
+      TabOrder = 0
+      object PanelTabs: TPanel
+        Left = 2
+        Height = 246
+        Top = 24
+        Width = 342
+        Align = alClient
+        ClientHeight = 246
+        ClientWidth = 342
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 1
+        object grpOrigin: TGroupBox
+          Left = 8
+          Height = 80
+          Top = 120
+          Width = 160
+          Caption = '  Origin:  '
+          ClientHeight = 59
+          ClientWidth = 156
+          ParentBackground = False
+          TabOrder = 4
+          Visible = False
+          object rbFromCursor: TRadioButton
+            Left = 8
+            Height = 20
+            Top = 0
+            Width = 89
+            Caption = 'From &cursor'
+            Checked = True
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbEntireScope: TRadioButton
+            Left = 8
+            Height = 20
+            Top = 24
+            Width = 93
+            Caption = 'Entire &scope'
+            Color = clForm
+            ParentColor = False
+            TabOrder = 1
+          end
+        end
+        object lblFind: TLabel
+          Left = 8
+          Height = 16
+          Top = 8
+          Width = 67
+          Caption = '&Text to find:'
+          Color = clForm
+          ParentColor = False
+        end
+        object cboFindText: TComboBox
+          Left = 7
+          Height = 24
+          Top = 32
+          Width = 330
+          ItemHeight = 16
+          TabOrder = 0
+          OnKeyDown = cboFindTextKeyDown
+          OnKeyUp = cboFindTextKeyUp
+        end
+        object lblReplace: TLabel
+          Left = 8
+          Height = 16
+          Top = 64
+          Width = 80
+          Caption = 'Replace with:'
+          Color = clForm
+          ParentColor = False
+        end
+        object cboReplaceText: TComboBox
+          Left = 6
+          Height = 24
+          Top = 88
+          Width = 331
+          ItemHeight = 16
+          TabOrder = 1
+          OnKeyDown = cboReplaceTextKeyDown
+          OnKeyUp = cboReplaceTextKeyUp
+        end
+        object grpDirection: TGroupBox
+          Left = 183
+          Height = 106
+          Top = 120
+          Width = 152
+          Caption = '  Direction:  '
+          ClientHeight = 85
+          ClientWidth = 148
+          ParentBackground = False
+          TabOrder = 2
+          object rbBackward: TRadioButton
+            Left = 14
+            Height = 20
+            Top = 8
+            Width = 65
+            Caption = '&Upward'
+            TabOrder = 0
+          end
+          object rbForward: TRadioButton
+            Left = 15
+            Height = 20
+            Top = 40
+            Width = 81
+            Caption = '&Downward'
+            Checked = True
+            TabOrder = 1
+            TabStop = True
+          end
+        end
+        object grpWhere: TGroupBox
+          Left = 176
+          Height = 120
+          Top = 120
+          Width = 153
+          Caption = 'File(s)'
+          ClientHeight = 99
+          ClientWidth = 149
+          ParentBackground = False
+          TabOrder = 3
+          object rbProjectFiles: TRadioButton
+            Left = 16
+            Height = 20
+            Top = 0
+            Width = 105
+            Caption = 'Files in Project'
+            Checked = True
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbOpenFiles: TRadioButton
+            Left = 15
+            Height = 20
+            Top = 25
+            Width = 83
+            Caption = 'Open Files'
+            TabOrder = 1
+          end
+          object rbCurFile: TRadioButton
+            Left = 15
+            Height = 20
+            Top = 48
+            Width = 80
+            Caption = 'Current file'
+            TabOrder = 2
+          end
+        end
+        object grpScope: TGroupBox
+          Left = 8
+          Height = 80
+          Top = 144
+          Width = 160
+          Caption = '  Scope:  '
+          ClientHeight = 59
+          ClientWidth = 156
+          ParentBackground = False
+          TabOrder = 5
+          Visible = False
+          object rbGlobal: TRadioButton
+            Left = 8
+            Height = 20
+            Top = 0
+            Width = 58
+            Caption = '&Global'
+            Checked = True
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 0
+            TabStop = True
+          end
+          object rbSelectedOnly: TRadioButton
+            Left = 8
+            Height = 20
+            Top = 24
+            Width = 100
+            Caption = '&Selected only'
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 1
+          end
+        end
+        object grpOptions: TGroupBox
+          Left = 6
+          Height = 122
+          Top = 120
+          Width = 170
+          Caption = '  Options:  '
+          ClientHeight = 101
+          ClientWidth = 166
+          ParentBackground = False
+          TabOrder = 6
+          object cbMatchCase: TCheckBox
+            Left = 11
+            Height = 20
+            Top = 0
+            Width = 106
+            Caption = 'C&ase sensitive'
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 0
+          end
+          object cbWholeWord: TCheckBox
+            Left = 11
+            Height = 20
+            Top = 24
+            Width = 124
+            Caption = '&Whole words only'
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 1
+          end
+          object cbPrompt: TCheckBox
+            Left = 11
+            Height = 20
+            Top = 48
+            Width = 134
+            Caption = '&Prompt on Replace'
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 2
+          end
+          object cbSelectedOnly: TCheckBox
+            Left = 11
+            Height = 20
+            Top = 72
+            Width = 115
+            Caption = 'Only in Selected'
+            Color = clBtnText
+            ParentColor = False
+            TabOrder = 3
+          end
+        end
+      end
+    end
+    object btnFind: TButton
+      Left = 24
+      Height = 27
+      Top = 286
+      Width = 93
+      Anchors = [akLeft, akBottom]
+      Caption = 'Find'
+      TabOrder = 1
+      OnClick = btnFindClick
+    end
+    object btnReplace: TButton
+      Left = 144
+      Height = 26
+      Top = 287
+      Width = 79
+      Anchors = [akLeft, akBottom]
+      Caption = 'Replace'
+      TabOrder = 2
+      OnClick = btnReplaceClick
+    end
+    object btnClose: TButton
+      Left = 256
+      Height = 27
+      Top = 286
+      Width = 84
+      Anchors = [akLeft, akBottom]
+      Cancel = True
+      Caption = 'Close'
+      ModalResult = 11
+      TabOrder = 3
+      OnClick = btnCloseClick
+    end
+  end
+  object FindPopup: TPopupMenu
+    Left = 216
+    Top = 56
+    object FindCut: TMenuItem
+      Caption = 'Cut'
+      ShortCut = 16472
+      OnClick = FindCutClick
+    end
+    object FindCopy: TMenuItem
+      Caption = 'Copy'
+      ShortCut = 16451
+      OnClick = FindCopyClick
+    end
+    object FindPaste: TMenuItem
+      Caption = 'Paste'
+      ShortCut = 16470
+      OnClick = FindPasteClick
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object FindSelAll: TMenuItem
+      Caption = 'Select All'
+      ShortCut = 16449
+      OnClick = FindSelAllClick
+    end
+  end
+end

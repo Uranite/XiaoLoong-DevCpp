@@ -1,0 +1,114 @@
+object ToolForm: TToolForm
+  Left = 1293
+  Height = 320
+  Top = 415
+  Width = 339
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSizeToolWin
+  Caption = 'Tools configuration'
+  ClientHeight = 320
+  ClientWidth = 339
+  Color = clForm
+  Constraints.MinHeight = 320
+  Constraints.MinWidth = 300
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 264
+    Top = 0
+    Width = 320
+    ClientHeight = 242
+    ClientWidth = 316
+    ParentBackground = False
+    TabOrder = 0
+    object lblCurrent: TLabel
+      Left = 8
+      Height = 17
+      Top = -8
+      Width = 81
+      Caption = 'Current Tools:'
+    end
+    object ListBox: TListBox
+      Left = 8
+      Height = 218
+      Top = 16
+      Width = 216
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      ItemHeight = 0
+      TabOrder = 0
+      OnClick = ListBoxClick
+      OnDblClick = btnEditClick
+    end
+    object btnAdd: TSpeedButton
+      Left = 232
+      Height = 33
+      Top = 96
+      Width = 80
+      Caption = 'Add'
+      Images = dmMain.MenuImages_Classic
+      ImageIndex = 32
+      OnClick = btnAddClick
+    end
+    object btnEdit: TSpeedButton
+      Left = 232
+      Height = 33
+      Top = 136
+      Width = 80
+      Caption = 'Edit'
+      Images = dmMain.MenuImages_Classic
+      ImageIndex = 34
+      OnClick = btnEditClick
+    end
+    object btnDelete: TSpeedButton
+      Left = 232
+      Height = 33
+      Top = 176
+      Width = 80
+      Caption = 'Delete'
+      Images = dmMain.MenuImages_Classic
+      ImageIndex = 33
+      OnClick = btnDeleteClick
+    end
+    object btnUp: TSpeedButton
+      Tag = 1
+      Left = 248
+      Height = 26
+      Top = 24
+      Width = 48
+      Anchors = [akTop, akRight]
+      Caption = '▲'
+      OnClick = PosbtnClick
+    end
+    object btnDown: TSpeedButton
+      Tag = 2
+      Left = 248
+      Height = 26
+      Top = 56
+      Width = 48
+      Anchors = [akTop, akRight]
+      Caption = '▼'
+      OnClick = PosbtnClick
+    end
+  end
+  object btnOk: TBitBtn
+    Left = 136
+    Height = 35
+    Top = 272
+    Width = 88
+    Anchors = [akLeft, akBottom]
+    Default = True
+    DefaultCaption = True
+    Kind = bkOK
+    ModalResult = 1
+    NumGlyphs = 2
+    TabOrder = 1
+    OnClick = btnOkClick
+  end
+end

@@ -1,0 +1,39 @@
+object CodeComplForm: TCodeComplForm
+  Left = 643
+  Height = 61
+  Top = 308
+  Width = 142
+  BorderIcons = []
+  BorderStyle = bsNone
+  ClientHeight = 61
+  ClientWidth = 142
+  Color = clBtnFace
+  Constraints.MinHeight = 40
+  Constraints.MinWidth = 40
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Courier New'
+  FormStyle = fsStayOnTop
+  KeyPreview = True
+  LCLVersion = '4.6.0.0'
+  OnDeactivate = FormDeactivate
+  OnPaint = FormPaint
+  OnShow = FormShow
+  object lbCompletion: TListBox
+    Left = 2
+    Height = 57
+    Top = 2
+    Width = 134
+    ExtendedSelect = False
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Courier New'
+    ItemHeight = 0
+    ParentFont = False
+    Style = lbOwnerDrawFixed
+    TabOrder = 0
+    OnDblClick = lbCompletionDblClick
+    OnDrawItem = lbCompletionDrawItem
+    OnKeyPress = lbCompletionKeyPress
+  end
+end

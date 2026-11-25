@@ -1,0 +1,90 @@
+object AddToDoForm: TAddToDoForm
+  Left = 855
+  Height = 173
+  Top = 321
+  Width = 343
+  BorderStyle = bsToolWindow
+  Caption = 'Add To-Do item'
+  ClientHeight = 173
+  ClientWidth = 343
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.4.0.0'
+  OnClose = FormClose
+  OnShow = FormShow
+  object Label1: TLabel
+    Left = 16
+    Height = 15
+    Top = 40
+    Width = 63
+    Caption = 'Description:'
+  end
+  object Label2: TLabel
+    Left = 192
+    Height = 29
+    Top = 8
+    Width = 73
+    AutoSize = False
+    Caption = 'Priority:'
+  end
+  object Label3: TLabel
+    Left = 12
+    Height = 15
+    Top = 8
+    Width = 26
+    Caption = 'User:'
+  end
+  object memDescr: TMemo
+    Left = 16
+    Height = 56
+    Top = 64
+    Width = 312
+    Lines.Strings = (
+      'memDescr'
+    )
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object spnPri: TSpinEdit
+    Left = 248
+    Height = 23
+    Top = 8
+    Width = 81
+    MaxValue = 9
+    MinValue = 1
+    TabOrder = 4
+    Value = 1
+  end
+  object btnOK: TButton
+    Left = 152
+    Height = 25
+    Top = 136
+    Width = 75
+    Caption = 'OK'
+    Default = True
+    TabOrder = 1
+    OnClick = btnOKClick
+  end
+  object btnCancel: TButton
+    Left = 253
+    Height = 25
+    Top = 136
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 2
+  end
+  object txtUser: TEdit
+    Left = 56
+    Height = 23
+    Top = 8
+    Width = 124
+    TabOrder = 3
+    Text = 'txtUser'
+    OnKeyPress = txtUserKeyPress
+  end
+end

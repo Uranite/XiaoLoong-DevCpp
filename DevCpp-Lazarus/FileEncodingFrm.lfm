@@ -1,0 +1,102 @@
+object FileEncodingForm: TFileEncodingForm
+  Left = 362
+  Height = 169
+  Top = 308
+  Width = 364
+  BorderStyle = bsDialog
+  Caption = 'File Encoding'
+  ClientHeight = 169
+  ClientWidth = 364
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  object PanelGround: TPanel
+    Left = 0
+    Height = 169
+    Top = 0
+    Width = 364
+    Align = alClient
+    ClientHeight = 169
+    ClientWidth = 364
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object lblFileName: TLabel
+      Left = 8
+      Height = 21
+      Top = 120
+      Width = 73
+      Caption = 'Filename:'
+      Visible = False
+    end
+    object cmbFiles: TComboBox
+      Left = 88
+      Height = 29
+      Top = 120
+      Width = 40
+      ItemHeight = 21
+      ReadOnly = True
+      Style = csDropDownList
+      TabOrder = 0
+      Visible = False
+    end
+    object lblEncoding: TLabel
+      Left = 24
+      Height = 21
+      Top = 8
+      Width = 75
+      Caption = 'Encoding:'
+    end
+    object listEncoding: TListBox
+      Left = 24
+      Height = 72
+      Top = 32
+      Width = 151
+      Items.Strings = (
+        'ANSI'
+        'UTF-8 BOM'
+        'UTF-8'
+      )
+      ItemHeight = 21
+      TabOrder = 1
+    end
+    object lblEol: TLabel
+      Left = 200
+      Height = 21
+      Top = 8
+      Width = 100
+      Caption = 'Line endings:'
+    end
+    object listEolSymbol: TListBox
+      Left = 200
+      Height = 72
+      Top = 32
+      Width = 151
+      Items.Strings = (
+        'CR+LF (Windows)'
+        'LF (Linux, Mac)'
+      )
+      ItemHeight = 21
+      TabOrder = 2
+    end
+    object btnOK: TButton
+      Left = 168
+      Height = 33
+      Top = 120
+      Width = 75
+      Caption = 'OK'
+      Default = True
+      TabOrder = 3
+      OnClick = btnOKClick
+    end
+    object btnCancel: TButton
+      Left = 264
+      Height = 33
+      Top = 120
+      Width = 75
+      Caption = 'Cancel'
+      TabOrder = 4
+      OnClick = btnCancelClick
+    end
+  end
+end

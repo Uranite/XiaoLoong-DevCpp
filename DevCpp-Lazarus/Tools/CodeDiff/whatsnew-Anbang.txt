@@ -1,0 +1,162 @@
+WorkBuddy 自动把所有变更记录在本文件的末尾。
+
+=======================
+·项目改名为 CodeDiff。
+·在表格下方添加两个文本框，点击表格中某一行时，把左右两个文件的那一行复制到文本框中显示。
+·表格中默认不显示前导的制表符和空格。在 WorkBuddy 的帮助下，显示出前导的制表符和空格。
+
+=======================
+2022-01-10
+
+使用 Delphi XE2 编译时遇上问题，逐个解决。
+undeclared identifier "TRect".  	增加使用单元 Types
+undeclared identifier "DWORD".  	增加使用单元 Windows
+
+s := s.ToUpper; 	改为 s := UpperCase(s);
+
+
+这个演示版只提供了基本的文本比较功能。
+更多常用的功能（显示行内差异、文本编辑和保存）并未提供，而且要想实现也很困难。
+--李安邦  2022-1-10
+
+2026-09-02 已完全移植为纯 Lazarus 独立项目：
+- 移除所有 Delphi 兼容的条件编译分支（{$IFDEF FPC} / {$IFnDEF FPC} / {$ifndef fpc}），只保留 FPC/LCL 路径。
+- 删除 Delphi 遗留工程文件（.dpr / .dproj / .dproj.local / .dfm / .identcache）。
+- 删除旧版参考实现 src/Diff_O_(ND).pas（Myers O(ND)），保留 O(NP) 的 Diff.pas 为唯一核心。
+- 新建标准 Lazarus 工程文件 CodeDiff.lpr / .lpi，可直接用 Lazarus 4.8 打开编译。
+- 替换 Delphi 专有写法为 LCL/FPC 写法：Windows→LCLIntf/LCLType、TList<Cardinal>→TFPGList<Cardinal>、s.ToUpper→UpperCase(s)、clWebKhaki→clYellow。
+- 通过 lazbuild --build-all 编译通过，并做运行时冒烟测试（传入两个测试文件，程序正常启动）。
+--李安邦  2026-09-02
+
+2026-09-27 项目正式更名为 CodeDiff：
+- 目录 TextDiffBasic/ 改名为 CodeDiff/，工程文件改为 CodeDiff.lpr / .lpi / .lps，可执行文件为 CodeDiff.exe。
+- 窗口标题由 TextDiff2 改为 CodeDiff；HashUnit.pas 头部的 Application 名同步更新。
+- 修正 .lpi 中指向不存在文件 TextDiffBasic_Icon.ico 的图标引用，改为实际的 CodeDiff.ico（此前编译日志中该 Error 一直存在）。
+- 保留说明：TextDiff / TDiff 属上游仓库名（github.com/rickard67/TextDiff）与第三方组件 TDiff 的名称，Diff.pas、HashUnit.pas 为 Angus Johnson 的组件源码，其版权与命名不作改动。
+--李安邦  2026-09-27
+
+2026-09-27 修复图标与 XP 清单未进入 exe 的问题：
+- 现象：程序编译完全正常，但 exe 没有图标，也没有 XP 视觉样式清单。
+- 排查：解析 CodeDiff.exe 的 PE 资源节，只有 RT_CURSOR(1)、RT_DIALOG(5)、RT_RCDATA(10)、RT_GROUP_CURSOR(12)
+  四种类型，缺少 RT_ICON(3)、RT_GROUP_ICON(14)、RT_MANIFEST(24)；而在 .rsrc 之外也搜不到清单正文
+  （urn:schemas-microsoft-com:asm.v1、requestedExecutionLevel 均无命中）。
+- 原因：CodeDiff.lpr 中缺少 {$R *.res}。CodeDiff.res 由 IDE / lazbuild 自动生成，内含 XP 清单与
+  MAINICON（16/24/32 三个尺寸），必须由 {$R *.res} 把它链入最终 PE；先前误认为该指令多余而删除，
+  导致 .res 只生成不链接，图标与清单被静默丢弃。
+- 修复：在 CodeDiff.lpr 中恢复 {$R *.res}，并补充注释说明其用途。重新编译后 exe 资源类型变为
+  RT_CURSOR / RT_ICON(3) / RT_DIALOG / RT_RCDATA / RT_GROUP_CURSOR / RT_GROUP_ICON(1) / RT_MANIFEST(1)，
+  清单正文出现在 .rsrc 区，exe 体积由 3253760 增至 3264000 字节。
+- 经验：.lpi 中 <Icon Value="0"/> 与 <Resources> 是两套并行的图标注入机制，同时启用会因 MAINICON
+  重复而报 EResourceDuplicateException（退出码 217），保留 <Icon Value="0"/> + <UseXPManifest Value="True"/>
+  即可，不要再添加 <Resources> 块。
+--李安邦  2026-09-27
+
+2026-09-27 新增：点击结果行同步显示到 Edit1 / Edit2
+- 鼠标点击 ResultGrid 某行时，自动把该行第 2 列文字送入 Edit1、第 4 列送入 Edit2，
+  便于直接查看/复制左右两侧对应行的原文。
+- 事件选型：LCL 的 TStringGrid 没有 OnSelectionChanged（那是 VCL/TreeView 的），
+  应使用 OnAfterSelection，它在 TCustomGrid.MoveExtend 末尾触发，鼠标点击与键盘
+  上下移动都会响应。
+- 键盘导航（上一个/下一个差异）也同步刷新 Edit1/Edit2；清空文件列表时一并清空两个文本框。
+- 列索引说明：第 1 列为文件1行号、第 2 列为文件1正文、第 3 列为文件2行号、第 4 列为文件2正文；
+  新增行不填第 1/2 列、删除行不填第 3/4 列，此时对应文本框显示为空。
+--李安邦  2026-09-27
+
+2026-09-27 修复：点击 ResultGrid 空白处报 "Index Out of range Cell[Col=1 Row=-1]"
+- 原因：ShowRowInEdits 中把行号做了减 1 处理（Cells[1, row-1]），而 OnAfterSelection 传来的
+  aRow 本身就是 0 基的网格行索引，TStringGrid.Cells[] 同样是 0 基，不应再减。
+  减 1 后第一行(索引 0)变成 -1，Cells[] 的 IsRowIndexValid 判定失败并抛 EGridException。
+- 修复：去掉减 1，直接用 Cells[1, row] / Cells[3, row]；并在 ShowRowInEdits 与
+  ResultGridAfterSelection 两处都加上 row/col < 0 的防护，越界时清空 Edit1/Edit2。
+- 附带修复一处同类隐患（原有代码问题，非本次新增）：actNextDiffExecute 的
+  "if row = ResultGrid.RowCount-1 then exit" 在 Selection.Top = -1 且 RowCount > 0 时
+  判据不成立（-1 <> RowCount-1），会去访问 Diff.Compares[-1] 而崩溃；
+  现已补上 (row < 0) or (Diff.Count = 0) 的前置判断，actPrevDiffExecute 同样处理。
+- ResultGridDrawCell 中 Diff.Compares[ARow] 的判据补上 ARow >= 0。
+- 说明：点击最后一行下方的空白区时，网格内部的 MouseToCell 会返回 ARow = -1，
+  但 MoveExtend→TryMoveSelection 里的 CheckLimits 会把行号收敛到 [0, RowCount-1]，
+  所以事件回调实际收到的是被收敛后的合法行号，不会收到 -1；
+  真正触发崩溃的是"点击第一行"这一路径（row-1 把 0 变成 -1）。
+--李安邦  2026-09-27
+
+2026-09-27 修复：Edit1/Edit2 显示的总是鼠标点击行的下一行
+- 现象：点击 ResultGrid 第 N 行，Edit1/Edit2 里出现的却是第 N+1 行的文字。
+- 原因：OnAfterSelection 的 aCol/aRow 参数并不是"新选中的单元格"，而是"上一个单元格"。
+  LCL 源码（lcl/grids.pas:3131）：
+      procedure TCustomGrid.AfterMoveSelection(const prevCol, prevRow: Integer);
+      begin
+        if Assigned(OnAfterSelection) then
+          OnAfterSelection(Self, prevCol, prevRow);   // 传的是 prevCol, prevRow
+      end;
+  唯一调用点在 MoveExtend（grids.pas:7987）末尾，实参为 AfterMoveSelection(PrevCol, PrevRow)。
+  所以用 aRow 去取值，永远取到的是"刚才那一行"，连续向下点击时看起来就是"总是慢一行/下一行"。
+- 修复：ResultGridAfterSelection 忽略 aCol/aRow，直接读 ResultGrid.Row。
+  此时网格自身状态已更新（MoveExtend 中先执行 FCol := DCol; FRow := DRow; 再调用
+  AfterMoveSelection），所以 ResultGrid.Row 就是刚点中的那一行。
+- 顺带清理：actNextDiffExecute / actPrevDiffExecute 中不再显式调用 ShowRowInEdits(row)，
+  因为 "ResultGrid.Row := row" 本身就会走 MoveExtend 触发 OnAfterSelection，由事件统一刷新，
+  避免同一逻辑出现两个刷新入口。
+- 编译结果：1655 lines compiled，exe 3264512 字节（Release 模式）。
+--李安邦  2026-09-27
+
+2026-09-27 修复：ResultGrid 中行首空格"消失"
+- 现象：ResultGrid 里显示的文字丢掉了行首（以及 & 前后）的空格，但同样的文本
+  复制到 Edit1/Edit2 时空格完好 —— 说明 Cells[] 里的空格没丢，是绘制环节的问题。
+- 真正原因：DT_NOPREFIX。与"网格裁剪前导空格"无关，那份广为流传的说法是错的。
+  LCL 走的是 DrawTextW，不是 TextOut：
+    lcl/include/canvas.inc:1284
+        if not Style.ShowPrefix then Options := Options or DT_NOPREFIX;
+  TCanvas 的 TextStyle.ShowPrefix 默认就是 False（canvas.inc:1532），
+  而 TCustomGrid 的 DefaultTextStyle 是在构造函数里从 Canvas.TextStyle 拷来的，
+  只改了 Wordbreak / SingleLine，没碰 ShowPrefix（grids.pas:10037），
+  于是每个单元格绘制都带着 DT_NOPREFIX。
+- DT_NOPREFIX 的真实语义：把 '&' 当助记符前缀处理，而不是裁剪空白。
+      '   abc'  -> '   abc'    （空格本身没问题）
+      '  &value' -> 'value'   （& 连同前面的空格一起被吃掉）
+      'a && b'  -> 'a & b'
+  C/C++ 源码里 &x、&&、&func() 遍地都是，所以现象看上去像是"前导空格被吃了"。
+- 修复：在 ResultGridDrawCell 里显式覆盖文本样式。注意 Canvas.TextStyle 是只读属性，
+  必须取到局部记录、改完再赋值回去（否则报 FPC 错误 4029 Argument cannot be assigned to）：
+      ts := TextStyle;
+      ts.ShowPrefix := True;    // 关键
+      ts.ExpandTabs := False;   // 制表符保持原始宽度
+      TextStyle := ts;
+- 关于制表符：ExpandTabs 置 False，让 #9 保持自身宽度，不展开成空格。
+- 关于 DrawCellText：LCL 的 DrawCellText 会按 Rect 裁剪文本，长源码行横向滚动时
+  会丢掉可见的行首空白；本程序用的是自己的 TextRect，不做那层裁剪，故继续绕过
+  DrawCellText，只把它所需的 TextStyle 前提补齐即可。
+- 参考：网上流传的"TStringGrid 默认绘制会裁剪前导空格、必须自己写 OnDrawCell 或
+  派生 TStringGridEx"的说法不成立 —— 本程序本来就已经是 DefaultDrawing=False +
+  自绘 OnDrawCell，照抄那份代码不会有任何改善。
+  另注：LCL 里 Canvas.TextOut 内部同样转调 TextRect，并不比 TextRect 更"保留空格"。
+- 编译结果：1683 lines compiled，exe 3264512 字节（Release 模式）。
+--李安邦  2026-09-27
+
+2026-09-27 续修：制表符改为按 8 列固定宽度展开（上一版 ExpandTabs=False 无效）
+- 现象：把 ExpandTabs 置 False 后（想让 #9 保持自身宽度），制表符反而"不占任何位置、
+  像是被隐藏了"，行首缩进整体塌陷。
+- 原因：在 DT_SINGLELINE 下，Windows 的 DrawText 会直接把行首的 #9 消耗掉而不推进
+  笔位置。DT_EXPANDTABS 本来就是为了避免这种情况；去掉它等于主动放弃制表符的宽度。
+  相关链路：Style.ExpandTabs -> DT_EXPANDTABS（canvas.inc:1281）；
+  TTextStyle.SingleLine 默认 True（grids.pas:10039）-> DT_SINGLELINE（canvas.inc:1276）。
+- 修复：不再依赖 Windows 的制表符处理，改为在自绘时手工把 #9 展开成空格，
+  每个制表符补到下一个 8 的倍数列（标准 C/C++ 制表位）：
+      function ExpandTabs(const S: string): string;
+      从列 0 起逐字符扫描，遇到 #9 就补空格直到 (col mod TabWidth) = 0。
+  同时仍保留 ts.ExpandTabs := False（已无意义，但避免与手工展开二次叠加）。
+- 除绘制点外，其余用到 Cells[] 的地方（Edit1/Edit2 复制、剪贴板）保持原文不展开，
+  制表符仍是 #9，不影响复制出去的原始内容。
+- 已用独立小程序逐一验证展开结果：
+      "\tint x;"          -> 8 空格 + "int x;"        (len 14)
+      "\t\tint x;"        -> 16 空格 + "int x;"       (len 22)
+      "ab\tx"             -> "ab" + 6 空格 + "x"      (len 9)
+      "abcdefgh\tx"       -> "abcdefgh" + 8 空格 + "x"(len 17)
+      "  \tif (a && b)\t// c" -> "  " + 5 空格 + "if (a && b)" + 5 空格 + "// c"
+- 编译结果：1722 lines compiled，exe 3265024 字节（Release 模式）。
+--李安邦  2026-09-27
+
+2026-09-27 调整：制表位由 8 列改为 4 列
+- 将 ResultGridDrawCell 内的 TabWidth 常量由 8 改为 4，制表符补到下一个 4 的倍数列。
+- 仅影响绘制时的空白宽度；Edit1/Edit2 与剪贴板仍取原文，内容不变。
+- 编译结果：1721 lines compiled，exe 3265024 字节（Release 模式）。
+--李安邦  2026-09-27

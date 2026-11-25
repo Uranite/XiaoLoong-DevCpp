@@ -1,0 +1,125 @@
+object ImportCBForm: TImportCBForm
+  Left = 768
+  Height = 256
+  Top = 436
+  Width = 365
+  BorderStyle = bsDialog
+  Caption = 'Import Code::Blocks project'
+  ClientHeight = 256
+  ClientWidth = 365
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  object lbSelect: TLabel
+    Left = 8
+    Height = 24
+    Top = 8
+    Width = 260
+    AutoSize = False
+    Caption = 'Select Code::Blocks project file:'
+  end
+  object btnBrowse: TSpeedButton
+    Left = 328
+    Height = 23
+    Top = 32
+    Width = 23
+    Caption = '...'
+    OnClick = btnBrowseClick
+  end
+  object txtCB: TEdit
+    Left = 8
+    Height = 24
+    Top = 32
+    Width = 312
+    TabOrder = 0
+    OnChange = txtDevChange
+  end
+  object gbOptions: TGroupBox
+    Left = 8
+    Height = 144
+    Top = 64
+    Width = 349
+    Caption = '  Import options  '
+    ClientHeight = 123
+    ClientWidth = 345
+    ParentBackground = False
+    TabOrder = 1
+    object lbConf: TLabel
+      Left = 16
+      Height = 24
+      Top = 0
+      Width = 200
+      AutoSize = False
+      Caption = 'Configuration to import:'
+    end
+    object lbDev: TLabel
+      Left = 16
+      Height = 24
+      Top = 56
+      Width = 201
+      AutoSize = False
+      Caption = 'Dev-C++ project filename:'
+    end
+    object btnBrowseDev: TSpeedButton
+      Left = 314
+      Height = 23
+      Top = 81
+      Width = 23
+      Caption = '...'
+      OnClick = btnBrowseDevClick
+    end
+    object cmbConf: TComboBox
+      Left = 11
+      Height = 24
+      Top = 24
+      Width = 321
+      ItemHeight = 16
+      Style = csDropDownList
+      TabOrder = 0
+    end
+    object txtDev: TEdit
+      Left = 11
+      Height = 24
+      Top = 80
+      Width = 297
+      TabOrder = 1
+      OnChange = txtDevChange
+    end
+  end
+  object btnImport: TButton
+    Left = 127
+    Height = 31
+    Top = 216
+    Width = 75
+    Caption = 'Import'
+    Default = True
+    TabOrder = 2
+    OnClick = btnImportClick
+  end
+  object btnCancel: TButton
+    Left = 246
+    Height = 33
+    Top = 214
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 3
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Code::Blocks project files|*.cbp'
+    Left = 280
+    Top = 48
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 280
+    Top = 112
+  end
+end

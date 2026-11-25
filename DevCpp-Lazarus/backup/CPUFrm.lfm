@@ -1,0 +1,234 @@
+object CPUForm: TCPUForm
+  Left = 348
+  Height = 557
+  Top = 346
+  Width = 747
+  Caption = 'CPU Window'
+  ClientHeight = 557
+  ClientWidth = 747
+  Color = clForm
+  Constraints.MinHeight = 449
+  Constraints.MinWidth = 582
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  FormStyle = fsStayOnTop
+  PopupMenu = CPUPopup
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object VertSplit: TSplitter
+    Left = 542
+    Height = 557
+    Top = 0
+    Width = 5
+    Align = alRight
+    ResizeAnchor = akRight
+  end
+  object RegPanel: TPanel
+    Left = 547
+    Height = 557
+    Top = 0
+    Width = 200
+    Align = alRight
+    ClientHeight = 557
+    ClientWidth = 200
+    ParentBackground = False
+    TabOrder = 0
+    object RegisterListbox: TListView
+      Left = 4
+      Height = 549
+      Top = 4
+      Width = 192
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Columns = <      
+        item
+          Caption = 'Register'
+          Width = 70
+        end      
+        item
+          Caption = 'Hex'
+          Width = 104
+        end      
+        item
+          Caption = 'Dec'
+          Width = 4
+        end>
+      GridLines = True
+      ReadOnly = True
+      RowSelect = True
+      TabOrder = 0
+      ViewStyle = vsReport
+    end
+  end
+  object LeftPanel: TPanel
+    Left = 0
+    Height = 557
+    Top = 0
+    Width = 542
+    Align = alClient
+    ClientHeight = 557
+    ClientWidth = 542
+    ParentBackground = False
+    TabOrder = 1
+    object HorzSplit: TSplitter
+      Cursor = crVSplit
+      Left = 1
+      Height = 3
+      Top = 386
+      Width = 540
+      Align = alBottom
+      ResizeAnchor = akBottom
+    end
+    object DisasPanel: TPanel
+      Left = 1
+      Height = 385
+      Top = 1
+      Width = 540
+      Align = alClient
+      ClientHeight = 385
+      ClientWidth = 540
+      ParentBackground = False
+      TabOrder = 0
+      object lblFunc: TLabel
+        Left = 8
+        Height = 15
+        Top = 11
+        Width = 68
+        Caption = 'Disassemble:'
+      end
+      object edFunc: TComboBox
+        Left = 84
+        Height = 23
+        Top = 8
+        Width = 324
+        Anchors = [akTop, akLeft, akRight]
+        ItemHeight = 15
+        TabOrder = 0
+        OnKeyPress = edFuncKeyPress
+      end
+      object CodeList: TATSynEdit
+        Left = 4
+        Height = 346
+        Top = 35
+        Width = 532
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        DoubleBuffered = True
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        ParentFont = False
+        TabOrder = 1
+        TabStop = True
+      end
+      object RadioATT: TRadioButton
+        Left = 424
+        Height = 19
+        Top = 11
+        Width = 48
+        Anchors = [akTop, akRight]
+        Caption = 'AT&&T'
+        Checked = True
+        TabOrder = 2
+        TabStop = True
+        OnClick = gbSyntaxClick
+      end
+      object RadioIntel: TRadioButton
+        Left = 480
+        Height = 19
+        Top = 11
+        Width = 41
+        Anchors = [akTop, akRight]
+        Caption = 'Intel'
+        TabOrder = 3
+        OnClick = gbSyntaxClick
+      end
+    end
+    object TracePanel: TPanel
+      Left = 1
+      Height = 167
+      Top = 389
+      Width = 540
+      Align = alBottom
+      ClientHeight = 167
+      ClientWidth = 540
+      ParentBackground = False
+      TabOrder = 1
+      object lblBacktrace: TLabel
+        Left = 8
+        Height = 15
+        Top = 0
+        Width = 51
+        Align = alCustom
+        Caption = 'Backtrace'
+      end
+      object StackTrace: TListView
+        Cursor = crHandPoint
+        Left = 4
+        Height = 143
+        Top = 20
+        Width = 532
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Columns = <        
+          item
+            AutoSize = True
+            Caption = 'Function'
+            MinWidth = 80
+            Width = 65
+          end        
+          item
+            AutoSize = True
+            Caption = 'File'
+            Width = 36
+          end        
+          item
+            Caption = 'Line'
+            Width = 40
+          end>
+        GridLines = True
+        ParentShowHint = False
+        ReadOnly = True
+        RowSelect = True
+        ShowHint = True
+        TabOrder = 0
+        ViewStyle = vsReport
+        OnClick = StackTraceClick
+      end
+    end
+  end
+  object CPUPopup: TPopupMenu
+    Left = 448
+    Top = 352
+    object CPUCut: TMenuItem
+      Caption = 'Cut'
+      ShortCut = 16472
+      OnClick = CPUCutClick
+    end
+    object CPUCopy: TMenuItem
+      Caption = 'Copy'
+      ShortCut = 16451
+      OnClick = CPUCopyClick
+    end
+    object CPUCopyAll: TMenuItem
+      Caption = 'Copy All'
+      ShortCut = 24643
+      OnClick = CPUCopyAllClick
+    end
+    object CPUPaste: TMenuItem
+      Caption = 'Paste'
+      ShortCut = 16470
+      OnClick = CPUPasteClick
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object CPUSelectAll: TMenuItem
+      Caption = 'Select All'
+      ShortCut = 16449
+      OnClick = CPUSelectAllClick
+    end
+  end
+end

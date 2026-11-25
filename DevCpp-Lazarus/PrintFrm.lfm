@@ -1,0 +1,177 @@
+object PrintForm: TPrintForm
+  Left = 789
+  Height = 254
+  Top = 372
+  Width = 432
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Print file'
+  ClientHeight = 254
+  ClientWidth = 432
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object PanelGround: TPanel
+    Left = 0
+    Height = 254
+    Top = 0
+    Width = 432
+    Align = alClient
+    ClientHeight = 254
+    ClientWidth = 432
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object btnCancel: TBitBtn
+      Left = 337
+      Height = 32
+      Top = 208
+      Width = 80
+      Cancel = True
+      Caption = '&Cancel'
+      Kind = bkCancel
+      ModalResult = 2
+      NumGlyphs = 2
+      TabOrder = 0
+    end
+    object btnOk: TBitBtn
+      Left = 216
+      Height = 32
+      Top = 208
+      Width = 80
+      Caption = '&OK'
+      Kind = bkOK
+      ModalResult = 1
+      NumGlyphs = 2
+      TabOrder = 1
+    end
+    object grpLineNum: TGroupBox
+      Left = 192
+      Height = 104
+      Top = 13
+      Width = 224
+      Caption = 'Line Numbers'
+      ClientHeight = 83
+      ClientWidth = 220
+      ParentBackground = False
+      TabOrder = 2
+      object rbNoLN: TRadioButton
+        Left = 16
+        Height = 20
+        Top = 53
+        Width = 156
+        Caption = 'Don''t print line numbers'
+        TabOrder = 0
+      end
+      object rbLNMargin: TRadioButton
+        Left = 16
+        Height = 20
+        Top = 24
+        Width = 180
+        Caption = 'Print line numbers in margin'
+        TabOrder = 1
+      end
+      object rbLN: TRadioButton
+        Left = 16
+        Height = 20
+        Top = 0
+        Width = 123
+        Caption = 'Print line numbers'
+        Checked = True
+        TabOrder = 2
+        TabStop = True
+      end
+    end
+  end
+  object grpParams: TGroupBox
+    Left = 16
+    Height = 98
+    Top = 16
+    Width = 152
+    Caption = 'Parameters'
+    ClientHeight = 76
+    ClientWidth = 148
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 1
+    object cbColors: TCheckBox
+      Left = 13
+      Height = 21
+      Top = 0
+      Width = 56
+      Caption = '&Colors'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+    end
+    object cbHighlight: TCheckBox
+      Left = 13
+      Height = 21
+      Top = 25
+      Width = 70
+      Caption = '&Highlight'
+      Checked = True
+      State = cbChecked
+      TabOrder = 1
+    end
+    object cbWordWrap: TCheckBox
+      Left = 13
+      Height = 21
+      Top = 48
+      Width = 84
+      Caption = '&Word wrap'
+      TabOrder = 2
+    end
+  end
+  object grpPages: TGroupBox
+    Left = 16
+    Height = 64
+    Top = 128
+    Width = 401
+    Caption = 'Pages :'
+    ClientHeight = 42
+    ClientWidth = 397
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 2
+    object cbSelection: TCheckBox
+      Left = 208
+      Height = 21
+      Top = 8
+      Width = 127
+      Caption = 'Print &selection only'
+      TabOrder = 0
+    end
+    object seCopies: TSpinEdit
+      Left = 136
+      Height = 25
+      Top = 4
+      Width = 48
+      MaxValue = 10000000
+      MinValue = 1
+      TabOrder = 1
+      Value = 1
+    end
+    object lblCopies: TLabel
+      Left = 13
+      Height = 17
+      Top = 8
+      Width = 113
+      Caption = 'Number of copies :'
+    end
+  end
+end

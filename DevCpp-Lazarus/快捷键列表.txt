@@ -1,0 +1,22 @@
+以下是 ATSynEdit 已占用的快捷键列表：
+
+快捷键	ATSynEdit 命令
+Ctrl+A	全选
+Ctrl+C	复制
+Ctrl+D	复制行
+Ctrl+I	缩进选中
+Ctrl+K	删除到行尾
+Ctrl+L	扩展选中到行
+Ctrl+U	切换自动换行
+Ctrl+V	粘贴
+Ctrl+X	剪切
+Ctrl+Y	删除行
+Ctrl+Z	撤销
+Ctrl+Backspace	删除前一个词
+Ctrl+Delete	删除后一个词
+Ctrl+Shift+I	取消缩进
+Ctrl+Shift+Z	重做
+
+设置/取消书签	Ctrl+M
+上一个书签	Ctrl+J
+下一个书签	Ctrl+Shift+J

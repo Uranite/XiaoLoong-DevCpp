@@ -1,0 +1,182 @@
+object HomepageForm: THomepageForm
+  Left = 721
+  Height = 350
+  Top = 264
+  Width = 376
+  Caption = 'HomepageForm'
+  ClientHeight = 350
+  ClientWidth = 376
+  Color = clForm
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Position = poMainFormCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object PanelGround: TPanel
+    Left = 0
+    Height = 350
+    Top = 0
+    Width = 376
+    Align = alClient
+    ClientHeight = 350
+    ClientWidth = 376
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 0
+    object lblVersion: TLabel
+      Left = 68
+      Height = 21
+      Top = 15
+      Width = 112
+      Caption = '小龙 Dev-C++ '
+      Color = clBtnText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblBuild: TLabel
+      Left = 68
+      Height = 17
+      Top = 42
+      Width = 57
+      Caption = 'Build time'
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+    end
+    object lblFound: TLabel
+      Left = 48
+      Height = 19
+      Top = 67
+      Width = 56
+      Caption = '版本信息'
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = 'Segoe UI'
+      ParentFont = False
+    end
+    object lblNewVersion: TLabel
+      Left = 150
+      Height = 19
+      Top = 67
+      Width = 83
+      Caption = 'New Version'
+      Font.Color = clRed
+      Font.Height = -14
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object btnGitee: TButton
+      Left = 32
+      Height = 33
+      Top = 131
+      Width = 313
+      Caption = 'Homepage on Gitee.com'
+      TabOrder = 0
+      OnClick = btnGiteeClick
+    end
+    object btnGitcode: TButton
+      Left = 32
+      Height = 33
+      Top = 170
+      Width = 313
+      Caption = 'Homepage on gitcode.com'
+      TabOrder = 1
+      OnClick = btnGitcodeClick
+    end
+    object btnGithub: TButton
+      Left = 32
+      Height = 33
+      Top = 209
+      Width = 313
+      Caption = 'Homepage on github'
+      TabOrder = 2
+      OnClick = btnGithubClick
+    end
+    object btnSf: TButton
+      Left = 32
+      Height = 33
+      Top = 248
+      Width = 313
+      Caption = 'Homepage on sf.net'
+      TabOrder = 3
+      OnClick = btnSfClick
+    end
+    object btnOk: TBitBtn
+      Left = 144
+      Height = 28
+      Top = 312
+      Width = 89
+      Caption = '&OK'
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Kind = bkOK
+      ModalResult = 1
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 4
+    end
+    object btnCheckUpdate: TButton
+      Left = 248
+      Height = 33
+      Top = 64
+      Width = 97
+      Caption = 'Check update'
+      TabOrder = 5
+      OnClick = btnCheckUpdateClick
+    end
+    object chkAutoCheck: TCheckBox
+      Left = 40
+      Height = 17
+      Top = 104
+      Width = 150
+      Caption = '程序启动时自动检查更新'
+      Checked = True
+      State = cbChecked
+      TabOrder = 6
+      OnClick = chkAutoCheckClick
+    end
+    object bvCompilers: TBevel
+      Left = 16
+      Height = 2
+      Top = 296
+      Width = 344
+      Shape = bsBottomLine
+    end
+    object lblError: TLabel
+      Left = 32
+      Height = 32
+      Top = 96
+      Width = 314
+      AutoSize = False
+      Caption = 'ERROR: missing SSL library file libcrypto-1_1-x64.dll and libssl-1_1-x64.dll.'
+      Color = clBtnFace
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+      WordWrap = True
+    end
+  end
+  object timerCheckUpdate: TTimer
+    Enabled = False
+    OnTimer = timerCheckUpdateTimer
+    Left = 272
+    Top = 8
+  end
+end
