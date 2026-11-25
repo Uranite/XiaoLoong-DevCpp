@@ -1,5 +1,7 @@
 # DevCpp (XiaoLoong Dev-C++) 项目架构分析
 
+> English version: [ARCHITECTURE.en.md](ARCHITECTURE.en.md)
+>
 > 版本: v7.0.5 | 开发框架: Lazarus 4.6 | 编码语言: Object Pascal (Delphi Mode)
 > 更新日期: 2026-11-25
 

@@ -1,5 +1,7 @@
 # Linux 移植 Phase 2 — 功能对齐
 
+> English version: [LINUX_PORT_PHASE2.en.md](LINUX_PORT_PHASE2.en.md)
+
 > 状态：✅ 已完成（2026-07-16）
 > 目标：消除 Windows 平台特定的功能调用，使 Linux 上功能降级可控
 

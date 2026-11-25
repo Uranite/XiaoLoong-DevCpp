@@ -1,5 +1,7 @@
 # Linux 移植 Phase 1 — 核心阻断修复
 
+> English version: [LINUX_PORT_PHASE1.en.md](LINUX_PORT_PHASE1.en.md)
+
 > 状态：✅ 已完成（2026-07-16）→ [Phase 2 文档 →](LINUX_PORT_PHASE2.md)
 > 目标：消除编译阶段在 Linux/FPC 上的阻塞性问题
 

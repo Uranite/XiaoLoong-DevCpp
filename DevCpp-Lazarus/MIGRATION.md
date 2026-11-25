@@ -1,5 +1,7 @@
 # DevCpp SynEdit → ATSynEdit 迁移记录
 
+> English version: [MIGRATION.en.md](MIGRATION.en.md)
+
 ## 迁移目标
 - Delphi → Lazarus 4.6
 - SynEdit 2.1.1 → ATSynEdit
@@ -92,7 +94,7 @@
 - [x] TSynHighlighterAttributes → TATSynHighlighterAttributes
 - [x] TSynStateFlags / sfWaitForDragging → 移除（ATSynEdit 不支持）
 - [x] InsertString 更新（CaretXY → CaretPos）
-- [x] ExportToHTML/RTF/TEX → 禁用（ATSynEdit 无 SynExporter）
+- [x] ExportToHTML/RTF/TEX → 曾禁用，后改用 ATSynEdit 行片段 API 实现
 - [x] Bookmark API → BookmarkSet/BookmarkDelete/BookmarkGoto（ATSynEdit）
 - [x] HandleSymbolCompletion → BufferCoord → TPoint，CaretXY → CaretPos
 - [x] HandleCodeCompletion → ATSynEdit GetHighlighterAttriAtRowCol (TPoint)
@@ -224,7 +226,7 @@
 | `OnDblClick` | `OnClickDouble` | 双击事件（签名不同） |
 | `OnClickSpecialLine` | `OnDrawLine` | 特殊行点击/绘制 |
 | `OnGutterClick` | `OnClickGutter` | 签名变为 (Sender, ABand, ALineNum, var AHandled) |
-| `SynExporterHTML/RTF/TEX` | **不支持** | 需要重新实现 |
+| `SynExporterHTML/RTF/TEX` | **已用 ATSynEdit 行片段 API 重新实现** | 见 `TEditor.ExportToHTML/RTF/TEX` |
 | `TSynHighlighterAttributes` | `TATSynHighlighterAttributes` | 通过 EControl 适配器获取 |
 | `InvalidateGutterLine(n)` | *(不支持，用 InvalidateLine)* | |
 | `IsScrolling` | *(不支持，移除)* | |
